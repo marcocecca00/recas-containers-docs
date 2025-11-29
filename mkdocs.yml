@@ -15,8 +15,8 @@ theme:
     - content.action.edit
   palette:
     - scheme: default
-      primary: blue grey
-      accent: deep orange
+      primary: indigo
+      accent: deep purple
 
 markdown_extensions:
   - toc:

@@ -1,0 +1,28 @@
+# Template: build_and_run_python_project.csi
+# Sostituisci:
+#   <USERNAME>        con il tuo username
+#   <PROJECT_NAME>    con la cartella sotto condor_tests (es. CsI-WLS_v1.2.2)
+#   <IMAGE_BASENAME>  con la SIF locale
+#   <SRC_DIR>, <BUILD_DIR>, <PY_SCRIPT>, <EXEC_NAME>   con i valori per il tuo progetto
+
+universe        = vanilla
+
+initialdir      = /lustrehome/<USERNAME>/condor_tests/<PROJECT_NAME>
+
+executable      = build_and_run_python_project.sh
+arguments       =
+
+container_image = <IMAGE_BASENAME>
+
+# Parametrizzazione dello script via environment
+environment     = "SRC_DIR=source;BUILD_DIR=build;PYTHON_SCRIPT=source/run_electrons_batch.py;EXEC_NAME=CsI-WLS"
+
+request_cpus    = 4
+request_memory  = 4 GB
+request_disk    = 16 GB
+
+output          = logs/pyproj_$(ClusterId).$(ProcId).out
+error           = logs/pyproj_$(ClusterId).$(ProcId).err
+log             = logs/pyproj_$(ClusterId).$(ProcId).log
+
+queue 1

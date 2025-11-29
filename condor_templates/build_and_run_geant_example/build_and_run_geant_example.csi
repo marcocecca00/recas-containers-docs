@@ -1,0 +1,35 @@
+# Template: build_and_run_geant_example.csi
+#
+# Sostituisci:
+#   <USERNAME>        con il tuo username (es. marcocecca)
+#   <BUILD_RUN_NAME>  con il nome della cartella test (es. build_run_B5_11.3.1)
+#   <IMAGE_BASENAME>  con il nome del file .sif locale (es. G4_v11.3.1.sif)
+#   <G4_EXAMPLE_DIR>  con il path dell'esempio dentro il container
+#   <BUILD_DIR>       con la build dir relativa (es. B5_build_condor)
+#   <EXEC_NAME>       con il nome dell'eseguibile (es. exampleB5)
+#   <MACRO_PATH>      con il path della macro (es. /opt/geant4/.../run1.mac)
+
+universe        = vanilla
+
+initialdir      = /lustrehome/<USERNAME>/condor_tests/<BUILD_RUN_NAME>
+
+# Script locale nella initialdir (può essere un symlink al template .sh)
+executable      = build_and_run_geant_example.sh
+arguments       =
+
+# ATTENZIONE:
+# Nella initialdir deve esistere un file (o symlink) chiamato <IMAGE_BASENAME>
+container_image = <IMAGE_BASENAME>
+
+# Parametri passati allo script via environment
+environment     = "G4_EXAMPLE_DIR=<G4_EXAMPLE_DIR>;BUILD_DIR=<BUILD_DIR>;EXEC_NAME=<EXEC_NAME>;MACRO_PATH=<MACRO_PATH>"
+
+request_cpus    = 4
+request_memory  = 4 GB
+request_disk    = 8 GB
+
+output          = logs/build_run_$(ClusterId).$(ProcId).out
+error           = logs/build_run_$(ClusterId).$(ProcId).err
+log             = logs/build_run_$(ClusterId).$(ProcId).log
+
+queue 1

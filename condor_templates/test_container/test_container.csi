@@ -1,0 +1,26 @@
+# Template: test_container.csi
+# Sostituisci:
+#   <USERNAME>        con il tuo username ReCaS
+#   <TEST_NAME>       con il nome del test (es. test_G4_v11.3.1)
+#   <IMAGE_BASENAME>  con il nome del file .sif nella initialdir (es. G4_v11.3.1.sif)
+
+universe        = vanilla
+
+initialdir      = /lustrehome/<USERNAME>/condor_tests/<TEST_NAME>
+
+executable      = test_container.sh
+arguments       =
+
+# IMPORTANTE:
+# Nella initialdir deve esistere un file (o symlink) chiamato <IMAGE_BASENAME>
+container_image = <IMAGE_BASENAME>
+
+request_cpus    = 1
+request_memory  = 1 GB
+request_disk    = 4 GB
+
+output          = logs/test_$(ClusterId).$(ProcId).out
+error           = logs/test_$(ClusterId).$(ProcId).err
+log             = logs/test_$(ClusterId).$(ProcId).log
+
+queue 1

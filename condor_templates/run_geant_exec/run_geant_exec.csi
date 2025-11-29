@@ -1,0 +1,26 @@
+# Template: run_geant_exec.csi
+# Sostituisci:
+#   <USERNAME>        con il tuo username
+#   <RUN_NAME>        con il nome della cartella del test (es. run_B5_11.3.1)
+#   <IMAGE_BASENAME>  con il nome della SIF nella initialdir
+#   <EXEC_REL>        con il path relativo dell'eseguibile (es. exampleB5)
+#   <MACRO_REL>       con la macro relativa (es. run1.mac)
+
+universe        = vanilla
+
+initialdir      = /lustrehome/<USERNAME>/condor_tests/<RUN_NAME>
+
+executable      = run_geant_exec.sh
+arguments       = <EXEC_REL> <MACRO_REL>
+
+container_image = <IMAGE_BASENAME>
+
+request_cpus    = 1
+request_memory  = 2 GB
+request_disk    = 4 GB
+
+output          = logs/run_$(ClusterId).$(ProcId).out
+error           = logs/run_$(ClusterId).$(ProcId).err
+log             = logs/run_$(ClusterId).$(ProcId).log
+
+queue 1

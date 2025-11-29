@@ -1,0 +1,30 @@
+# Template: build_geant_project.csi
+# Sostituisci:
+#   <USERNAME>        con il tuo username
+#   <BUILD_NAME>      con il nome della cartella test (es. build_B5_11.3.1)
+#   <IMAGE_BASENAME>  con il nome del file .sif nella initialdir
+#   <G4_EXAMPLE_DIR>  con il path dell'esempio dentro il container
+#   <BUILD_DIR>       con il nome della dir di build (es. B5_build_condor)
+
+universe        = vanilla
+
+initialdir      = /lustrehome/<USERNAME>/condor_tests/<BUILD_NAME>
+
+executable      = build_geant_project.sh
+arguments       =
+
+# La SIF deve essere presente nella initialdir come file <IMAGE_BASENAME>
+container_image = <IMAGE_BASENAME>
+
+# Parametri di ambiente per lo script (opzionali)
+environment     = "G4_EXAMPLE_DIR=<G4_EXAMPLE_DIR>;BUILD_DIR=<BUILD_DIR>"
+
+request_cpus    = 4
+request_memory  = 4 GB
+request_disk    = 8 GB
+
+output          = logs/build_$(ClusterId).$(ProcId).out
+error           = logs/build_$(ClusterId).$(ProcId).err
+log             = logs/build_$(ClusterId).$(ProcId).log
+
+queue 1
