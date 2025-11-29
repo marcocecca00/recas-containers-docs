@@ -1,11 +1,32 @@
-site_name: ReCaS containers docs
-nav:
-  - Home: index.md
+site_name: ReCaS – HTCondor & Containers
+site_url: https://marcocecca00.github.io/recas-containers-docs/
+repo_url: https://github.com/marcocecca00/recas-containers-docs
+repo_name: recas-containers-docs
 
 theme:
-  name: mkdocs
+  name: material
+  language: it
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - toc.integrate
+    - content.code.copy
+    - content.action.edit
+  palette:
+    - scheme: default
+      primary: blue grey
+      accent: deep orange
 
 markdown_extensions:
   - toc:
       permalink: true
   - attr_list
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+      linenums: true
+      auto_title: true
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.inlinehilite
