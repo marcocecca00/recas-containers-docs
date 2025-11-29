@@ -842,7 +842,7 @@ docker login registry-clustergpu.recas.ba.infn.it
 docker push registry-clustergpu.recas.ba.infn.it/alice/geant4:10.6.3
 ```
 
-La conversione da immagine Docker a immagine Apptainer/Singularity avviene su un nodo dove Apptainer è installato e autorizzato a eseguire il comando `build`. Un esempio di comando è:
+La conversione da immagine Docker a immagine Apptainer/Singularity deve avvenire un worker node dove Apptainer è installato e eseguire il comando `build`. Un esempio di comando è:
 
 ```bash
 apptainer build G4_v10.6.3.sif docker://registry-clustergpu.recas.ba.infn.it/alice/geant4:10.6.3
@@ -855,6 +855,10 @@ mv G4_v10.6.3.sif /lustrehome/alice/apptainer_images/
 ```
 
 Dopo questo passaggio, tutti gli utenti (come `bob`) possono usare l’immagine nei propri job Condor creando un symlink nella `initialdir` e impostando `container_image` al nome del symlink, come mostrato nella sezione [Concetti di base: container, Apptainer e HTCondor](#sec-concetti-base) e negli esempi.
+
+!!! tip "Tip"
+
+    Sia la build della immagine Docker che la conversione in `.sif` può anche essere fatta in locale sul proprio pc e poi copiata su una directory accessibile su lustrehome. 
 
 ### Comandi essenziali Docker
 
