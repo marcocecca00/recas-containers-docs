@@ -1,30 +1,3 @@
-site_name: ReCaS Container & HTCondor Guide
-site_description: Guida all'uso di immagini Apptainer/Singularity e Docker su ReCaS
-site_author: Gruppo ReCaS
-repo_url: https://github.com/example/recas-containers-docs
-theme:
-  name: material
-  language: it
-  features:
-    - navigation.tabs
-    - navigation.sections
-    - navigation.top
-    - content.code.copy
-    - content.code.annotate
-    - toc.integrate
-markdown_extensions:
-  - admonition
-  - toc:
-      permalink: true
-  - codehilite:
-      guess_lang: false
-  - tables
-  - attr_list
-  - def_list
-  - footnotes
+site_name: ReCaS Guide
 nav:
-  - Home: index.md
-  - HTCondor + Apptainer:
-      - Introduzione: condor-apptainer.md
-  - Docker & SIF: docker-sif.md
-  - Kubernetes (TODO): kubernetes.md
+ - Home: index.md
