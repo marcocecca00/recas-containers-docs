@@ -34,8 +34,7 @@ HTCondor si occupa di individuare i worker node disponibili, preparare la direct
 Un esempio tipico è il seguente. Nella directory del job di `bob` si crea un link all’immagine condivisa di `alice`:
 
 ```bash
-ln -sf /lustrehome/alice/apptainer_images/G4_v11.3.1.sif \
-       G4_v11.3.1.sif
+ln -sf /lustrehome/alice/apptainer_images/G4_v11.3.1.sif G4_v11.3.1.sif
 ```
 
 e nel file di submit si scrive:
@@ -70,9 +69,18 @@ In questa sezione sono riportati cinque esempi completi che illustrano come util
 - **Esempio [4](#sec-esempio4)** – compilazione ed esecuzione dell’esempio B5 nello stesso job HTCondor, utile quando si vuole una build “pulita” per ogni run;
 - **Esempio [5](#sec-esempio5)** – caso realistico con il progetto CsI-WLS, che prevede build con CMake e un batch di simulazioni pilotato da uno script Python.
 
-I template completi degli script `.sh` e dei file di submit `.csi` utilizzati negli esempi successivi sono disponibili al seguente link:
+I template completi degli script `.sh` e dei file di submit `.csi` utilizzati negli esempi successivi sono disponibili nella cartella
+[`templates/`](https://github.com/marcocecca00/recas-containers-docs/tree/master/templates) del repository GitHub.
 
-[https://politecnicobari-my.sharepoint.com/:f:/g/personal/m_cecca1_phd_poliba_it/IgB8X8DaFI3QTaVAEtIk1-7vAavKvy_XEBCvTr6rky2CQf8?e=si0j3J](https://politecnicobari-my.sharepoint.com/:f:/g/personal/m_cecca1_phd_poliba_it/IgB8X8DaFI3QTaVAEtIk1-7vAavKvy_XEBCvTr6rky2CQf8?e=si0j3J)
+In particolare:
+
+- [`Es1_test_container`](https://github.com/marcocecca00/recas-containers-docs/tree/master/templates/Es1_test_container)
+- [`Es2_build_geant_project`](https://github.com/marcocecca00/recas-containers-docs/tree/master/templates/Es2_build_geant_project)
+- [`Es3_run_geant_exec`](https://github.com/marcocecca00/recas-containers-docs/tree/master/templates/Es3_run_geant_exec)
+- [`Es4_build_and_run_geant_example`](https://github.com/marcocecca00/recas-containers-docs/tree/master/templates/Es4_build_and_run_geant_example)
+- [`Es5_build_and_run_python`](https://github.com/marcocecca00/recas-containers-docs/tree/master/templates/Es5_build_and_run_python)
+
+
 
 ---
 
@@ -528,8 +536,7 @@ mkdir -p logs
 Si crea il link all’immagine senza multithreading di `alice`:
 
 ```bash
-ln -sf /lustrehome/alice/apptainer_images/G4_v10.6.3_NOMULTITHREAD.sif \
-       G4_v10.6.3_NOMULTITHREAD.sif
+ln -sf /lustrehome/alice/apptainer_images/G4_v10.6.3_NOMULTITHREAD.sif G4_v10.6.3_NOMULTITHREAD.sif
 ```
 
 Nella directory `source` (nel testo LaTeX originale si alternano `source`/`src`; qui assumiamo che lo script Python sia nella directory con i sorgenti) si definisce lo script Python che si aspetta di essere eseguito da dentro `build` (dove esiste `./CsI-WLS`). Questo script genera un certo numero di macro, ognuna con un seed diverso, e per ciascuna macro lancia l’eseguibile:
@@ -676,10 +683,6 @@ condor_submit CsI_WLS_python_electrons.csi
 ```
 
 Quando il job è terminato, nella directory `build` compaiono l’eseguibile `CsI-WLS`, le macro generate dallo script Python e gli output ROOT. Tutti questi file sono salvati su lustre dentro `/lustrehome/bob/condor_tests/CsI-WLS_v1.2.2`.
-
-I template completi degli script `.sh` e dei file di submit `.csi` utilizzati negli esempi nella sezione [Esempi](#sec-esempi) sono presenti al seguente link:
-
-[https://politecnicobari-my.sharepoint.com/:f:/g/personal/m_cecca1_phd_poliba_it/IgB8X8DaFI3QTaVAEtIk1-7vAavKvy_XEBCvTr6rky2CQf8?e=si0j3J](https://politecnicobari-my.sharepoint.com/:f:/g/personal/m_cecca1_phd_poliba_it/IgB8X8DaFI3QTaVAEtIk1-7vAavKvy_XEBCvTr6rky2CQf8?e=si0j3J)
 
 ---
 

@@ -21,7 +21,7 @@
     
     
       
-        <title>ReCaS – HTCondor & Containers</title>
+        <title>ReCaS - HTCondor & Containers</title>
       
     
     
@@ -63,7 +63,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -88,7 +88,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Intestazione">
-    <a href="." title="ReCaS – HTCondor &amp; Containers" class="md-header__button md-logo" aria-label="ReCaS – HTCondor & Containers" data-md-component="logo">
+    <a href="." title="ReCaS - HTCondor &amp; Containers" class="md-header__button md-logo" aria-label="ReCaS - HTCondor & Containers" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -102,7 +102,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ReCaS – HTCondor & Containers
+            ReCaS - HTCondor & Containers
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -121,7 +121,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
     
   
 </form>
@@ -212,13 +212,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigazione" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="ReCaS – HTCondor &amp; Containers" class="md-nav__button md-logo" aria-label="ReCaS – HTCondor & Containers" data-md-component="logo">
+    <a href="." title="ReCaS - HTCondor &amp; Containers" class="md-nav__button md-logo" aria-label="ReCaS - HTCondor & Containers" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    ReCaS – HTCondor & Containers
+    ReCaS - HTCondor & Containers
   </label>
   
     <div class="md-nav__source">
@@ -539,9 +539,7 @@
 <li>La direttiva <code>container_image</code> indica quale immagine Apptainer usare. I test effettuati sul cluster hanno mostrato un comportamento pratico importante: Condor si aspetta che il valore di <code>container_image</code> sia il nome di un file presente nella <code>initialdir</code>. Per questa ragione, anche se l’immagine “reale” vive in una directory centrale, per ogni job conviene creare nella <code>initialdir</code> un symlink locale all’immagine e poi usare nel submit il nome del symlink (ad esempio un symlink a <code>/lustrehome/alice/apptainer_images/immagine.sif</code>).</li>
 </ul>
 <p>Un esempio tipico è il seguente. Nella directory del job di <code>bob</code> si crea un link all’immagine condivisa di <code>alice</code>:</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>ln<span class="w"> </span>-sf<span class="w"> </span>/lustrehome/alice/apptainer_images/G4_v11.3.1.sif<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">       </span>G4_v11.3.1.sif
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>ln<span class="w"> </span>-sf<span class="w"> </span>/lustrehome/alice/apptainer_images/G4_v11.3.1.sif<span class="w"> </span>G4_v11.3.1.sif
 </code></pre></div></td></tr></table></div>
 <p>e nel file di submit si scrive:</p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nv">container_image</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>G4_v11.3.1.sif
@@ -1420,8 +1418,14 @@
 <a id="__codelineno-34-2" name="__codelineno-34-2"></a>condor_submit<span class="w"> </span>CsI_WLS_python_electrons.csi
 </code></pre></div></td></tr></table></div>
 <p>Quando il job è terminato, nella directory <code>build</code> compaiono l’eseguibile <code>CsI-WLS</code>, le macro generate dallo script Python e gli output ROOT. Tutti questi file sono salvati su lustre dentro <code>/lustrehome/bob/condor_tests/CsI-WLS_v1.2.2</code>.</p>
-<p>I template completi degli script <code>.sh</code> e dei file di submit <code>.csi</code> utilizzati negli esempi nella sezione <a href="#sec-esempi">Esempi</a> sono presenti al seguente link:</p>
-<p><a href="https://politecnicobari-my.sharepoint.com/:f:/g/personal/m_cecca1_phd_poliba_it/IgB8X8DaFI3QTaVAEtIk1-7vAavKvy_XEBCvTr6rky2CQf8?e=si0j3J">https://politecnicobari-my.sharepoint.com/:f:/g/personal/m_cecca1_phd_poliba_it/IgB8X8DaFI3QTaVAEtIk1-7vAavKvy_XEBCvTr6rky2CQf8?e=si0j3J</a></p>
+<p>I template completi degli script <code>.sh</code> e dei file di submit <code>.csi</code> utilizzati negli esempi successivi sono disponibili nella cartella
+<a href="https://github.com/marcocecca00/recas-containers-docs/tree/master/templates"><code>templates/</code></a> del repository GitHub.</p>
+<p>In particolare:
+- <a href="https://github.com/marcocecca00/recas-containers-docs/tree/master/templates/Es1_test_container"><code>Es1_test_container</code></a>
+- <a href="https://github.com/marcocecca00/recas-containers-docs/tree/master/templates/Es2_build_geant_project"><code>Es2_build_geant_project</code></a>
+- <a href="https://github.com/marcocecca00/recas-containers-docs/tree/master/templates/Es3_run_geant_exec"><code>Es3_run_geant_exec</code></a>
+- <a href="https://github.com/marcocecca00/recas-containers-docs/tree/master/templates/Es4_build_and_run_geant_example"><code>Es4_build_and_run_geant_example</code></a>
+- <a href="https://github.com/marcocecca00/recas-containers-docs/tree/master/templates/Es5_build_and_run_python"><code>Es5_build_and_run_python</code></a></p>
 <hr />
 <h2 id="sec-docker-sif">Costruzione di un’immagine Docker e conversione in SIF<a class="headerlink" href="#sec-docker-sif" title="Permanent link">&para;</a></h2>
 <p>Gli esempi della sezione <a href="#sec-esempi">Esempi</a> assumono che le immagini <code>.sif</code> siano già disponibili in una cartella condivisa, gestita dall’utente <code>alice</code>. Questa sezione descrive in modo sintetico come costruire un’immagine Docker con Geant4, ROOT e Python, come convertirla in un’immagine Apptainer/Singularity e come distribuirla agli altri utenti, senza entrare nei dettagli dei singoli comandi di installazione del software all’interno del container.</p>
