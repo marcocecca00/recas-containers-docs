@@ -1,4 +1,4 @@
-site_name: ReCaS – HTCondor & Containers
+site_name: ReCaS - HTCondor & Containers
 site_url: https://marcocecca00.github.io/recas-containers-docs/
 repo_url: https://github.com/marcocecca00/recas-containers-docs
 repo_name: recas-containers-docs
@@ -15,8 +15,8 @@ theme:
     - content.action.edit
   palette:
     - scheme: default
-      primary: indigo
-      accent: deep purple
+      primary: blue grey
+      accent: deep orange
 
 markdown_extensions:
   - toc:
