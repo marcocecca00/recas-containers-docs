@@ -1,0 +1,117 @@
+/* Colore hover per le voci del menu di sinistra (nav + TOC integrata) */
+.md-nav--primary .md-nav__link:hover {
+  color: var(--md-accent-fg-color);
+}
+
+/* opzionale: la “barretta” di selezione a sinistra in arancione */
+.md-nav--primary .md-nav__item--active > .md-nav__link {
+  border-left-color: var(--md-accent-fg-color);
+}
+
+/* ============================
+   NUMERAZIONE NEL CONTENUTO
+   ============================ */
+
+/* Reset globale per i contatori nei contenuti */
+.md-typeset {
+  counter-reset: h2-counter;
+}
+
+/* Ogni h2:
+   - incrementa il contatore di livello 2
+   - resetta il contatore di livello 3
+*/
+.md-typeset h2 {
+  counter-reset: h3-counter;
+}
+
+/* Visualizza: 1. Titolo (per i ##) */
+.md-typeset h2::before {
+  counter-increment: h2-counter;
+  content: counter(h2-counter) ". ";
+  margin-right: 0.25em;
+}
+
+/* Visualizza: 1.1 Sottotitolo (per i ###) */
+.md-typeset h3::before {
+  counter-increment: h3-counter;
+  content: counter(h2-counter) "." counter(h3-counter) " ";
+  margin-right: 0.25em;
+}
+
+/*
+
+/* ============================
+   NUMERAZIONE NELLA TOC LATERALE
+   (TOC integrata: ## -> 1., ### -> 1.1, #### -> 1.1.1)
+   ============================ */
+
+/* Livello 2 (##): reset contatore h2 nella TOC */
+.md-nav--secondary > .md-nav__list {
+  counter-reset: toc-h2;
+}
+
+/* Voci TOC di primo livello (i tuoi ##) */
+.md-nav--secondary
+  > .md-nav__list
+  > .md-nav__item
+  > .md-nav__link::before {
+  counter-increment: toc-h2;
+  content: counter(toc-h2) ". ";
+  margin-right: 0.25em;
+}
+
+/* Livello 3 (###): reset contatore h3 all'interno di ciascun h2 */
+.md-nav--secondary
+  > .md-nav__list
+  > .md-nav__item
+  > .md-nav__list {
+  counter-reset: toc-h3;
+}
+
+/* Livello 3 (###): reset contatore h3 all'interno di ciascun h2 */
+.md-nav--secondary
+  > .md-nav__list
+  > .md-nav__item
+  > nav
+  > .md-nav__list {
+  counter-reset: toc-h3;
+}
+
+/* Voci TOC di secondo livello (i tuoi ###) */
+.md-nav--secondary
+  > .md-nav__list
+  > .md-nav__item
+  > nav
+  > .md-nav__list
+  > .md-nav__item
+  > .md-nav__link::before {
+  counter-increment: toc-h3;
+  content: counter(toc-h2) "." counter(toc-h3) " ";
+  margin-right: 0.25em;
+}
+
+
+/* Livello 4 (####): reset contatore h4 all'interno di ciascun h3 */
+.md-nav--secondary
+  > .md-nav__list
+  > .md-nav__item
+  > .md-nav__list
+  > .md-nav__item
+  > .md-nav__list {
+  counter-reset: toc-h4;
+}
+
+/* Voci TOC di terzo livello (i tuoi ####) */
+.md-nav--secondary
+  > .md-nav__list
+  > .md-nav__item
+  > .md-nav__list
+  > .md-nav__item
+  > .md-nav__list
+  > .md-nav__item
+  > .md-nav__link::before {
+  counter-increment: toc-h4;
+  content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) " ";
+  margin-right: 0.25em;
+}
