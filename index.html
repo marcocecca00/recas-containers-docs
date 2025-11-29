@@ -557,7 +557,7 @@
 
 <h1 id="uso-di-immagini-apptainersingularity-con-htcondor-su-recas">Uso di immagini Apptainer/Singularity con HTCondor su ReCaS<a class="headerlink" href="#uso-di-immagini-apptainersingularity-con-htcondor-su-recas" title="Permanent link">&para;</a></h1>
 <h2 id="introduzione"><strong>Introduzione</strong><a class="headerlink" href="#introduzione" title="Permanent link">&para;</a></h2>
-<p>Questa guida descrive in modo operativo come usare immagini Apptainer/Singularity (file <code>.sif</code>) insieme a HTCondor sul cluster ReCaS. L’idea di fondo è che nel gruppo ci sia almeno un utente “manutentore” (che chiameremo <code>alice</code>) che possa costruire immagini Docker su una macchina dedicata, convertirle in immagini Apptainer/Singularity e metterle a disposizione di tutti in una posizione condivisa su lustre. Gli altri utenti (ad esempio <code>bob</code>) non devono occuparsi della parte Docker: si limitano a usare le immagini <code>.sif</code> già pronte all’interno dei job Condor, tramite <em>symlink</em> verso la directory condivisa di <code>alice</code>.</p>
+<p>Questa guida descrive in modo operativo come usare immagini Apptainer/Singularity (file <code>.sif</code>) insieme a HTCondor sul cluster ReCaS. L’idea di fondo è che ci sia almeno un utente “manutentore” (che chiameremo <code>alice</code>) che possa costruire immagini Docker su una macchina dedicata, convertirle in immagini Apptainer/Singularity e metterle a disposizione di tutti in una posizione condivisa su lustre. Gli altri utenti (ad esempio <code>bob</code>) non devono occuparsi della parte Docker: si limitano a usare le immagini <code>.sif</code> già pronte all’interno dei job Condor, tramite <em>symlink</em> verso la directory condivisa di <code>alice</code>.</p>
 <p>Nel seguito useremo come esempio un utente chiamato <code>bob</code> per i job Condor, mentre <code>alice</code> rappresenterà l’utente che ospita le immagini condivise. Per rendere gli esempi concreti, si assume che siano già presenti due immagini Apptainer nella directory condivisa di <code>alice</code>:</p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>/lustrehome/alice/apptainer_images/G4_v10.6.3_NOMULTITHREAD.sif
@@ -1718,14 +1718,12 @@ nel tempo possono essere aggiunte nuove immagini o aggiornate le versioni.</p>
 <p>Se si utilizza una di queste immagini come base per nuovi workflow, è buona pratica:</p>
 <ul>
 <li>documentare nel proprio progetto quale <strong>tag</strong> specifico si sta usando;</li>
-<li>evitare di modificare “a mano” i file <code>.sif</code> condivisi, ma generare nuove immagini
-  con tag/versioni diverse quando servono modifiche significative;</li>
-<li>mantenere questa sezione aggiornata nel tempo, aggiungendo righe per nuove immagini
-  che il gruppo decide di rendere “ufficiali”.</li>
+<li>generare nuove immagini con tag/versioni diverse quando servono modifiche significative;</li>
+<li>mantenere questa sezione aggiornata nel tempo, aggiungendo righe per nuove immagini “ufficiali”.</li>
 </ul>
 <h2 id="appendice"><strong>Appendice</strong><a class="headerlink" href="#appendice" title="Permanent link">&para;</a></h2>
 <h3 id="sec-dockerfile-esempio">Dockerfile di esempio per ambiente Geant4/ROOT<a class="headerlink" href="#sec-dockerfile-esempio" title="Permanent link">&para;</a></h3>
-<p>In questa sezione è riportato un esempio completo di <code>Dockerfile</code> per costruire un’immagine Docker basata su Ubuntu 24.04, con Geant4, ROOT e Python3. Questo file è pensato come base da adattare alle esigenze del gruppo, sia per quanto riguarda le versioni dei software, sia per i path di installazione. Il risultato atteso è un’immagine che espone gli script di environment <code>/opt/geant4/bin/geant4.sh</code> e <code>/opt/root/bin/thisroot.sh</code> e che può essere convertita in un file <code>.sif</code> come descritto nella sezione <a href="#sec-docker-sif">Costruzione di un’immagine Docker e conversione in SIF</a>.</p>
+<p>In questa sezione è riportato un esempio completo di <code>Dockerfile</code> per costruire un’immagine Docker basata su Ubuntu 24.04, con Geant4, ROOT e Python3. Il risultato atteso è un’immagine che espone gli script di environment <code>/opt/geant4/bin/geant4.sh</code> e <code>/opt/root/bin/thisroot.sh</code> e che può essere convertita in un file <code>.sif</code> come descritto nella sezione <a href="#sec-docker-sif">Costruzione di un’immagine Docker e conversione in SIF</a>.</p>
 <div class="admonition warning">
 <p class="admonition-title"> USERNAME, USERID e GROUPID vanno modificati</p>
 <p>Nel Dockerfile di esempio, i campi:
