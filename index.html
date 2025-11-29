@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="img/favicon.ico">
-        <title>ReCaS Apptainer/HTCondor Guide</title>
+        <title>ReCaS containers docs</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/fontawesome.min.css" rel="stylesheet">
         <link href="css/brands.min.css" rel="stylesheet">
@@ -24,7 +24,7 @@
     <body class="homepage">
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href=".">ReCaS Apptainer/HTCondor Guide</a>
+                <a class="navbar-brand" href=".">ReCaS containers docs</a>
 
                 <!-- Expanded navigation -->
                 <div id="navbar-collapse" class="navbar-collapse collapse">
@@ -55,31 +55,31 @@
             
             <li class="nav-item" data-bs-level="1"><a href="#uso-di-immagini-apptainersingularity-con-htcondor-su-recas" class="nav-link">Uso di immagini Apptainer/Singularity con HTCondor su ReCaS</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#introduzione-sec-introduzione" class="nav-link">Introduzione {#sec-introduzione}</a>
+            <li class="nav-item" data-bs-level="2"><a href="#sec-introduzione" class="nav-link">Introduzione</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#concetti-di-base-container-apptainer-e-htcondor-sec-concetti-base" class="nav-link">Concetti di base: container, Apptainer e HTCondor {#sec-concetti-base}</a>
+            <li class="nav-item" data-bs-level="2"><a href="#sec-concetti-base" class="nav-link">Concetti di base: container, Apptainer e HTCondor</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#organizzazione-delle-directory-sec-organizzazione" class="nav-link">Organizzazione delle directory {#sec-organizzazione}</a>
+            <li class="nav-item" data-bs-level="2"><a href="#sec-organizzazione" class="nav-link">Organizzazione delle directory</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#esempi-sec-esempi" class="nav-link">Esempi {#sec-esempi}</a>
+            <li class="nav-item" data-bs-level="2"><a href="#sec-esempi" class="nav-link">Esempi</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#costruzione-di-unimmagine-docker-e-conversione-in-sif-sec-docker-sif" class="nav-link">Costruzione di un’immagine Docker e conversione in SIF {#sec-docker-sif}</a>
+            <li class="nav-item" data-bs-level="2"><a href="#sec-docker-sif" class="nav-link">Costruzione di un’immagine Docker e conversione in SIF</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#prospettive-uso-di-kubernetes-con-container-sec-kubernetes" class="nav-link">Prospettive: uso di Kubernetes con container {#sec-kubernetes}</a>
+            <li class="nav-item" data-bs-level="2"><a href="#sec-kubernetes" class="nav-link">Prospettive: uso di Kubernetes con container</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#appendice-appendice" class="nav-link">Appendice {#appendice}</a>
+            <li class="nav-item" data-bs-level="2"><a href="#appendice" class="nav-link">Appendice</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -90,8 +90,8 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="uso-di-immagini-apptainersingularity-con-htcondor-su-recas">Uso di immagini Apptainer/Singularity con HTCondor su ReCaS</h1>
-<h2 id="introduzione-sec-introduzione">Introduzione {#sec-introduzione}</h2>
+<h1 id="uso-di-immagini-apptainersingularity-con-htcondor-su-recas">Uso di immagini Apptainer/Singularity con HTCondor su ReCaS<a class="headerlink" href="#uso-di-immagini-apptainersingularity-con-htcondor-su-recas" title="Permanent link">&para;</a></h1>
+<h2 id="sec-introduzione">Introduzione<a class="headerlink" href="#sec-introduzione" title="Permanent link">&para;</a></h2>
 <p>Questa guida descrive in modo operativo come usare immagini Apptainer/Singularity (file <code>.sif</code>) insieme a HTCondor sul cluster ReCaS. L’idea di fondo è che nel gruppo ci sia almeno un utente “manutentore” (che chiameremo <code>alice</code>) che possa costruire immagini Docker su una macchina dedicata (ad esempio una macchina con Docker come <code>tesla02</code>), convertirle in immagini Apptainer/Singularity e metterle a disposizione di tutti in una posizione condivisa su lustre. Gli altri utenti (ad esempio <code>bob</code>) non devono occuparsi della parte Docker: si limitano a usare le immagini <code>.sif</code> già pronte all’interno dei job Condor, tramite <em>symlink</em> verso la directory condivisa di <code>alice</code>.</p>
 <p>Nel seguito useremo come esempio un utente chiamato <code>bob</code> per i job Condor, mentre <code>alice</code> rappresenterà l’utente manutentore che ospita le immagini condivise. Per rendere gli esempi concreti, si assume che siano già presenti due immagini Apptainer nella directory condivisa di <code>alice</code>:</p>
 <pre><code class="language-bash">/lustrehome/alice/apptainer_images/G4_v10.6.3_NOMULTITHREAD.sif
@@ -100,7 +100,7 @@
 <p>Queste immagini contengono Ubuntu 24.04, Geant4, ROOT, Python3 con numpy e matplotlib. In particolare l’immagine <code>G4_v10.6.3_NOMULTITHREAD.sif</code> ha il multithreading disattivato per Geant4 ed è adatta ad applicazioni che richiedono esecuzione single-thread.</p>
 <p>La sezione <a href="#sec-concetti-base">Concetti di base: container, Apptainer e HTCondor</a> introduce i concetti di base su container, Apptainer e HTCondor, mentre la sezione <a href="#sec-organizzazione">Organizzazione delle directory</a> propone una convenzione semplice per organizzare le directory su lustre dal punto di vista di <code>bob</code>. La sezione <a href="#sec-esempi">Esempi</a> illustra cinque esempi completi di utilizzo: test dell’immagine, build dell’esempio B5 di Geant4, run di B5, build+run in un unico job e un caso reale con una simulazione Geant di una tile scintillante tra due piani di fibre WLS (CsI-WLS) e Python. La sezione <a href="#sec-docker-sif">Costruzione di un’immagine Docker e conversione in SIF</a> mostra come costruire e convertire immagini Docker in <code>.sif</code>, mentre la sezione <a href="#sec-kubernetes">Prospettive: uso di Kubernetes con container</a> è prevista come estensione futura. In Appendice, la sezione <a href="#sec-dockerfile-esempio">Dockerfile di esempio per ambiente Geant4/ROOT</a> contiene un Dockerfile di esempio.</p>
 <hr />
-<h2 id="concetti-di-base-container-apptainer-e-htcondor-sec-concetti-base">Concetti di base: container, Apptainer e HTCondor {#sec-concetti-base}</h2>
+<h2 id="sec-concetti-base">Concetti di base: container, Apptainer e HTCondor<a class="headerlink" href="#sec-concetti-base" title="Permanent link">&para;</a></h2>
 <p>Prima di entrare negli esempi conviene chiarire cosa si intende per container e come Apptainer interagisce con HTCondor nel contesto del cluster ReCaS.</p>
 <p>Un container è un ambiente software isolato, definito da un’immagine che contiene un sistema operativo minimale (ad esempio Ubuntu), le librerie e le applicazioni necessarie. Quando si avvia un container, il programma viene eseguito con quell’ambiente software, indipendentemente dal sistema operativo del nodo fisico. Nel nostro caso un’immagine <code>.sif</code> contiene Geant4, ROOT, Python e le relative dipendenze, così che un job Condor non deve installare o configurare nulla: trova tutto già predisposto.</p>
 <p>Su ReCaS i container sono gestiti da Apptainer (discendente di Singularity), progettato per ambienti HPC multiutente. Un’immagine Apptainer è un file in sola lettura; durante il job, Apptainer monta il filesystem dell’immagine e allo stesso tempo monta la directory di lavoro dell’utente, in modo che il programma possa leggere e scrivere i propri file su lustre. Questo approccio è più leggero di una macchina virtuale, perché il kernel del sistema è condiviso e si avvia solo lo strato utente.</p>
@@ -120,12 +120,12 @@
 <p>In questo modo Condor trova il file <code>G4_v11.3.1.sif</code> nella <code>initialdir</code>, avvia Apptainer con quell’immagine e monta la <code>initialdir</code> all’interno del container. Da quel momento in poi lo script <code>executable</code> viene eseguito dentro il container e la directory di lavoro corrisponde alla directory dell’utente su lustre.</p>
 <p>Gli esempi pratici della sezione <a href="#sec-esempi">Esempi</a> non fanno altro che declinare questo schema base in casi d’uso via via più complessi.</p>
 <hr />
-<h2 id="organizzazione-delle-directory-sec-organizzazione">Organizzazione delle directory {#sec-organizzazione}</h2>
+<h2 id="sec-organizzazione">Organizzazione delle directory<a class="headerlink" href="#sec-organizzazione" title="Permanent link">&para;</a></h2>
 <p>Per lavorare in modo ordinato conviene scegliere una convenzione semplice all’interno della propria home su lustre. Nel caso di <code>bob</code>, la directory di riferimento per i job è <code>/lustrehome/bob</code>, mentre l’utente manutentore <code>alice</code> usa <code>/lustrehome/alice</code> per ospitare le immagini condivise.</p>
 <p>Le immagini Apptainer condivise dal manutentore possono essere raccolte in una directory dedicata, ad esempio <code>/lustrehome/alice/apptainer_images</code>. In questa directory si collocano i file <code>.sif</code> che <code>alice</code> ha costruito o recuperato. Nel nostro esempio vi si trovano <code>G4_v11.3.1.sif</code> e <code>G4_v10.6.3_NOMULTITHREAD.sif</code>.</p>
 <p>Per gli esempi e i job Condor di <code>bob</code> si può usare una directory <code>condor_tests</code>. All’interno di <code>condor_tests</code> è utile creare sottodirectory dedicate per ciascun tipo di job. Ogni directory contiene i file di submit <code>.csi</code>, gli script <code>.sh</code>, un link locale all’immagine <code>.sif</code> (proveniente da <code>/lustrehome/alice/apptainer_images</code>) e una sottocartella <code>logs/</code> per gli output di Condor. Questa struttura rende chiaro dove si trova il codice sorgente, dove viene compilato il programma e dove finiscono i file prodotti dai job Condor, seguendo lo schema introdotto in <a href="#sec-concetti-base">Concetti di base: container, Apptainer e HTCondor</a> e utilizzato in tutti gli esempi successivi.</p>
 <hr />
-<h2 id="esempi-sec-esempi">Esempi {#sec-esempi}</h2>
+<h2 id="sec-esempi">Esempi<a class="headerlink" href="#sec-esempi" title="Permanent link">&para;</a></h2>
 <p>In questa sezione sono riportati cinque esempi completi che illustrano come utilizzare immagini Apptainer/Singularity in combinazione con HTCondor. Gli esempi seguono un ordine progressivo, dal test più semplice fino a un caso realistico con un progetto Geant4 personalizzato:</p>
 <ul>
 <li><strong>Esempio <a href="#sec-esempio1">1</a></strong> – test minimale dell’immagine <code>.sif</code> per verificare la versione di Geant4, ROOT e Python e controllare che il container venga avviato correttamente su un worker node;</li>
@@ -137,7 +137,7 @@
 <p>I template completi degli script <code>.sh</code> e dei file di submit <code>.csi</code> utilizzati negli esempi successivi sono disponibili al seguente link:</p>
 <p><a href="https://politecnicobari-my.sharepoint.com/:f:/g/personal/m_cecca1_phd_poliba_it/IgB8X8DaFI3QTaVAEtIk1-7vAavKvy_XEBCvTr6rky2CQf8?e=si0j3J">https://politecnicobari-my.sharepoint.com/:f:/g/personal/m_cecca1_phd_poliba_it/IgB8X8DaFI3QTaVAEtIk1-7vAavKvy_XEBCvTr6rky2CQf8?e=si0j3J</a></p>
 <hr />
-<h3 id="esempio-1-test-dellimmagine-geant4-sec-esempio1">Esempio 1: test dell'immagine Geant4 {#sec-esempio1}</h3>
+<h3 id="sec-esempio1">Esempio 1: test dell'immagine Geant4<a class="headerlink" href="#sec-esempio1" title="Permanent link">&para;</a></h3>
 <p>Il primo esempio ha lo scopo di verificare che l’immagine <code>G4_v11.3.1.sif</code> funzioni correttamente su un worker node. L’obiettivo è sapere su quale nodo gira il job, quali versioni di Geant4, ROOT e Python sono visibili dall’interno del container e se l’ambiente è coerente.</p>
 <p>Si inizia creando la directory del test e una sottocartella per i log:</p>
 <pre><code class="language-bash">cd /lustrehome/bob
@@ -210,7 +210,7 @@ queue 1
 </code></pre>
 <p>Quando il job è completato, il file <code>logs/test_...out</code> contiene le informazioni stampate dallo script: il nome del worker node, l’utente, la directory di lavoro, le variabili di ambiente e le versioni dei software principali. Questo conferma che l’immagine è correttamente utilizzabile con HTCondor secondo lo schema introdotto in <a href="#sec-concetti-base">Concetti di base: container, Apptainer e HTCondor</a>.</p>
 <hr />
-<h3 id="esempio-2-build-dellesempio-b5-di-geant4-sec-esempio2">Esempio 2: build dell’esempio B5 di Geant4 {#sec-esempio2}</h3>
+<h3 id="sec-esempio2">Esempio 2: build dell’esempio B5 di Geant4<a class="headerlink" href="#sec-esempio2" title="Permanent link">&para;</a></h3>
 <p>Il secondo esempio mostra come compilare l’esempio B5 di Geant4 usando l’immagine <code>G4_v11.3.1.sif</code>. L’obiettivo è ottenere l’eseguibile <code>exampleB5</code> in una directory di build gestita dal job.</p>
 <p>Si crea la directory del test di build:</p>
 <pre><code class="language-bash">cd /lustrehome/bob
@@ -290,7 +290,7 @@ queue 1
 </code></pre>
 <p>Al termine della compilazione, nella directory <code>/lustrehome/bob/condor_tests/build_B5_11.3.1/B5_build_condor</code> si trovano i file di CMake e l’eseguibile <code>exampleB5</code>. Lo standard output del job contiene i messaggi di CMake e l’esito del build, che verrà riutilizzato nella sezione <a href="#sec-esempio3">Esempio 3: run dell’esempio B5</a>.</p>
 <hr />
-<h3 id="esempio-3-run-dellesempio-b5-sec-esempio3">Esempio 3: run dell’esempio B5 {#sec-esempio3}</h3>
+<h3 id="sec-esempio3">Esempio 3: run dell’esempio B5<a class="headerlink" href="#sec-esempio3" title="Permanent link">&para;</a></h3>
 <p>Il terzo esempio riutilizza l’eseguibile <code>exampleB5</code> compilato in <a href="#sec-esempio2">Esempio 2: build dell’esempio B5 di Geant4</a> e mostra come preparare una directory di run separata, in cui copiare l’eseguibile e le macro e lanciare la simulazione.</p>
 <p>Si crea la directory per il run:</p>
 <pre><code class="language-bash">cd /lustrehome/bob
@@ -381,7 +381,7 @@ queue 1
 </code></pre>
 <p>Gli output prodotti da B5 vengono scritti nella directory <code>/lustrehome/bob/condor_tests/run_B5_11.3.1</code>, che corrisponde alla directory di lavoro del job dentro il container, e rimangono quindi disponibili all’utente anche dopo la fine dell’esecuzione.</p>
 <hr />
-<h3 id="esempio-4-build-e-run-di-b5-in-un-unico-job-sec-esempio4">Esempio 4: build e run di B5 in un unico job {#sec-esempio4}</h3>
+<h3 id="sec-esempio4">Esempio 4: build e run di B5 in un unico job<a class="headerlink" href="#sec-esempio4" title="Permanent link">&para;</a></h3>
 <p>In alcune situazioni è comodo compilare il codice e far partire subito il run all’interno dello stesso job Condor. Questo permette di avere un singolo file di submit per l’intera catena e di garantire che il run utilizzi esattamente la build prodotta nel job.</p>
 <p>Per questo esempio si crea una nuova directory:</p>
 <pre><code class="language-bash">cd /lustrehome/bob
@@ -481,7 +481,7 @@ queue 1
 </code></pre>
 <p>Alla conclusione del job, la directory <code>B5_build_condor</code> contiene sia i file generati da CMake, sia l’eseguibile <code>exampleB5</code>, sia i file di output del run (ad esempio file ROOT). Tutti questi file risiedono in <code>/lustrehome/bob/condor_tests/build_run_B5_11.3.1/B5_build_condor</code> e sono quindi accessibili per analisi successive.</p>
 <hr />
-<h3 id="esempio-5-progetto-csi-wls-con-python-sec-esempio5">Esempio 5: progetto CsI-WLS con Python {#sec-esempio5}</h3>
+<h3 id="sec-esempio5">Esempio 5: progetto CsI-WLS con Python<a class="headerlink" href="#sec-esempio5" title="Permanent link">&para;</a></h3>
 <p>L’ultimo esempio mostra una situazione più vicina a un caso reale, in cui un’applicazione Geant4 custom (CsI-WLS) viene compilata da sorgente con CMake e poi eseguita molte volte con parametri diversi, gestiti da uno script Python. Per questo caso si sfrutta l’immagine <code>G4_v10.6.3_NOMULTITHREAD.sif</code>, che contiene Geant4 10.6.3 senza multithreading, ROOT 6.36.4 e Python3 con le librerie principali.</p>
 <p>Si assume che il progetto CsI-WLS esista già in una directory di sviluppo, ad esempio <code>/lustrehome/bob/ADAPT/simulation/CsI-WLS_v1.2.2</code>, che contiene una sottodirectory <code>src</code> con i file CMake e il codice. Per rendere il job auto-contenuto dentro <code>condor_tests</code> si copia solo la directory <code>src</code>:</p>
 <pre><code class="language-bash">cd /lustrehome/bob/condor_tests
@@ -625,7 +625,7 @@ condor_submit CsI_WLS_python_electrons.csi
 <p>I template completi degli script <code>.sh</code> e dei file di submit <code>.csi</code> utilizzati negli esempi nella sezione <a href="#sec-esempi">Esempi</a> sono presenti al seguente link:</p>
 <p><a href="https://politecnicobari-my.sharepoint.com/:f:/g/personal/m_cecca1_phd_poliba_it/IgB8X8DaFI3QTaVAEtIk1-7vAavKvy_XEBCvTr6rky2CQf8?e=si0j3J">https://politecnicobari-my.sharepoint.com/:f:/g/personal/m_cecca1_phd_poliba_it/IgB8X8DaFI3QTaVAEtIk1-7vAavKvy_XEBCvTr6rky2CQf8?e=si0j3J</a></p>
 <hr />
-<h2 id="costruzione-di-unimmagine-docker-e-conversione-in-sif-sec-docker-sif">Costruzione di un’immagine Docker e conversione in SIF {#sec-docker-sif}</h2>
+<h2 id="sec-docker-sif">Costruzione di un’immagine Docker e conversione in SIF<a class="headerlink" href="#sec-docker-sif" title="Permanent link">&para;</a></h2>
 <p>Gli esempi della sezione <a href="#sec-esempi">Esempi</a> assumono che le immagini <code>.sif</code> siano già disponibili in una cartella condivisa, gestita dall’utente <code>alice</code>. Questa sezione descrive in modo sintetico come costruire un’immagine Docker con Geant4, ROOT e Python, come convertirla in un’immagine Apptainer/Singularity e come distribuirla agli altri utenti, senza entrare nei dettagli dei singoli comandi di installazione del software all’interno del container.</p>
 <p>La costruzione di immagini Docker richiede una macchina con Docker installato e accessibile, ad esempio le macchine come <code>tesla02.recas.infn.ba.it</code>. Un utente può connettersi a quella macchina con le stesse credenziali delle macchine di frontend <code>ui-al9.recas.infn.ba.it</code>, preparare un <code>Dockerfile</code> e costruire l’immagine. Un esempio completo di <code>Dockerfile</code> per un ambiente Ubuntu 24.04 con Geant4, ROOT e Python3 è riportato in appendice, nella sezione <a href="#sec-dockerfile-esempio">Dockerfile di esempio per ambiente Geant4/ROOT</a>.</p>
 <p>Una volta scritto il <code>Dockerfile</code>, l’utente manutentore può costruire l’immagine con un comando del tipo:</p>
@@ -643,7 +643,7 @@ docker push registry-clustergpu.recas.ba.infn.it/alice/geant4:10.6.3
 <pre><code class="language-bash">mv G4_v10.6.3.sif /lustrehome/alice/apptainer_images/
 </code></pre>
 <p>Dopo questo passaggio, tutti gli utenti (come <code>bob</code>) possono usare l’immagine nei propri job Condor creando un symlink nella <code>initialdir</code> e impostando <code>container_image</code> al nome del symlink, come mostrato nella sezione <a href="#sec-concetti-base">Concetti di base: container, Apptainer e HTCondor</a> e negli esempi.</p>
-<h3 id="comandi-essenziali-docker">Comandi essenziali Docker</h3>
+<h3 id="comandi-essenziali-docker">Comandi essenziali Docker<a class="headerlink" href="#comandi-essenziali-docker" title="Permanent link">&para;</a></h3>
 <p>Non è necessario che ogni utente conosca Docker in dettaglio, ma è utile riassumere i comandi più usati nel ciclo di vita di un’immagine. La costruzione da <code>Dockerfile</code> nella directory corrente avviene di solito con:</p>
 <pre><code class="language-bash">docker build -t nome_immagine:tag .
 </code></pre>
@@ -660,7 +660,7 @@ docker push registry-clustergpu.recas.ba.infn.it/alice/geant4:10.6.3
 docker push registry-clustergpu.recas.ba.infn.it/alice/nome_immagine:tag
 </code></pre>
 <p>Questi comandi vengono eseguiti sulla macchina che ha Docker installato, come <code>tesla02.recas.infn.ba.it</code>.</p>
-<h3 id="comandi-essenziali-apptainersingularity">Comandi essenziali Apptainer/Singularity</h3>
+<h3 id="comandi-essenziali-apptainersingularity">Comandi essenziali Apptainer/Singularity<a class="headerlink" href="#comandi-essenziali-apptainersingularity" title="Permanent link">&para;</a></h3>
 <p>Apptainer viene utilizzato sia per testare manualmente le immagini sia in maniera indiretta tramite HTCondor. Per un test rapido si può eseguire un comando dentro un’immagine <code>.sif</code> con:</p>
 <pre><code class="language-bash">apptainer exec G4_v11.3.1.sif geant4-config --version
 </code></pre>
@@ -673,14 +673,14 @@ docker push registry-clustergpu.recas.ba.infn.it/alice/nome_immagine:tag
 </code></pre>
 <p>I job Condor che usano <code>container_image</code> nascondono questi dettagli, perché è il sistema a chiamare internamente Apptainer. Tuttavia, conoscere questi comandi aiuta a testare rapidamente un’immagine su una macchina di frontend prima di costruire i file <code>.csi</code>, come quelli della sezione <a href="#sec-esempi">Esempi</a>.</p>
 <hr />
-<h2 id="prospettive-uso-di-kubernetes-con-container-sec-kubernetes">Prospettive: uso di Kubernetes con container {#sec-kubernetes}</h2>
+<h2 id="sec-kubernetes">Prospettive: uso di Kubernetes con container<a class="headerlink" href="#sec-kubernetes" title="Permanent link">&para;</a></h2>
 <p><em>(TODO)</em></p>
 <p>Questa guida è focalizzata sull’uso di HTCondor e Apptainer per eseguire job batch su ReCaS. In prospettiva è possibile immaginare un’evoluzione verso l’uso di Kubernetes per l’orchestrazione dei container, ad esempio in contesti in cui il cluster offra un accesso nativo tramite <code>kubectl</code> e un insieme di <em>namespace</em> dedicati alla computazione scientifica.</p>
 <p>L’idea di base sarebbe quella di mappare i concetti introdotti in questa guida sui costrutti di Kubernetes. Un job HTCondor che esegue un container diventerebbe un oggetto <em>Job</em> di Kubernetes, in cui il campo <code>image</code> dello <em>container spec</em> corrisponde all’immagine Docker/Apptainer usata attualmente in <code>container_image</code>. La nozione di <code>initialdir</code> verrebbe sostituita da un volume persistente (PersistentVolumeClaim) montato nel pod, su cui risiedono sorgenti, script e output. Gli script <code>.sh</code> utilizzati come <code>executable</code> in Condor verrebbero richiamati come <code>command</code> e <code>args</code> del container.</p>
 <p>In una futura estensione di questa documentazione si potranno fornire esempi espliciti di manifest YAML per Kubernetes che riproducono gli stessi workflow illustrati qui: compilazione di un progetto Geant4 all’interno di un pod, esecuzione di simulazioni con macro, lancio di script Python per la generazione dei run e raccolta dei file ROOT su volumi condivisi. Sarà anche possibile discutere l’integrazione con sistemi di <em>job queue</em> più alti, che inviano richieste sia a HTCondor sia a Kubernetes a seconda del tipo di carico, mantenendo in comune lo stesso set di immagini container e directory di dati su storage condiviso.</p>
 <hr />
-<h2 id="appendice-appendice">Appendice {#appendice}</h2>
-<h3 id="dockerfile-di-esempio-per-ambiente-geant4root-sec-dockerfile-esempio">Dockerfile di esempio per ambiente Geant4/ROOT {#sec-dockerfile-esempio}</h3>
+<h2 id="appendice">Appendice<a class="headerlink" href="#appendice" title="Permanent link">&para;</a></h2>
+<h3 id="sec-dockerfile-esempio">Dockerfile di esempio per ambiente Geant4/ROOT<a class="headerlink" href="#sec-dockerfile-esempio" title="Permanent link">&para;</a></h3>
 <p>In questa sezione è riportato un esempio completo di <code>Dockerfile</code> per costruire un’immagine Docker basata su Ubuntu 24.04, con Geant4, ROOT e Python3. Questo file è pensato come base da adattare alle esigenze del gruppo, sia per quanto riguarda le versioni dei software, sia per i path di installazione. Il risultato atteso è un’immagine che espone gli script di environment <code>/opt/geant4/bin/geant4.sh</code> e <code>/opt/root/bin/thisroot.sh</code> e che può essere convertita in un file <code>.sif</code> come descritto nella sezione <a href="#sec-docker-sif">Costruzione di un’immagine Docker e conversione in SIF</a>.</p>
 <pre><code class="language-docker">FROM ubuntu:24.04
 
@@ -941,5 +941,5 @@ CMD [&quot;bash&quot;]
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-11-29 13:50:32.198862+00:00
+Build Date UTC : 2025-11-29 14:00:01.880593+00:00
 -->
