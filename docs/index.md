@@ -2,7 +2,7 @@
 
 ## **Introduzione**
 
-Questa guida descrive in modo operativo come usare immagini Apptainer/Singularity (file `.sif`) insieme a HTCondor sul cluster ReCaS. L’idea di fondo è che nel gruppo ci sia almeno un utente “manutentore” (che chiameremo `alice`) che possa costruire immagini Docker su una macchina dedicata, convertirle in immagini Apptainer/Singularity e metterle a disposizione di tutti in una posizione condivisa su lustre. Gli altri utenti (ad esempio `bob`) non devono occuparsi della parte Docker: si limitano a usare le immagini `.sif` già pronte all’interno dei job Condor, tramite *symlink* verso la directory condivisa di `alice`.
+Questa guida descrive in modo operativo come usare immagini Apptainer/Singularity (file `.sif`) insieme a HTCondor sul cluster ReCaS. L’idea di fondo è che ci sia almeno un utente “manutentore” (che chiameremo `alice`) che possa costruire immagini Docker su una macchina dedicata, convertirle in immagini Apptainer/Singularity e metterle a disposizione di tutti in una posizione condivisa su lustre. Gli altri utenti (ad esempio `bob`) non devono occuparsi della parte Docker: si limitano a usare le immagini `.sif` già pronte all’interno dei job Condor, tramite *symlink* verso la directory condivisa di `alice`.
 
 Nel seguito useremo come esempio un utente chiamato `bob` per i job Condor, mentre `alice` rappresenterà l’utente che ospita le immagini condivise. Per rendere gli esempi concreti, si assume che siano già presenti due immagini Apptainer nella directory condivisa di `alice`:
 
@@ -935,16 +935,14 @@ nel tempo possono essere aggiunte nuove immagini o aggiornate le versioni.
 Se si utilizza una di queste immagini come base per nuovi workflow, è buona pratica:
 
 - documentare nel proprio progetto quale **tag** specifico si sta usando;
-- evitare di modificare “a mano” i file `.sif` condivisi, ma generare nuove immagini
-  con tag/versioni diverse quando servono modifiche significative;
-- mantenere questa sezione aggiornata nel tempo, aggiungendo righe per nuove immagini
-  che il gruppo decide di rendere “ufficiali”.
+- generare nuove immagini con tag/versioni diverse quando servono modifiche significative;
+- mantenere questa sezione aggiornata nel tempo, aggiungendo righe per nuove immagini “ufficiali”.
 
 ## **Appendice**
 
 ### Dockerfile di esempio per ambiente Geant4/ROOT {#sec-dockerfile-esempio}
 
-In questa sezione è riportato un esempio completo di `Dockerfile` per costruire un’immagine Docker basata su Ubuntu 24.04, con Geant4, ROOT e Python3. Questo file è pensato come base da adattare alle esigenze del gruppo, sia per quanto riguarda le versioni dei software, sia per i path di installazione. Il risultato atteso è un’immagine che espone gli script di environment `/opt/geant4/bin/geant4.sh` e `/opt/root/bin/thisroot.sh` e che può essere convertita in un file `.sif` come descritto nella sezione [Costruzione di un’immagine Docker e conversione in SIF](#sec-docker-sif).
+In questa sezione è riportato un esempio completo di `Dockerfile` per costruire un’immagine Docker basata su Ubuntu 24.04, con Geant4, ROOT e Python3. Il risultato atteso è un’immagine che espone gli script di environment `/opt/geant4/bin/geant4.sh` e `/opt/root/bin/thisroot.sh` e che può essere convertita in un file `.sif` come descritto nella sezione [Costruzione di un’immagine Docker e conversione in SIF](#sec-docker-sif).
 
 !!! warning " USERNAME, USERID e GROUPID vanno modificati"
 
