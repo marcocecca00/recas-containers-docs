@@ -1627,9 +1627,10 @@ Apptainer/Singularity utilizzabili con HTCondor sui worker node.</p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-46-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1"></a>mv<span class="w"> </span>G4_v10.6.3.sif<span class="w"> </span>/lustrehome/alice/apptainer_images/
 </code></pre></div></td></tr></table></div>
 <p>Dopo questo passaggio, tutti gli utenti (come <code>bob</code>) possono usare l’immagine nei propri job Condor creando un symlink nella <code>initialdir</code> e impostando <code>container_image</code> al nome del symlink, come mostrato nella sezione <a href="#sec-concetti-base">Concetti di base: container, Apptainer e HTCondor</a> e negli esempi.</p>
-<p>tip tip " Dove gira Docker su ReCaS"</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Attualmente Docker è
-</code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Sia la build della immagine Docker che la conversione in <code>.sif</code> può anche essere fatta in locale sul proprio pc e poi copiata su una directory accessibile su lustrehome. </p>
+</div>
 <h3 id="comandi-essenziali-docker">Comandi essenziali Docker<a class="headerlink" href="#comandi-essenziali-docker" title="Permanent link">&para;</a></h3>
 <p>Non è necessario che ogni utente conosca Docker in dettaglio, ma è utile riassumere i comandi più usati nel ciclo di vita di un’immagine. La costruzione da <code>Dockerfile</code> nella directory corrente avviene di solito con:</p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-47-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>nome_immagine:tag<span class="w"> </span>.

@@ -40,5 +40,10 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.inlinehilite
 
+nav:
+  - ReCaS - HTCondor & Containers:
+      - "Uso di immagini Apptainer/Singularity con HTCondor": apptainer_condor.md
+      - "Uso di Kubernetes con container su ReCaS": recas_kubernetes_guide.md
+
 extra_css:
   - css/overrides.css

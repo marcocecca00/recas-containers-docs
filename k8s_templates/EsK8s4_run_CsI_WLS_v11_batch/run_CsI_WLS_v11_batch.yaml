@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: csi-wls-v11-batch
+spec:
+  template:
+    metadata:
+      labels:
+        job: csi-wls-v11-batch
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: csi-wls-v11-batch
+          image: registry-clustergpu.recas.ba.infn.it/alice/geant4:11.3.1
+          imagePullPolicy: IfNotPresent
+          workingDir: /lustrehome/bob/k8s_tests/EsK8s4_run_CsI_WLS_v11_batch
+          command: ["/bin/bash", "/lustrehome/bob/k8s_tests/EsK8s4_run_CsI_WLS_v11_batch/run_CsI_WLS_v11_batch.sh"]
+          env:
+            - name: BATCH_TAG
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          volumeMounts:
+            - name: lustrehome
+              mountPath: /lustrehome/bob
+      volumes:
+        - name: lustrehome
+          persistentVolumeClaim:
+            claimName: lustrehome-bob
