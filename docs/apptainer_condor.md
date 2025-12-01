@@ -910,6 +910,15 @@ apptainer build G4_v11.3.1.sif \
 
 I job Condor che usano `container_image` nascondono questi dettagli, perché è il sistema a chiamare internamente Apptainer. Tuttavia, conoscere questi comandi aiuta a testare rapidamente un’immagine su una macchina di frontend prima di costruire i file `.csi`, come quelli della sezione [Esempi](#sec-esempi).
 
+!!! tip " Dove gira Docker su ReCaS"
+
+    Per poter reindirizzare eventuali finestre grafiche dall'interno del container, ad esempio se si vuole visualizzare la geometria di un progetto Geant o il TBrowser grafico di ROOT, è necessario settare la variabile d'ambiente `DISPLAY` tramite il seguente comando:
+
+    ```bash
+
+    apptainer run --cleanenv --env DISPLAY=$DISPLAY G4_v11.3.1.sif
+    
+    ```
 ---
 
 ## **Immagini Docker / Apptainer disponibili su ReCaS** {#sec-images}
