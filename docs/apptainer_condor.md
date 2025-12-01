@@ -162,15 +162,15 @@ In questa sezione sono riportati cinque esempi completi che illustrano come util
 - **Esempio [5](#sec-esempio5)** – caso realistico con il progetto CsI-WLS, che prevede build con CMake e un batch di simulazioni pilotato da uno script Python.
 
 I template completi degli script `.sh` e dei file di submit `.csi` utilizzati negli esempi successivi sono disponibili nella cartella
-[`templates/`](https://github.com/marcocecca00/recas-containers-docs/tree/master/templates) del repository GitHub.
+[`templates/`](https://github.com/marcocecca00/recas-containers-docs/tree/master/apptainer_templates) del repository GitHub.
 
 In particolare:
 
-- [`Es1_test_container`](https://github.com/marcocecca00/recas-containers-docs/tree/master/templates/Es1_test_container)
-- [`Es2_build_geant_project`](https://github.com/marcocecca00/recas-containers-docs/tree/master/templates/Es2_build_geant_project)
-- [`Es3_run_geant_exec`](https://github.com/marcocecca00/recas-containers-docs/tree/master/templates/Es3_run_geant_exec)
-- [`Es4_build_and_run_geant_example`](https://github.com/marcocecca00/recas-containers-docs/tree/master/templates/Es4_build_and_run_geant_example)
-- [`Es5_build_and_run_python`](https://github.com/marcocecca00/recas-containers-docs/tree/master/templates/Es5_build_and_run_python)
+- [`Es1_test_container`](https://github.com/marcocecca00/recas-containers-docs/tree/master/apptainer_templates/Es1_test_container)
+- [`Es2_build_geant_project`](https://github.com/marcocecca00/recas-containers-docs/tree/master/apptainer_templates/Es2_build_geant_project)
+- [`Es3_run_geant_exec`](https://github.com/marcocecca00/recas-containers-docs/tree/master/apptainer_templates/Es3_run_geant_exec)
+- [`Es4_build_and_run_geant_example`](https://github.com/marcocecca00/recas-containers-docs/tree/master/apptainer_templates/Es4_build_and_run_geant_example)
+- [`Es5_build_and_run_python`](https://github.com/marcocecca00/recas-containers-docs/tree/master/apptainer_templates/Es5_build_and_run_python)
 
 
 
