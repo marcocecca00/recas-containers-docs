@@ -192,29 +192,6 @@ In questa sezione vedremo quattro esempi completi, paralleli agli esempi HTCondo
 4. **Esempio K8s4 – Batch di run CsI-WLS pilotati da Python**  
    Job che riutilizza la build dell’esempio precedente e lancia un batch di simulazioni tramite uno script Python (macro multiple, output ROOT su lustre).
 
-I template completi (file `.sh` e `.yaml`) per questi esempi possono essere raccolti in una cartella, ad esempio:
-
-```text
-templates_k8s/
-  EsK8s1_geant4_11.3.1_sanity/
-    geant4_11.3.1_sanity.sh
-    geant4_11.3.1_sanity.yaml
-
-  EsK8s2_geant4_11.3.1_B5_build_run/
-    B5_build_run.sh
-    B5_build_run.yaml
-
-  EsK8s3_CsI_WLS_v11_build/
-    csi-wls-v11-build.sh
-    csi-wls-v11-build.yaml
-
-  EsK8s4_CsI_WLS_v11_batch_runs/
-    run_electrons_batch.py
-    csi-wls-v11-run-batch.sh
-    csi-wls-v11-run-batch.yaml
-```
-
-Nelle sottosezioni seguenti riportiamo il contenuto completo dei template.
 
 ### Esempio K8s1 – Geant4 11.3.1 “sanity check”
 
