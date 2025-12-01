@@ -4,7 +4,7 @@
 
 Questa guida affianca la guida su Apptainer/HTCondor: l’idea è usare **gli stessi container Docker** (costruiti e testati come descritto nella guida su Apptainer/Singularity con HTCondor) anche tramite **Kubernetes** (K8s) sul cluster ReCaS.
 
-Nel seguito continueremo a usare due utenti fittizi:
+Nel seguito useremo ancora due utenti fittizi:
 
 - `alice`: utente “manutentore” che costruisce e pubblica le immagini Docker su  
   `registry-clustergpu.recas.ba.infn.it` (per esempio l’immagine Geant4/ROOT descritta nella sezione sulle immagini).
@@ -13,7 +13,7 @@ Nel seguito continueremo a usare due utenti fittizi:
 Come per Apptainer/HTCondor, assumeremo che `alice` abbia già pubblicato almeno l’immagine:
 
 ```bash
-registry-clustergpu.recas.ba.infn.it/marcocecca/geant4:11.3.1
+registry-clustergpu.recas.ba.infn.it/alice/geant4:11.3.1
 ```
 
 che corrisponde, lato Apptainer, all’immagine `.sif` `G4_v11.3.1.sif` elencata nella sezione  
@@ -25,44 +25,40 @@ Con Kubernetes, invece di sottomettere job Condor che avviano Apptainer, `bob` s
 - cambia il “motore” che orchestra i job (Kubernetes invece di HTCondor);
 - la directory `/lustrehome` rimane la sorgente di tutti i dati persistenti, montata nei Pod.
 
-Per poter usare Kubernetes, l’account di `bob` deve essere abilitato secondo la guida ufficiale ReCaS su K8s (sul sito di documentazione del cluster). Qui riassumiamo solo i passi concettuali; i dettagli vanno presi dalla documentazione ufficiale.
+### Abilitazione a Kubernetes in pratica
 
-1. **Abilitazione all’uso di Kubernetes**
+Per poter usare Kubernetes, l’account di `bob` deve essere abilitato e `kubectl` deve essere configurato correttamente. I passi “ufficiali” sono descritti nel dettaglio nella guida ReCaS [Job submission using Kubernetes](https://jvino.github.io/cluster-hpc-gpu-guides/job_submission/k8s-jobs/); qui li riassumiamo in forma operativa:
 
-   - `bob` deve essere abilitato dagli amministratori del cluster (tipicamente inserito in un gruppo dedicato a K8s o dotato delle relative credenziali).
-   - L’abilitazione vale per le macchine di frontend (es. `ui-al9.recas.ba.infn.it`).
+1. **Account HPC/HTC attivo**  
+   `bob` deve avere un account ReCaS-Bari per i servizi HPC/HTC e riuscire a collegarsi ai frontend (es. `frontend.recas.ba.infn.it`) via SSH.
 
-2. **Configurazione del client `kubectl`**
+2. **Richiesta di accesso a Kubernetes**  
+   Una volta attivo l’account, `bob` apre un ticket tramite il sistema di supporto ReCaS chiedendo l’accesso al cluster Kubernetes HPC/GPU, come indicato nella sezione [Access to the service](https://jvino.github.io/cluster-hpc-gpu-guides/job_submission/k8s-jobs/#2-access-to-the-service) della guida ufficiale (titolo del ticket e dati richiesti sono specificati lì).
 
-   Una volta abilitato, `bob` ottiene un file di configurazione per Kubernetes (`kubeconfig`), oppure usa una configurazione già predisposta sui frontend. La guida ufficiale ReCaS spiega come:
+3. **Configurazione di `kubectl` e del `kubeconfig`**  
+   Dopo l’abilitazione a K8s, `bob` configura il client `kubectl`:
+   - crea `~/.kube/config` con il template suggerito nella guida, impostando il namespace  
+     `batch-<username>` (ad es. `batch-bob`);
+   - inserisce nel campo `token:` il proprio access token personale ottenuto via web.
 
-   - verificare il contesto corrente:
-     ```bash
-     kubectl config get-contexts
-     ```
-   - selezionare il contesto del cluster ReCaS (se necessario):
-     ```bash
-     kubectl config use-context <nome-contesto-recas>
-     ```
-
-3. **Test minimo del cluster**
-
-   Prima di usare i container Geant4 è bene verificare che K8s risponda:
-
+4. **Token di accesso**  
+   Il token si ottiene autenticandosi con le credenziali ReCaS sull’URL indicato nella [guida ufficiale](https://jvino.github.io/cluster-hpc-gpu-guides/job_submission/k8s-jobs/#32-access-token); il token va copiato nel `~/.kube/config` e ha una durata limitata (quando scade, `kubectl` smette di funzionare finché non si aggiorna il token). È buona pratica proteggere il file di configurazione, ad esempio con:
    ```bash
-   kubectl get nodes
-   kubectl get namespaces
+   chmod 700 ~/.kube/config
    ```
 
-   Se questi comandi elencano i nodi e i namespace del cluster senza errori di autenticazione, `bob` è pronto a lanciare i Job degli esempi che seguono.
+5. **Verifica della configurazione**  
+   Con il token valido e il `kubeconfig` configurato, `bob` può verificare l’accesso con:
+   ```bash
+   kubectl get pod
+   ```
+   Se la configurazione è corretta, il comando risponde con un messaggio del tipo  
+   `No resources found in batch-bob namespace`, che indica che `kubectl` riesce a parlare con il cluster sul namespace giusto.
 
-!!! warning "Guida ufficiale ReCaS"
-
-    Tutti i dettagli su abilitazione account, file di configurazione di `kubectl`
-    e limiti di risorse da usare su Kubernetes **devono** essere presi dalla guida
-    ufficiale di ReCaS dedicata a K8s.  
-    La presente sezione vuole solo essere una guida operativa “vicina” agli esempi
-    Geant4/ROOT/CsI-WLS descritti nella parte su Apptainer/HTCondor.
+Da questo punto in poi, gli esempi nelle sezioni successive presuppongono che `bob` abbia già:
+- un account HPC/HTC attivo,
+- l’accesso al cluster Kubernetes abilitato,
+- `kubectl` funzionante sul proprio namespace.
 
 ---
 
@@ -85,7 +81,7 @@ Per usare Kubernetes in modo consapevole bastano pochi concetti chiave; in quest
   È la stessa immagine che `alice` ha caricato su `registry-clustergpu.recas.ba.infn.it` e che abbiamo già usato con Apptainer.  
   Nei file YAML verrà richiamata con:
   ```yaml
-  image: registry-clustergpu.recas.ba.infn.it/marcocecca/geant4:11.3.1
+  image: registry-clustergpu.recas.ba.infn.it/alice/geant4:11.3.1
   ```
 
 - **Volume / `hostPath` verso lustre**
@@ -132,7 +128,7 @@ spec:
       restartPolicy: Never
       containers:
         - name: main
-          image: registry-clustergpu.recas.ba.infn.it/marcocecca/geant4:11.3.1
+          image: registry-clustergpu.recas.ba.infn.it/alice/geant4:11.3.1
           workingDir: /lustrehome/bob/k8s_tests/EsK8sX_esempio
           command: ["/bin/bash", "script_esempio.sh"]
           volumeMounts:
@@ -280,7 +276,7 @@ spec:
       restartPolicy: Never
       containers:
         - name: geant4-11-3-1
-          image: registry-clustergpu.recas.ba.infn.it/marcocecca/geant4:11.3.1
+          image: registry-clustergpu.recas.ba.infn.it/alice/geant4:11.3.1
           workingDir: /lustrehome/bob/k8s_tests/EsK8s1_geant4_11.3.1_sanity
           command: ["/bin/bash", "geant4_11.3.1_sanity.sh"]
           volumeMounts:
@@ -415,7 +411,7 @@ spec:
       restartPolicy: Never
       containers:
         - name: geant4-11-3-1-b5
-          image: registry-clustergpu.recas.ba.infn.it/marcocecca/geant4:11.3.1
+          image: registry-clustergpu.recas.ba.infn.it/alice/geant4:11.3.1
           workingDir: /lustrehome/bob/k8s_tests/EsK8s2_geant4_11.3.1_B5_build_run
           command: ["/bin/bash", "B5_build_run.sh"]
           resources:
@@ -530,7 +526,7 @@ spec:
       restartPolicy: Never
       containers:
         - name: csi-wls-v11-build
-          image: registry-clustergpu.recas.ba.infn.it/marcocecca/geant4:11.3.1
+          image: registry-clustergpu.recas.ba.infn.it/alice/geant4:11.3.1
           workingDir: /lustrehome/bob/k8s_tests/EsK8s3_CsI_WLS_v11
           command: ["/bin/bash", "csi-wls-v11-build.sh"]
           resources:
@@ -697,7 +693,7 @@ spec:
       restartPolicy: Never
       containers:
         - name: csi-wls-v11-run-batch
-          image: registry-clustergpu.recas.ba.infn.it/marcocecca/geant4:11.3.1
+          image: registry-clustergpu.recas.ba.infn.it/alice/geant4:11.3.1
           workingDir: /lustrehome/bob/k8s_tests/EsK8s3_CsI_WLS_v11
           command: ["/bin/bash", "csi-wls-v11-run-batch.sh"]
           resources:
@@ -742,16 +738,6 @@ kubectl delete -f csi-wls-v11-run-batch.yaml
 ## Comandi essenziali di Kubernetes {#sec-k8-commands}
 
 Questa sezione riassume i comandi `kubectl` più usati nello scenario degli esempi.
-
-### Informazioni sul cluster e sul contesto
-
-```bash
-kubectl config get-contexts     # mostra i contesti configurati
-kubectl config use-context ...  # seleziona il contesto per ReCaS
-kubectl cluster-info            # info sul cluster corrente
-kubectl get nodes               # lista dei nodi
-kubectl get namespaces          # lista dei namespace disponibili
-```
 
 ### Gestione dei Job e dei Pod
 
@@ -811,17 +797,6 @@ kubectl delete pod nome-pod
 
 ## Appendice – Riferimenti ufficiali e documentazione Kubernetes {#sec-k8-refs}
 
-Per approfondimenti oltre gli esempi di questa guida:
+Per approfondimenti oltre gli esempi di questa guida ci si può rifare alla [Documentazione ufficiale Kubernetes](https://kubernetes.io/docs/reference/kubectl/), introduttiva e di riferimento su concetti come Pod, Job, volumi, risorse, ecc, e alla [guida ufficiale di ReCaS su Kubernetes](https://jvino.github.io/cluster-hpc-gpu-guides/job_submission/k8s-jobs/) che contiene istruzioni aggiornate per l’abilitazione degli utenti, esempi di configurazione `kubectl` per il cluster e policy su limiti di CPU/RAM e best practice per l’uso di K8s in ambiente HPC.
 
-- **Documentazione ufficiale Kubernetes**  
-  Introduttiva e di riferimento su concetti come Pod, Job, volumi, risorse, ecc.
-
-- **Guide ufficiali ReCaS su Kubernetes**  
-  Contengono:
-  - istruzioni aggiornate per l’abilitazione degli utenti;
-  - esempi di configurazione `kubectl` per il cluster;
-  - policy su limiti di CPU/RAM e best practice per l’uso di K8s in ambiente HPC.
-
-La parte Kubernetes di questo documento va intesa come **complemento operativo**
-agli esempi Geant4/ROOT/CsI-WLS, non come sostituto della documentazione ufficiale
-del cluster.
+La parte Kubernetes di questo documento va intesa come **complemento operativo** agli esempi Geant4/ROOT/CsI-WLS, non come sostituto della documentazione ufficiale.
