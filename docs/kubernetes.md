@@ -2,13 +2,9 @@
 
 ## Introduzione e abilitazione dell’account
 
-Questa guida affianca la guida su Apptainer/HTCondor: l’idea è usare **gli stessi container Docker** (costruiti e testati come descritto nella guida su Apptainer/Singularity con HTCondor) anche tramite **Kubernetes** (K8s) sul cluster ReCaS.
+Questa guida affianca la guida su Apptainer/HTCondor: l’idea è usare **gli stessi container Docker** (costruiti e testati come descritto nella guida su [Apptainer/Singularity con HTCondor](https://marcocecca00.github.io/recas-containers-docs/apptainer_condor/)) anche tramite **Kubernetes** (K8s) sul cluster ReCaS.
 
-Nel seguito useremo ancora due utenti fittizi:
-
-- `alice`: utente “manutentore” che costruisce e pubblica le immagini Docker su  
-  `registry-clustergpu.recas.ba.infn.it` (per esempio l’immagine Geant4/ROOT descritta nella sezione sulle immagini).
-- `bob`: utente “normale” che vuole solo usare quelle immagini per lanciare job di simulazione.
+Nel seguito useremo ancora due utenti fittizi: `alice`: utente “manutentore” che costruisce e pubblica le immagini Docker su `registry-clustergpu.recas.ba.infn.it` e `bob`, un utente “normale” che vuole solo usare quelle immagini per lanciare job di simulazione.
 
 Come per Apptainer/HTCondor, assumeremo che `alice` abbia già pubblicato almeno l’immagine:
 
@@ -16,49 +12,40 @@ Come per Apptainer/HTCondor, assumeremo che `alice` abbia già pubblicato almeno
 registry-clustergpu.recas.ba.infn.it/alice/geant4:11.3.1
 ```
 
-che corrisponde, lato Apptainer, all’immagine `.sif` `G4_v11.3.1.sif` elencata nella sezione  
-*Immagini Docker / Apptainer disponibili su ReCaS* della guida precedente.
+!!! info "Immagini Docker disponibili su ReCas"
 
-Con Kubernetes, invece di sottomettere job Condor che avviano Apptainer, `bob` sottomette **Job Kubernetes** che lanciano container Docker direttamente sui nodi del cluster. In pratica:
+    Un elenco completo delle immagini disponibili attualmente è presente al nella sezione [Immagini Docker / Apptainer disponibili su ReCaS](https://marcocecca00.github.io/recas-containers-docs/apptainer_condor/#sec-images).
 
-- il contenuto del container è lo stesso (Ubuntu 24.04 + Geant4 + ROOT + Python);
-- cambia il “motore” che orchestra i job (Kubernetes invece di HTCondor);
-- la directory `/lustrehome` rimane la sorgente di tutti i dati persistenti, montata nei Pod.
+
+Con Kubernetes, invece di sottomettere job Condor che avviano Apptainer, `bob` sottomette **Job Kubernetes** che lanciano container Docker direttamente sui nodi del cluster. In pratica il contenuto del container è lo stesso (Ubuntu 24.04 + Geant4 + ROOT + Python), ma cambia il “motore” che orchestra i job (Kubernetes invece di HTCondor).
 
 ### Abilitazione a Kubernetes in pratica
 
 Per poter usare Kubernetes, l’account di `bob` deve essere abilitato e `kubectl` deve essere configurato correttamente. I passi “ufficiali” sono descritti nel dettaglio nella guida ReCaS [Job submission using Kubernetes](https://jvino.github.io/cluster-hpc-gpu-guides/job_submission/k8s-jobs/); qui li riassumiamo in forma operativa:
 
-1. **Account HPC/HTC attivo**  
-   `bob` deve avere un account ReCaS-Bari per i servizi HPC/HTC e riuscire a collegarsi ai frontend (es. `frontend.recas.ba.infn.it`) via SSH.
-
-2. **Richiesta di accesso a Kubernetes**  
+1. **Richiesta di accesso a Kubernetes**  
    Una volta attivo l’account, `bob` apre un ticket tramite il sistema di supporto ReCaS chiedendo l’accesso al cluster Kubernetes HPC/GPU, come indicato nella sezione [Access to the service](https://jvino.github.io/cluster-hpc-gpu-guides/job_submission/k8s-jobs/#2-access-to-the-service) della guida ufficiale (titolo del ticket e dati richiesti sono specificati lì).
 
-3. **Configurazione di `kubectl` e del `kubeconfig`**  
-   Dopo l’abilitazione a K8s, `bob` configura il client `kubectl`:
-   - crea `~/.kube/config` con il template suggerito nella guida, impostando il namespace  
-     `batch-<username>` (ad es. `batch-bob`);
-   - inserisce nel campo `token:` il proprio access token personale ottenuto via web.
+2. **Configurazione di `kubectl` e del `kubeconfig`**  
+   Dopo l’abilitazione a K8s, `bob` configura il client `kubectl` creando `~/.kube/config` con il template suggerito nella [guida ufficiale](https://jvino.github.io/cluster-hpc-gpu-guides/job_submission/k8s-jobs/#32-access-token), impostando il namespace `batch-<username>` (ad es. `batch-bob`) e infine inserisce nel campo `token:` il proprio access token personale ottenuto via web.
 
-4. **Token di accesso**  
+3. **Token di accesso**  
    Il token si ottiene autenticandosi con le credenziali ReCaS sull’URL indicato nella [guida ufficiale](https://jvino.github.io/cluster-hpc-gpu-guides/job_submission/k8s-jobs/#32-access-token); il token va copiato nel `~/.kube/config` e ha una durata limitata (quando scade, `kubectl` smette di funzionare finché non si aggiorna il token). È buona pratica proteggere il file di configurazione, ad esempio con:
+ 
    ```bash
    chmod 700 ~/.kube/config
    ```
 
-5. **Verifica della configurazione**  
+4. **Verifica della configurazione**  
    Con il token valido e il `kubeconfig` configurato, `bob` può verificare l’accesso con:
+   
    ```bash
    kubectl get pod
    ```
-   Se la configurazione è corretta, il comando risponde con un messaggio del tipo  
-   `No resources found in batch-bob namespace`, che indica che `kubectl` riesce a parlare con il cluster sul namespace giusto.
 
-Da questo punto in poi, gli esempi nelle sezioni successive presuppongono che `bob` abbia già:
-- un account HPC/HTC attivo,
-- l’accesso al cluster Kubernetes abilitato,
-- `kubectl` funzionante sul proprio namespace.
+   Se la configurazione è corretta, il comando risponde con un messaggio del tipo `No resources found in batch-bob namespace`, che indica che `kubectl` riesce a parlare con il cluster sul namespace giusto.
+
+Da questo punto in poi, gli esempi nelle sezioni successive presuppongono che `bob` abbia già: un account HPC/HTC attivo, l’accesso al cluster Kubernetes abilitato e `kubectl` funzionante sul proprio namespace.
 
 ---
 
@@ -201,7 +188,7 @@ Obiettivo: verificare che:
 - il container `registry-clustergpu.recas.ba.infn.it/marcocecca/geant4:11.3.1` sia funzionante;
 - Geant4, ROOT e Python siano visibili dentro il Pod.
 
-#### Script `geant4_11.3.1_sanity.sh`
+Lo script `geant4_11.3.1_sanity.sh`, che sarà eseguito dentro il container, può essere definito come segue:
 
 ```bash
 #!/bin/bash
@@ -240,7 +227,13 @@ echo
 echo "[K8S-TEST] Done: $(date)"
 ```
 
-#### Job `geant4_11.3.1_sanity.yaml`
+Lo script va reso eseguibile:
+
+```bash
+chmod +x geant4_11.3.1_sanity.sh
+```
+
+Job `geant4_11.3.1_sanity.yaml`
 
 ```yaml
 apiVersion: batch/v1
@@ -266,9 +259,7 @@ spec:
   backoffLimit: 0
 ```
 
-#### Comandi da lanciare
-
-Da un frontend (es. `ui-al9`) come utente `bob`:
+Comandi da lanciare dalla macchina di frontend come utente `bob`:
 
 ```bash
 cd /lustrehome/bob/k8s_tests/EsK8s1_geant4_11.3.1_sanity
@@ -276,8 +267,6 @@ cd /lustrehome/bob/k8s_tests/EsK8s1_geant4_11.3.1_sanity
 # Crea la directory e copia i template
 mkdir -p /lustrehome/bob/k8s_tests/EsK8s1_geant4_11.3.1_sanity
 # (poi copia qui i file .sh/.yaml)
-
-chmod +x geant4_11.3.1_sanity.sh
 
 # Sottomissione del Job
 kubectl create -f geant4_11.3.1_sanity.yaml
@@ -311,7 +300,7 @@ Questo esempio replica, in ambiente Kubernetes, il flusso *build+run* dell’ese
 - compila `exampleB5`;
 - esegue `exampleB5` con una macro di test.
 
-#### Script `B5_build_run.sh`
+Lo script `B5_build_run.sh`, che sarà eseguito dentro il container, può essere definito come segue:
 
 ```bash
 #!/bin/bash
@@ -375,7 +364,13 @@ echo
 echo "[B5-K8S] Done: $(date)"
 ```
 
-#### Job `B5_build_run.yaml`
+Lo script va reso eseguibile:
+
+```bash
+chmod +x B5_build_run.sh
+```
+
+Job `B5_build_run.yaml`
 
 ```yaml
 apiVersion: batch/v1
@@ -405,13 +400,11 @@ spec:
   backoffLimit: 0
 ```
 
-#### Comandi da lanciare
+Comandi da lanciare
 
 ```bash
 cd /lustrehome/bob/k8s_tests/EsK8s2_geant4_11.3.1_B5_build_run
 mkdir -p /lustrehome/bob/k8s_tests/EsK8s2_geant4_11.3.1_B5_build_run
-
-chmod +x B5_build_run.sh
 
 kubectl create -f B5_build_run.yaml
 kubectl get pods
@@ -442,7 +435,7 @@ Struttura suggerita:
   csi-wls-v11-build.yaml
 ```
 
-#### Script `csi-wls-v11-build.sh`
+Lo script `csi-wls-v11-build.sh`, che sarà eseguito dentro il container, può essere definito come segue:
 
 ```bash
 #!/bin/bash
@@ -490,7 +483,14 @@ echo
 echo "[CsI-K8S-BUILD] Done: $(date)"
 ```
 
-#### Job `csi-wls-v11-build.yaml`
+Lo script va reso eseguibile:
+
+```bash
+chmod +x csi-wls-v11-build.sh
+```
+
+
+Job `csi-wls-v11-build.yaml`
 
 ```yaml
 apiVersion: batch/v1
@@ -520,11 +520,10 @@ spec:
   backoffLimit: 0
 ```
 
-#### Comandi da lanciare
+Comandi da lanciare
 
 ```bash
 cd /lustrehome/bob/k8s_tests/EsK8s3_CsI_WLS_v11
-chmod +x csi-wls-v11-build.sh
 
 kubectl create -f csi-wls-v11-build.yaml
 kubectl get pods
@@ -559,7 +558,7 @@ Struttura suggerita:
   csi-wls-v11-run-batch.yaml
 ```
 
-#### Script Python `run_electrons_batch.py`
+Script Python `run_electrons_batch.py`
 
 Esempio minimale che genera N macro, ognuna con un seed diverso, e lancia `./CsI-WLS` per ciascuna:
 
@@ -608,7 +607,7 @@ print(f"\n{N_EVENTS * nfiles} eventi simulati. "
       f"Macro in {DIR_MAC}/{subdir}, output ROOT in {DIR_ROOT}/{subdir}")
 ```
 
-#### Script `csi-wls-v11-run-batch.sh`
+Lo script `csi-wls-v11-run-batch.sh`, che sarà eseguito dentro il container, può essere definito come segue:
 
 ```bash
 #!/bin/bash
@@ -657,7 +656,7 @@ echo
 echo "[CsI-K8S-RUN] Done: $(date)"
 ```
 
-#### Job `csi-wls-v11-run-batch.yaml`
+Job `csi-wls-v11-run-batch.yaml`
 
 ```yaml
 apiVersion: batch/v1
@@ -687,11 +686,10 @@ spec:
   backoffLimit: 0
 ```
 
-#### Comandi da lanciare
+Comandi da lanciare
 
 ```bash
 cd /lustrehome/bob/k8s_tests/EsK8s3_CsI_WLS_v11
-chmod +x csi-wls-v11-run-batch.sh
 
 kubectl create -f csi-wls-v11-run-batch.yaml
 kubectl get pods

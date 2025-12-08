@@ -11,8 +11,6 @@
         <link rel="canonical" href="https://marcocecca00.github.io/recas-containers-docs/kubernetes/">
       
       
-        <link rel="prev" href="../apptainer_condor/">
-      
       
       
         
@@ -307,436 +305,6 @@
   
 
     
-      
-      
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Uso di Kubernetes con container su ReCaS
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Uso di Kubernetes con container su ReCaS
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Indice">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Indice
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduzione-e-abilitazione-dellaccount" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Introduzione e abilitazione dell’account
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Introduzione e abilitazione dell’account">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#abilitazione-a-kubernetes-in-pratica" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Abilitazione a Kubernetes in pratica
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sec-k8-concepts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Concetti di base di Kubernetes su ReCaS
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Concetti di base di Kubernetes su ReCaS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#oggetti-principali" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Oggetti principali
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#struttura-tipica-di-un-job-yaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Struttura tipica di un Job YAML
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sec-k8-examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Esempi pratici Kubernetes
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Esempi pratici Kubernetes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#esempio-k8s1-geant4-1131-sanity-check" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Esempio K8s1 – Geant4 11.3.1 “sanity check”
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Esempio K8s1 – Geant4 11.3.1 “sanity check”">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#script-geant4_1131_sanitysh" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Script geant4_11.3.1_sanity.sh
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#job-geant4_1131_sanityyaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Job geant4_11.3.1_sanity.yaml
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comandi-da-lanciare" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comandi da lanciare
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#esempio-k8s2-buildrun-dellesempio-geant4-b5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Esempio K8s2 – Build+run dell’esempio Geant4 B5
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Esempio K8s2 – Build+run dell’esempio Geant4 B5">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#script-b5_build_runsh" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Script B5_build_run.sh
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#job-b5_build_runyaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Job B5_build_run.yaml
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comandi-da-lanciare_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comandi da lanciare
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#esempio-k8s3-build-del-progetto-csi-wls-con-geant4-v11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Esempio K8s3 – Build del progetto CsI-WLS con Geant4 v11
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Esempio K8s3 – Build del progetto CsI-WLS con Geant4 v11">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#script-csi-wls-v11-buildsh" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Script csi-wls-v11-build.sh
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#job-csi-wls-v11-buildyaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Job csi-wls-v11-build.yaml
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comandi-da-lanciare_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comandi da lanciare
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#esempio-k8s4-batch-di-run-csi-wls-pilotati-da-python" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Esempio K8s4 – Batch di run CsI-WLS pilotati da Python
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Esempio K8s4 – Batch di run CsI-WLS pilotati da Python">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#script-python-run_electrons_batchpy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Script Python run_electrons_batch.py
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#script-csi-wls-v11-run-batchsh" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Script csi-wls-v11-run-batch.sh
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#job-csi-wls-v11-run-batchyaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Job csi-wls-v11-run-batch.yaml
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comandi-da-lanciare_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comandi da lanciare
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sec-k8-commands" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comandi essenziali di Kubernetes
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Comandi essenziali di Kubernetes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gestione-dei-job-e-dei-pod" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Gestione dei Job e dei Pod
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#log-e-debug" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Log e debug
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pulizia" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pulizia
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sec-k8-refs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Appendice – Riferimenti ufficiali e documentazione Kubernetes
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -764,63 +332,42 @@
 
 <h1 id="sec-k8">Uso di Kubernetes con container su ReCaS<a class="headerlink" href="#sec-k8" title="Permanent link">&para;</a></h1>
 <h2 id="introduzione-e-abilitazione-dellaccount">Introduzione e abilitazione dell’account<a class="headerlink" href="#introduzione-e-abilitazione-dellaccount" title="Permanent link">&para;</a></h2>
-<p>Questa guida affianca la guida su Apptainer/HTCondor: l’idea è usare <strong>gli stessi container Docker</strong> (costruiti e testati come descritto nella guida su Apptainer/Singularity con HTCondor) anche tramite <strong>Kubernetes</strong> (K8s) sul cluster ReCaS.</p>
-<p>Nel seguito useremo ancora due utenti fittizi:</p>
-<ul>
-<li><code>alice</code>: utente “manutentore” che costruisce e pubblica le immagini Docker su<br />
-<code>registry-clustergpu.recas.ba.infn.it</code> (per esempio l’immagine Geant4/ROOT descritta nella sezione sulle immagini).</li>
-<li><code>bob</code>: utente “normale” che vuole solo usare quelle immagini per lanciare job di simulazione.</li>
-</ul>
+<p>Questa guida affianca la guida su Apptainer/HTCondor: l’idea è usare <strong>gli stessi container Docker</strong> (costruiti e testati come descritto nella guida su <a href="https://marcocecca00.github.io/recas-containers-docs/apptainer_condor/">Apptainer/Singularity con HTCondor</a>) anche tramite <strong>Kubernetes</strong> (K8s) sul cluster ReCaS.</p>
+<p>Nel seguito useremo ancora due utenti fittizi: <code>alice</code>: utente “manutentore” che costruisce e pubblica le immagini Docker su <code>registry-clustergpu.recas.ba.infn.it</code> e <code>bob</code>, un utente “normale” che vuole solo usare quelle immagini per lanciare job di simulazione.</p>
 <p>Come per Apptainer/HTCondor, assumeremo che <code>alice</code> abbia già pubblicato almeno l’immagine:</p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>registry-clustergpu.recas.ba.infn.it/alice/geant4:11.3.1
 </code></pre></div></td></tr></table></div>
-<p>che corrisponde, lato Apptainer, all’immagine <code>.sif</code> <code>G4_v11.3.1.sif</code> elencata nella sezione<br />
-<em>Immagini Docker / Apptainer disponibili su ReCaS</em> della guida precedente.</p>
-<p>Con Kubernetes, invece di sottomettere job Condor che avviano Apptainer, <code>bob</code> sottomette <strong>Job Kubernetes</strong> che lanciano container Docker direttamente sui nodi del cluster. In pratica:</p>
-<ul>
-<li>il contenuto del container è lo stesso (Ubuntu 24.04 + Geant4 + ROOT + Python);</li>
-<li>cambia il “motore” che orchestra i job (Kubernetes invece di HTCondor);</li>
-<li>la directory <code>/lustrehome</code> rimane la sorgente di tutti i dati persistenti, montata nei Pod.</li>
-</ul>
+<div class="admonition info">
+<p class="admonition-title">Immagini Docker disponibili su ReCas</p>
+<p>Un elenco completo delle immagini disponibili attualmente è presente al nella sezione <a href="https://marcocecca00.github.io/recas-containers-docs/apptainer_condor/#sec-images">Immagini Docker / Apptainer disponibili su ReCaS</a>.</p>
+</div>
+<p>Con Kubernetes, invece di sottomettere job Condor che avviano Apptainer, <code>bob</code> sottomette <strong>Job Kubernetes</strong> che lanciano container Docker direttamente sui nodi del cluster. In pratica il contenuto del container è lo stesso (Ubuntu 24.04 + Geant4 + ROOT + Python), ma cambia il “motore” che orchestra i job (Kubernetes invece di HTCondor).</p>
 <h3 id="abilitazione-a-kubernetes-in-pratica">Abilitazione a Kubernetes in pratica<a class="headerlink" href="#abilitazione-a-kubernetes-in-pratica" title="Permanent link">&para;</a></h3>
 <p>Per poter usare Kubernetes, l’account di <code>bob</code> deve essere abilitato e <code>kubectl</code> deve essere configurato correttamente. I passi “ufficiali” sono descritti nel dettaglio nella guida ReCaS <a href="https://jvino.github.io/cluster-hpc-gpu-guides/job_submission/k8s-jobs/">Job submission using Kubernetes</a>; qui li riassumiamo in forma operativa:</p>
 <ol>
-<li>
-<p><strong>Account HPC/HTC attivo</strong><br />
-<code>bob</code> deve avere un account ReCaS-Bari per i servizi HPC/HTC e riuscire a collegarsi ai frontend (es. <code>frontend.recas.ba.infn.it</code>) via SSH.</p>
-</li>
 <li>
 <p><strong>Richiesta di accesso a Kubernetes</strong><br />
    Una volta attivo l’account, <code>bob</code> apre un ticket tramite il sistema di supporto ReCaS chiedendo l’accesso al cluster Kubernetes HPC/GPU, come indicato nella sezione <a href="https://jvino.github.io/cluster-hpc-gpu-guides/job_submission/k8s-jobs/#2-access-to-the-service">Access to the service</a> della guida ufficiale (titolo del ticket e dati richiesti sono specificati lì).</p>
 </li>
 <li>
 <p><strong>Configurazione di <code>kubectl</code> e del <code>kubeconfig</code></strong><br />
-   Dopo l’abilitazione a K8s, <code>bob</code> configura il client <code>kubectl</code>:</p>
-</li>
-<li>crea <code>~/.kube/config</code> con il template suggerito nella guida, impostando il namespace<br />
-<code>batch-&lt;username&gt;</code> (ad es. <code>batch-bob</code>);</li>
-<li>
-<p>inserisce nel campo <code>token:</code> il proprio access token personale ottenuto via web.</p>
+   Dopo l’abilitazione a K8s, <code>bob</code> configura il client <code>kubectl</code> creando <code>~/.kube/config</code> con il template suggerito nella <a href="https://jvino.github.io/cluster-hpc-gpu-guides/job_submission/k8s-jobs/#32-access-token">guida ufficiale</a>, impostando il namespace <code>batch-&lt;username&gt;</code> (ad es. <code>batch-bob</code>) e infine inserisce nel campo <code>token:</code> il proprio access token personale ottenuto via web.</p>
 </li>
 <li>
 <p><strong>Token di accesso</strong><br />
-   Il token si ottiene autenticandosi con le credenziali ReCaS sull’URL indicato nella <a href="https://jvino.github.io/cluster-hpc-gpu-guides/job_submission/k8s-jobs/#32-access-token">guida ufficiale</a>; il token va copiato nel <code>~/.kube/config</code> e ha una durata limitata (quando scade, <code>kubectl</code> smette di funzionare finché non si aggiorna il token). È buona pratica proteggere il file di configurazione, ad esempio con:
-   <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>chmod<span class="w"> </span><span class="m">700</span><span class="w"> </span>~/.kube/config
-</code></pre></div></td></tr></table></div></p>
-</li>
-<li>
-<p><strong>Verifica della configurazione</strong><br />
-   Con il token valido e il <code>kubeconfig</code> configurato, <code>bob</code> può verificare l’accesso con:
-   <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pod
-</code></pre></div></td></tr></table></div>
-   Se la configurazione è corretta, il comando risponde con un messaggio del tipo<br />
-<code>No resources found in batch-bob namespace</code>, che indica che <code>kubectl</code> riesce a parlare con il cluster sul namespace giusto.</p>
+   Il token si ottiene autenticandosi con le credenziali ReCaS sull’URL indicato nella <a href="https://jvino.github.io/cluster-hpc-gpu-guides/job_submission/k8s-jobs/#32-access-token">guida ufficiale</a>; il token va copiato nel <code>~/.kube/config</code> e ha una durata limitata (quando scade, <code>kubectl</code> smette di funzionare finché non si aggiorna il token). È buona pratica proteggere il file di configurazione, ad esempio con:</p>
 </li>
 </ol>
-<p>Da questo punto in poi, gli esempi nelle sezioni successive presuppongono che <code>bob</code> abbia già:
-- un account HPC/HTC attivo,
-- l’accesso al cluster Kubernetes abilitato,
-- <code>kubectl</code> funzionante sul proprio namespace.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>chmod<span class="w"> </span><span class="m">700</span><span class="w"> </span>~/.kube/config
+</code></pre></div></td></tr></table></div>
+<ol>
+<li><strong>Verifica della configurazione</strong><br />
+   Con il token valido e il <code>kubeconfig</code> configurato, <code>bob</code> può verificare l’accesso con:</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pod
+</code></pre></div></td></tr></table></div>
+<p>Se la configurazione è corretta, il comando risponde con un messaggio del tipo <code>No resources found in batch-bob namespace</code>, che indica che <code>kubectl</code> riesce a parlare con il cluster sul namespace giusto.</p>
+<p>Da questo punto in poi, gli esempi nelle sezioni successive presuppongono che <code>bob</code> abbia già: un account HPC/HTC attivo, l’accesso al cluster Kubernetes abilitato e <code>kubectl</code> funzionante sul proprio namespace.</p>
 <hr />
 <h2 id="sec-k8-concepts">Concetti di base di Kubernetes su ReCaS<a class="headerlink" href="#sec-k8-concepts" title="Permanent link">&para;</a></h2>
 <p>Per usare Kubernetes in modo consapevole bastano pochi concetti chiave; in questa sezione li adattiamo allo scenario tipico del cluster ReCaS.</p>
@@ -988,8 +535,15 @@ creare effettivamente le directory necessarie prima di lanciare i Job.</p>
    Job che riutilizza la build dell’esempio precedente e lancia un batch di simulazioni tramite uno script Python (macro multiple, output ROOT su lustre).</p>
 </li>
 </ol>
-<p>I template completi (file <code>.sh</code> e <code>.yaml</code>) per questi esempi possono essere raccolti in una cartella, ad esempio:</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<h3 id="esempio-k8s1-geant4-1131-sanity-check">Esempio K8s1 – Geant4 11.3.1 “sanity check”<a class="headerlink" href="#esempio-k8s1-geant4-1131-sanity-check" title="Permanent link">&para;</a></h3>
+<p>Obiettivo: verificare che:</p>
+<ul>
+<li>il Job Kubernetes parta correttamente;</li>
+<li>il container <code>registry-clustergpu.recas.ba.infn.it/marcocecca/geant4:11.3.1</code> sia funzionante;</li>
+<li>Geant4, ROOT e Python siano visibili dentro il Pod.</li>
+</ul>
+<p>Lo script <code>geant4_11.3.1_sanity.sh</code>, che sarà eseguito dentro il container, può essere definito come segue:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
@@ -1005,102 +559,62 @@ creare effettivamente le directory necessarie prima di lanciare i Job.</p>
 <span class="normal"><a href="#__codelineno-6-14">14</a></span>
 <span class="normal"><a href="#__codelineno-6-15">15</a></span>
 <span class="normal"><a href="#__codelineno-6-16">16</a></span>
-<span class="normal"><a href="#__codelineno-6-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>templates_k8s/
-<a id="__codelineno-6-2" name="__codelineno-6-2"></a>  EsK8s1_geant4_11.3.1_sanity/
-<a id="__codelineno-6-3" name="__codelineno-6-3"></a>    geant4_11.3.1_sanity.sh
-<a id="__codelineno-6-4" name="__codelineno-6-4"></a>    geant4_11.3.1_sanity.yaml
-<a id="__codelineno-6-5" name="__codelineno-6-5"></a>
-<a id="__codelineno-6-6" name="__codelineno-6-6"></a>  EsK8s2_geant4_11.3.1_B5_build_run/
-<a id="__codelineno-6-7" name="__codelineno-6-7"></a>    B5_build_run.sh
-<a id="__codelineno-6-8" name="__codelineno-6-8"></a>    B5_build_run.yaml
+<span class="normal"><a href="#__codelineno-6-17">17</a></span>
+<span class="normal"><a href="#__codelineno-6-18">18</a></span>
+<span class="normal"><a href="#__codelineno-6-19">19</a></span>
+<span class="normal"><a href="#__codelineno-6-20">20</a></span>
+<span class="normal"><a href="#__codelineno-6-21">21</a></span>
+<span class="normal"><a href="#__codelineno-6-22">22</a></span>
+<span class="normal"><a href="#__codelineno-6-23">23</a></span>
+<span class="normal"><a href="#__codelineno-6-24">24</a></span>
+<span class="normal"><a href="#__codelineno-6-25">25</a></span>
+<span class="normal"><a href="#__codelineno-6-26">26</a></span>
+<span class="normal"><a href="#__codelineno-6-27">27</a></span>
+<span class="normal"><a href="#__codelineno-6-28">28</a></span>
+<span class="normal"><a href="#__codelineno-6-29">29</a></span>
+<span class="normal"><a href="#__codelineno-6-30">30</a></span>
+<span class="normal"><a href="#__codelineno-6-31">31</a></span>
+<span class="normal"><a href="#__codelineno-6-32">32</a></span>
+<span class="normal"><a href="#__codelineno-6-33">33</a></span>
+<span class="normal"><a href="#__codelineno-6-34">34</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[K8S-TEST] Start: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[K8S-TEST] Host:  </span><span class="k">$(</span>hostname<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[K8S-TEST] User:  </span><span class="k">$(</span>whoami<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[K8S-TEST] Pwd:   </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="nb">echo</span>
 <a id="__codelineno-6-9" name="__codelineno-6-9"></a>
-<a id="__codelineno-6-10" name="__codelineno-6-10"></a>  EsK8s3_CsI_WLS_v11_build/
-<a id="__codelineno-6-11" name="__codelineno-6-11"></a>    csi-wls-v11-build.sh
-<a id="__codelineno-6-12" name="__codelineno-6-12"></a>    csi-wls-v11-build.yaml
-<a id="__codelineno-6-13" name="__codelineno-6-13"></a>
-<a id="__codelineno-6-14" name="__codelineno-6-14"></a>  EsK8s4_CsI_WLS_v11_batch_runs/
-<a id="__codelineno-6-15" name="__codelineno-6-15"></a>    run_electrons_batch.py
-<a id="__codelineno-6-16" name="__codelineno-6-16"></a>    csi-wls-v11-run-batch.sh
-<a id="__codelineno-6-17" name="__codelineno-6-17"></a>    csi-wls-v11-run-batch.yaml
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[K8S-TEST] Environment:&quot;</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;  G4INSTALL=</span><span class="si">${</span><span class="nv">G4INSTALL</span><span class="k">:-</span><span class="nv">undefined</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;  G4VERSION=</span><span class="si">${</span><span class="nv">G4VERSION</span><span class="k">:-</span><span class="nv">undefined</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;  ROOTSYS=</span><span class="si">${</span><span class="nv">ROOTSYS</span><span class="k">:-</span><span class="nv">undefined</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="nb">echo</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a>
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[K8S-TEST] Checking Geant4 / ROOT / Python...&quot;</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>geant4-config<span class="w">  </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18"></a><span class="w">  </span>geant4-config<span class="w"> </span>--version<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;geant4-config NOT found&quot;</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19"></a>
+<a id="__codelineno-6-20" name="__codelineno-6-20"></a><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>root-config<span class="w">    </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21"></a><span class="w">  </span>root-config<span class="w"> </span>--version<span class="w">   </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;root-config NOT found&quot;</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22"></a>
+<a id="__codelineno-6-23" name="__codelineno-6-23"></a><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>python3<span class="w">        </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24"></a><span class="w">  </span>python3<span class="w"> </span>--version<span class="w">       </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;python3 NOT found&quot;</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25"></a>
+<a id="__codelineno-6-26" name="__codelineno-6-26"></a><span class="nb">echo</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27"></a>python3<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28"></a><span class="s">import sys, platform</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29"></a><span class="s">print(&quot;Python:&quot;, sys.version.split()[0])</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30"></a><span class="s">print(&quot;Platform:&quot;, platform.platform())</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31"></a><span class="s">EOF</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32"></a>
+<a id="__codelineno-6-33" name="__codelineno-6-33"></a><span class="nb">echo</span>
+<a id="__codelineno-6-34" name="__codelineno-6-34"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[K8S-TEST] Done: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
 </code></pre></div></td></tr></table></div>
-<p>Nelle sottosezioni seguenti riportiamo il contenuto completo dei template.</p>
-<h3 id="esempio-k8s1-geant4-1131-sanity-check">Esempio K8s1 – Geant4 11.3.1 “sanity check”<a class="headerlink" href="#esempio-k8s1-geant4-1131-sanity-check" title="Permanent link">&para;</a></h3>
-<p>Obiettivo: verificare che:</p>
-<ul>
-<li>il Job Kubernetes parta correttamente;</li>
-<li>il container <code>registry-clustergpu.recas.ba.infn.it/marcocecca/geant4:11.3.1</code> sia funzionante;</li>
-<li>Geant4, ROOT e Python siano visibili dentro il Pod.</li>
-</ul>
-<h4 id="script-geant4_1131_sanitysh">Script <code>geant4_11.3.1_sanity.sh</code><a class="headerlink" href="#script-geant4_1131_sanitysh" title="Permanent link">&para;</a></h4>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-7-10">10</a></span>
-<span class="normal"><a href="#__codelineno-7-11">11</a></span>
-<span class="normal"><a href="#__codelineno-7-12">12</a></span>
-<span class="normal"><a href="#__codelineno-7-13">13</a></span>
-<span class="normal"><a href="#__codelineno-7-14">14</a></span>
-<span class="normal"><a href="#__codelineno-7-15">15</a></span>
-<span class="normal"><a href="#__codelineno-7-16">16</a></span>
-<span class="normal"><a href="#__codelineno-7-17">17</a></span>
-<span class="normal"><a href="#__codelineno-7-18">18</a></span>
-<span class="normal"><a href="#__codelineno-7-19">19</a></span>
-<span class="normal"><a href="#__codelineno-7-20">20</a></span>
-<span class="normal"><a href="#__codelineno-7-21">21</a></span>
-<span class="normal"><a href="#__codelineno-7-22">22</a></span>
-<span class="normal"><a href="#__codelineno-7-23">23</a></span>
-<span class="normal"><a href="#__codelineno-7-24">24</a></span>
-<span class="normal"><a href="#__codelineno-7-25">25</a></span>
-<span class="normal"><a href="#__codelineno-7-26">26</a></span>
-<span class="normal"><a href="#__codelineno-7-27">27</a></span>
-<span class="normal"><a href="#__codelineno-7-28">28</a></span>
-<span class="normal"><a href="#__codelineno-7-29">29</a></span>
-<span class="normal"><a href="#__codelineno-7-30">30</a></span>
-<span class="normal"><a href="#__codelineno-7-31">31</a></span>
-<span class="normal"><a href="#__codelineno-7-32">32</a></span>
-<span class="normal"><a href="#__codelineno-7-33">33</a></span>
-<span class="normal"><a href="#__codelineno-7-34">34</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="ch">#!/bin/bash</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
-<a id="__codelineno-7-3" name="__codelineno-7-3"></a>
-<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[K8S-TEST] Start: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[K8S-TEST] Host:  </span><span class="k">$(</span>hostname<span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[K8S-TEST] User:  </span><span class="k">$(</span>whoami<span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[K8S-TEST] Pwd:   </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="nb">echo</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9"></a>
-<a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[K8S-TEST] Environment:&quot;</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;  G4INSTALL=</span><span class="si">${</span><span class="nv">G4INSTALL</span><span class="k">:-</span><span class="nv">undefined</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;  G4VERSION=</span><span class="si">${</span><span class="nv">G4VERSION</span><span class="k">:-</span><span class="nv">undefined</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;  ROOTSYS=</span><span class="si">${</span><span class="nv">ROOTSYS</span><span class="k">:-</span><span class="nv">undefined</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="nb">echo</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15"></a>
-<a id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[K8S-TEST] Checking Geant4 / ROOT / Python...&quot;</span>
-<a id="__codelineno-7-17" name="__codelineno-7-17"></a><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>geant4-config<span class="w">  </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="w">  </span>geant4-config<span class="w"> </span>--version<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;geant4-config NOT found&quot;</span>
-<a id="__codelineno-7-19" name="__codelineno-7-19"></a>
-<a id="__codelineno-7-20" name="__codelineno-7-20"></a><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>root-config<span class="w">    </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-21" name="__codelineno-7-21"></a><span class="w">  </span>root-config<span class="w"> </span>--version<span class="w">   </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;root-config NOT found&quot;</span>
-<a id="__codelineno-7-22" name="__codelineno-7-22"></a>
-<a id="__codelineno-7-23" name="__codelineno-7-23"></a><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>python3<span class="w">        </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-24" name="__codelineno-7-24"></a><span class="w">  </span>python3<span class="w"> </span>--version<span class="w">       </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;python3 NOT found&quot;</span>
-<a id="__codelineno-7-25" name="__codelineno-7-25"></a>
-<a id="__codelineno-7-26" name="__codelineno-7-26"></a><span class="nb">echo</span>
-<a id="__codelineno-7-27" name="__codelineno-7-27"></a>python3<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
-<a id="__codelineno-7-28" name="__codelineno-7-28"></a><span class="s">import sys, platform</span>
-<a id="__codelineno-7-29" name="__codelineno-7-29"></a><span class="s">print(&quot;Python:&quot;, sys.version.split()[0])</span>
-<a id="__codelineno-7-30" name="__codelineno-7-30"></a><span class="s">print(&quot;Platform:&quot;, platform.platform())</span>
-<a id="__codelineno-7-31" name="__codelineno-7-31"></a><span class="s">EOF</span>
-<a id="__codelineno-7-32" name="__codelineno-7-32"></a>
-<a id="__codelineno-7-33" name="__codelineno-7-33"></a><span class="nb">echo</span>
-<a id="__codelineno-7-34" name="__codelineno-7-34"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[K8S-TEST] Done: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
+<p>Lo script va reso eseguibile:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>geant4_11.3.1_sanity.sh
 </code></pre></div></td></tr></table></div>
-<h4 id="job-geant4_1131_sanityyaml">Job <code>geant4_11.3.1_sanity.yaml</code><a class="headerlink" href="#job-geant4_1131_sanityyaml" title="Permanent link">&para;</a></h4>
+<p>Job <code>geant4_11.3.1_sanity.yaml</code></p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">YAML</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
@@ -1143,8 +657,7 @@ creare effettivamente le directory necessarie prima di lanciare i Job.</p>
 <a id="__codelineno-8-20" name="__codelineno-8-20"></a><span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/lustrehome</span>
 <a id="__codelineno-8-21" name="__codelineno-8-21"></a><span class="w">  </span><span class="nt">backoffLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
 </code></pre></div></td></tr></table></div>
-<h4 id="comandi-da-lanciare">Comandi da lanciare<a class="headerlink" href="#comandi-da-lanciare" title="Permanent link">&para;</a></h4>
-<p>Da un frontend (es. <code>ui-al9</code>) come utente <code>bob</code>:</p>
+<p>Comandi da lanciare dalla macchina di frontend come utente <code>bob</code>:</p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
@@ -1161,27 +674,23 @@ creare effettivamente le directory necessarie prima di lanciare i Job.</p>
 <span class="normal"><a href="#__codelineno-9-14">14</a></span>
 <span class="normal"><a href="#__codelineno-9-15">15</a></span>
 <span class="normal"><a href="#__codelineno-9-16">16</a></span>
-<span class="normal"><a href="#__codelineno-9-17">17</a></span>
-<span class="normal"><a href="#__codelineno-9-18">18</a></span>
-<span class="normal"><a href="#__codelineno-9-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="nb">cd</span><span class="w"> </span>/lustrehome/bob/k8s_tests/EsK8s1_geant4_11.3.1_sanity
+<span class="normal"><a href="#__codelineno-9-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="nb">cd</span><span class="w"> </span>/lustrehome/bob/k8s_tests/EsK8s1_geant4_11.3.1_sanity
 <a id="__codelineno-9-2" name="__codelineno-9-2"></a>
 <a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="c1"># Crea la directory e copia i template</span>
 <a id="__codelineno-9-4" name="__codelineno-9-4"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>/lustrehome/bob/k8s_tests/EsK8s1_geant4_11.3.1_sanity
 <a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="c1"># (poi copia qui i file .sh/.yaml)</span>
 <a id="__codelineno-9-6" name="__codelineno-9-6"></a>
-<a id="__codelineno-9-7" name="__codelineno-9-7"></a>chmod<span class="w"> </span>+x<span class="w"> </span>geant4_11.3.1_sanity.sh
-<a id="__codelineno-9-8" name="__codelineno-9-8"></a>
-<a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="c1"># Sottomissione del Job</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10"></a>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>geant4_11.3.1_sanity.yaml
-<a id="__codelineno-9-11" name="__codelineno-9-11"></a>
-<a id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="c1"># Stato dei Pod</span>
-<a id="__codelineno-9-13" name="__codelineno-9-13"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods
-<a id="__codelineno-9-14" name="__codelineno-9-14"></a>
-<a id="__codelineno-9-15" name="__codelineno-9-15"></a><span class="c1"># Log del Pod (sostituire &lt;pod-name&gt; con quello reale)</span>
-<a id="__codelineno-9-16" name="__codelineno-9-16"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>&lt;pod-name&gt;
-<a id="__codelineno-9-17" name="__codelineno-9-17"></a>
-<a id="__codelineno-9-18" name="__codelineno-9-18"></a><span class="c1"># Pulizia (Job + Pod associati)</span>
-<a id="__codelineno-9-19" name="__codelineno-9-19"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span>geant4_11.3.1_sanity.yaml
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="c1"># Sottomissione del Job</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8"></a>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>geant4_11.3.1_sanity.yaml
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a>
+<a id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="c1"># Stato dei Pod</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods
+<a id="__codelineno-9-12" name="__codelineno-9-12"></a>
+<a id="__codelineno-9-13" name="__codelineno-9-13"></a><span class="c1"># Log del Pod (sostituire &lt;pod-name&gt; con quello reale)</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>&lt;pod-name&gt;
+<a id="__codelineno-9-15" name="__codelineno-9-15"></a>
+<a id="__codelineno-9-16" name="__codelineno-9-16"></a><span class="c1"># Pulizia (Job + Pod associati)</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span>geant4_11.3.1_sanity.yaml
 </code></pre></div></td></tr></table></div>
 <div class="admonition tip">
 <p class="admonition-title">Verificare il mount di <code>/lustrehome</code></p>
@@ -1200,7 +709,7 @@ nel file YAML.</p>
 <li>compila <code>exampleB5</code>;</li>
 <li>esegue <code>exampleB5</code> con una macro di test.</li>
 </ul>
-<h4 id="script-b5_build_runsh">Script <code>B5_build_run.sh</code><a class="headerlink" href="#script-b5_build_runsh" title="Permanent link">&para;</a></h4>
+<p>Lo script <code>B5_build_run.sh</code>, che sarà eseguito dentro il container, può essere definito come segue:</p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
@@ -1319,59 +828,11 @@ nel file YAML.</p>
 <a id="__codelineno-10-58" name="__codelineno-10-58"></a><span class="nb">echo</span>
 <a id="__codelineno-10-59" name="__codelineno-10-59"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[B5-K8S] Done: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
 </code></pre></div></td></tr></table></div>
-<h4 id="job-b5_build_runyaml">Job <code>B5_build_run.yaml</code><a class="headerlink" href="#job-b5_build_runyaml" title="Permanent link">&para;</a></h4>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">YAML</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-11-10">10</a></span>
-<span class="normal"><a href="#__codelineno-11-11">11</a></span>
-<span class="normal"><a href="#__codelineno-11-12">12</a></span>
-<span class="normal"><a href="#__codelineno-11-13">13</a></span>
-<span class="normal"><a href="#__codelineno-11-14">14</a></span>
-<span class="normal"><a href="#__codelineno-11-15">15</a></span>
-<span class="normal"><a href="#__codelineno-11-16">16</a></span>
-<span class="normal"><a href="#__codelineno-11-17">17</a></span>
-<span class="normal"><a href="#__codelineno-11-18">18</a></span>
-<span class="normal"><a href="#__codelineno-11-19">19</a></span>
-<span class="normal"><a href="#__codelineno-11-20">20</a></span>
-<span class="normal"><a href="#__codelineno-11-21">21</a></span>
-<span class="normal"><a href="#__codelineno-11-22">22</a></span>
-<span class="normal"><a href="#__codelineno-11-23">23</a></span>
-<span class="normal"><a href="#__codelineno-11-24">24</a></span>
-<span class="normal"><a href="#__codelineno-11-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="nt">metadata</span><span class="p">:</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">geant4-11-3-1-b5-build-run</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="nt">spec</span><span class="p">:</span>
-<a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="w">  </span><span class="nt">template</span><span class="p">:</span>
-<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="w">      </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
-<a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
-<a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">geant4-11-3-1-b5</span>
-<a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry-clustergpu.recas.ba.infn.it/alice/geant4:11.3.1</span>
-<a id="__codelineno-11-12" name="__codelineno-11-12"></a><span class="w">          </span><span class="nt">workingDir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/lustrehome/bob/k8s_tests/EsK8s2_geant4_11.3.1_B5_build_run</span>
-<a id="__codelineno-11-13" name="__codelineno-11-13"></a><span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;/bin/bash&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;B5_build_run.sh&quot;</span><span class="p p-Indicator">]</span>
-<a id="__codelineno-11-14" name="__codelineno-11-14"></a><span class="w">          </span><span class="nt">resources</span><span class="p">:</span>
-<a id="__codelineno-11-15" name="__codelineno-11-15"></a><span class="w">            </span><span class="nt">requests</span><span class="p">:</span>
-<a id="__codelineno-11-16" name="__codelineno-11-16"></a><span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4&quot;</span>
-<a id="__codelineno-11-17" name="__codelineno-11-17"></a><span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4Gi&quot;</span>
-<a id="__codelineno-11-18" name="__codelineno-11-18"></a><span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<a id="__codelineno-11-19" name="__codelineno-11-19"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lustre</span>
-<a id="__codelineno-11-20" name="__codelineno-11-20"></a><span class="w">              </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/lustrehome</span>
-<a id="__codelineno-11-21" name="__codelineno-11-21"></a><span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
-<a id="__codelineno-11-22" name="__codelineno-11-22"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lustre</span>
-<a id="__codelineno-11-23" name="__codelineno-11-23"></a><span class="w">          </span><span class="nt">hostPath</span><span class="p">:</span>
-<a id="__codelineno-11-24" name="__codelineno-11-24"></a><span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/lustrehome</span>
-<a id="__codelineno-11-25" name="__codelineno-11-25"></a><span class="w">  </span><span class="nt">backoffLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<p>Lo script va reso eseguibile:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>B5_build_run.sh
 </code></pre></div></td></tr></table></div>
-<h4 id="comandi-da-lanciare_1">Comandi da lanciare<a class="headerlink" href="#comandi-da-lanciare_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
+<p>Job <code>B5_build_run.yaml</code></p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">YAML</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
@@ -1381,122 +842,82 @@ nel file YAML.</p>
 <span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
 <span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-12-10">10</a></span>
-<span class="normal"><a href="#__codelineno-12-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="nb">cd</span><span class="w"> </span>/lustrehome/bob/k8s_tests/EsK8s2_geant4_11.3.1_B5_build_run
-<a id="__codelineno-12-2" name="__codelineno-12-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>/lustrehome/bob/k8s_tests/EsK8s2_geant4_11.3.1_B5_build_run
-<a id="__codelineno-12-3" name="__codelineno-12-3"></a>
-<a id="__codelineno-12-4" name="__codelineno-12-4"></a>chmod<span class="w"> </span>+x<span class="w"> </span>B5_build_run.sh
-<a id="__codelineno-12-5" name="__codelineno-12-5"></a>
-<a id="__codelineno-12-6" name="__codelineno-12-6"></a>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>B5_build_run.yaml
-<a id="__codelineno-12-7" name="__codelineno-12-7"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods
-<a id="__codelineno-12-8" name="__codelineno-12-8"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>&lt;pod-name&gt;
-<a id="__codelineno-12-9" name="__codelineno-12-9"></a>
-<a id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="c1"># Al termine</span>
-<a id="__codelineno-12-11" name="__codelineno-12-11"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span>B5_build_run.yaml
+<span class="normal"><a href="#__codelineno-12-11">11</a></span>
+<span class="normal"><a href="#__codelineno-12-12">12</a></span>
+<span class="normal"><a href="#__codelineno-12-13">13</a></span>
+<span class="normal"><a href="#__codelineno-12-14">14</a></span>
+<span class="normal"><a href="#__codelineno-12-15">15</a></span>
+<span class="normal"><a href="#__codelineno-12-16">16</a></span>
+<span class="normal"><a href="#__codelineno-12-17">17</a></span>
+<span class="normal"><a href="#__codelineno-12-18">18</a></span>
+<span class="normal"><a href="#__codelineno-12-19">19</a></span>
+<span class="normal"><a href="#__codelineno-12-20">20</a></span>
+<span class="normal"><a href="#__codelineno-12-21">21</a></span>
+<span class="normal"><a href="#__codelineno-12-22">22</a></span>
+<span class="normal"><a href="#__codelineno-12-23">23</a></span>
+<span class="normal"><a href="#__codelineno-12-24">24</a></span>
+<span class="normal"><a href="#__codelineno-12-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">geant4-11-3-1-b5-build-run</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="w">      </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">geant4-11-3-1-b5</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry-clustergpu.recas.ba.infn.it/alice/geant4:11.3.1</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12"></a><span class="w">          </span><span class="nt">workingDir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/lustrehome/bob/k8s_tests/EsK8s2_geant4_11.3.1_B5_build_run</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13"></a><span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;/bin/bash&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;B5_build_run.sh&quot;</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14"></a><span class="w">          </span><span class="nt">resources</span><span class="p">:</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15"></a><span class="w">            </span><span class="nt">requests</span><span class="p">:</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16"></a><span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4&quot;</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17"></a><span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4Gi&quot;</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18"></a><span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lustre</span>
+<a id="__codelineno-12-20" name="__codelineno-12-20"></a><span class="w">              </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/lustrehome</span>
+<a id="__codelineno-12-21" name="__codelineno-12-21"></a><span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-12-22" name="__codelineno-12-22"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lustre</span>
+<a id="__codelineno-12-23" name="__codelineno-12-23"></a><span class="w">          </span><span class="nt">hostPath</span><span class="p">:</span>
+<a id="__codelineno-12-24" name="__codelineno-12-24"></a><span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/lustrehome</span>
+<a id="__codelineno-12-25" name="__codelineno-12-25"></a><span class="w">  </span><span class="nt">backoffLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+</code></pre></div></td></tr></table></div>
+<p>Comandi da lanciare</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span>
+<span class="normal"><a href="#__codelineno-13-4">4</a></span>
+<span class="normal"><a href="#__codelineno-13-5">5</a></span>
+<span class="normal"><a href="#__codelineno-13-6">6</a></span>
+<span class="normal"><a href="#__codelineno-13-7">7</a></span>
+<span class="normal"><a href="#__codelineno-13-8">8</a></span>
+<span class="normal"><a href="#__codelineno-13-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="nb">cd</span><span class="w"> </span>/lustrehome/bob/k8s_tests/EsK8s2_geant4_11.3.1_B5_build_run
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>/lustrehome/bob/k8s_tests/EsK8s2_geant4_11.3.1_B5_build_run
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>B5_build_run.yaml
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>&lt;pod-name&gt;
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a>
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="c1"># Al termine</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span>B5_build_run.yaml
 </code></pre></div></td></tr></table></div>
 <p>Gli output (in particolare i file <code>.root</code> prodotti da B5) saranno in:</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>/lustrehome/bob/k8s_tests/EsK8s2_geant4_11.3.1_B5_build_run/B5_build_k8s/
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>/lustrehome/bob/k8s_tests/EsK8s2_geant4_11.3.1_B5_build_run/B5_build_k8s/
 </code></pre></div></td></tr></table></div>
 <hr />
 <h3 id="esempio-k8s3-build-del-progetto-csi-wls-con-geant4-v11">Esempio K8s3 – Build del progetto CsI-WLS con Geant4 v11<a class="headerlink" href="#esempio-k8s3-build-del-progetto-csi-wls-con-geant4-v11" title="Permanent link">&para;</a></h3>
 <p>In questo esempio <code>bob</code> ha già una versione del progetto CsI-WLS compatibile con Geant4 v11 (per esempio una copia dei sorgenti in <code>src/</code> come nella sezione HTCondor) e vuole eseguire <strong>solo la build</strong> dentro il container.</p>
 <p>Struttura suggerita:</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
-<span class="normal"><a href="#__codelineno-14-2">2</a></span>
-<span class="normal"><a href="#__codelineno-14-3">3</a></span>
-<span class="normal"><a href="#__codelineno-14-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>/lustrehome/bob/k8s_tests/EsK8s3_CsI_WLS_v11/
-<a id="__codelineno-14-2" name="__codelineno-14-2"></a>  src/                 # sorgenti CsI-WLS (CMakeLists.txt, .cc, .hh, OptData, etc.)
-<a id="__codelineno-14-3" name="__codelineno-14-3"></a>  csi-wls-v11-build.sh
-<a id="__codelineno-14-4" name="__codelineno-14-4"></a>  csi-wls-v11-build.yaml
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span>
+<span class="normal"><a href="#__codelineno-15-3">3</a></span>
+<span class="normal"><a href="#__codelineno-15-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>/lustrehome/bob/k8s_tests/EsK8s3_CsI_WLS_v11/
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a>  src/                 # sorgenti CsI-WLS (CMakeLists.txt, .cc, .hh, OptData, etc.)
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a>  csi-wls-v11-build.sh
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a>  csi-wls-v11-build.yaml
 </code></pre></div></td></tr></table></div>
-<h4 id="script-csi-wls-v11-buildsh">Script <code>csi-wls-v11-build.sh</code><a class="headerlink" href="#script-csi-wls-v11-buildsh" title="Permanent link">&para;</a></h4>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-15-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-15-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-15-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-15-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-15-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-15-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-15-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-15-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-15-10">10</a></span>
-<span class="normal"><a href="#__codelineno-15-11">11</a></span>
-<span class="normal"><a href="#__codelineno-15-12">12</a></span>
-<span class="normal"><a href="#__codelineno-15-13">13</a></span>
-<span class="normal"><a href="#__codelineno-15-14">14</a></span>
-<span class="normal"><a href="#__codelineno-15-15">15</a></span>
-<span class="normal"><a href="#__codelineno-15-16">16</a></span>
-<span class="normal"><a href="#__codelineno-15-17">17</a></span>
-<span class="normal"><a href="#__codelineno-15-18">18</a></span>
-<span class="normal"><a href="#__codelineno-15-19">19</a></span>
-<span class="normal"><a href="#__codelineno-15-20">20</a></span>
-<span class="normal"><a href="#__codelineno-15-21">21</a></span>
-<span class="normal"><a href="#__codelineno-15-22">22</a></span>
-<span class="normal"><a href="#__codelineno-15-23">23</a></span>
-<span class="normal"><a href="#__codelineno-15-24">24</a></span>
-<span class="normal"><a href="#__codelineno-15-25">25</a></span>
-<span class="normal"><a href="#__codelineno-15-26">26</a></span>
-<span class="normal"><a href="#__codelineno-15-27">27</a></span>
-<span class="normal"><a href="#__codelineno-15-28">28</a></span>
-<span class="normal"><a href="#__codelineno-15-29">29</a></span>
-<span class="normal"><a href="#__codelineno-15-30">30</a></span>
-<span class="normal"><a href="#__codelineno-15-31">31</a></span>
-<span class="normal"><a href="#__codelineno-15-32">32</a></span>
-<span class="normal"><a href="#__codelineno-15-33">33</a></span>
-<span class="normal"><a href="#__codelineno-15-34">34</a></span>
-<span class="normal"><a href="#__codelineno-15-35">35</a></span>
-<span class="normal"><a href="#__codelineno-15-36">36</a></span>
-<span class="normal"><a href="#__codelineno-15-37">37</a></span>
-<span class="normal"><a href="#__codelineno-15-38">38</a></span>
-<span class="normal"><a href="#__codelineno-15-39">39</a></span>
-<span class="normal"><a href="#__codelineno-15-40">40</a></span>
-<span class="normal"><a href="#__codelineno-15-41">41</a></span>
-<span class="normal"><a href="#__codelineno-15-42">42</a></span>
-<span class="normal"><a href="#__codelineno-15-43">43</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="ch">#!/bin/bash</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
-<a id="__codelineno-15-3" name="__codelineno-15-3"></a>
-<a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] Start: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-15-5" name="__codelineno-15-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] Host:  </span><span class="k">$(</span>hostname<span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-15-6" name="__codelineno-15-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] User:  </span><span class="k">$(</span>whoami<span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] Pwd:   </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-15-8" name="__codelineno-15-8"></a><span class="nb">echo</span>
-<a id="__codelineno-15-9" name="__codelineno-15-9"></a>
-<a id="__codelineno-15-10" name="__codelineno-15-10"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-f<span class="w"> </span>/opt/geant4/bin/geant4.sh<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-15-11" name="__codelineno-15-11"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] Sourcing Geant4...&quot;</span>
-<a id="__codelineno-15-12" name="__codelineno-15-12"></a><span class="w">  </span><span class="nb">source</span><span class="w"> </span>/opt/geant4/bin/geant4.sh
-<a id="__codelineno-15-13" name="__codelineno-15-13"></a><span class="k">fi</span>
-<a id="__codelineno-15-14" name="__codelineno-15-14"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-f<span class="w"> </span>/opt/root/bin/thisroot.sh<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-15-15" name="__codelineno-15-15"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] Sourcing ROOT...&quot;</span>
-<a id="__codelineno-15-16" name="__codelineno-15-16"></a><span class="w">  </span><span class="nb">source</span><span class="w"> </span>/opt/root/bin/thisroot.sh
-<a id="__codelineno-15-17" name="__codelineno-15-17"></a><span class="k">fi</span>
-<a id="__codelineno-15-18" name="__codelineno-15-18"></a>
-<a id="__codelineno-15-19" name="__codelineno-15-19"></a><span class="nv">BUILD_DIR</span><span class="o">=</span><span class="s2">&quot;build&quot;</span>
-<a id="__codelineno-15-20" name="__codelineno-15-20"></a><span class="nv">SRC_DIR</span><span class="o">=</span><span class="s2">&quot;src&quot;</span>
-<a id="__codelineno-15-21" name="__codelineno-15-21"></a>
-<a id="__codelineno-15-22" name="__codelineno-15-22"></a>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">BUILD_DIR</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-15-23" name="__codelineno-15-23"></a><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">BUILD_DIR</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-15-24" name="__codelineno-15-24"></a>
-<a id="__codelineno-15-25" name="__codelineno-15-25"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] Now in build dir: </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-15-26" name="__codelineno-15-26"></a>
-<a id="__codelineno-15-27" name="__codelineno-15-27"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] Configuring with CMake...&quot;</span>
-<a id="__codelineno-15-28" name="__codelineno-15-28"></a>cmake<span class="w"> </span><span class="s2">&quot;../</span><span class="si">${</span><span class="nv">SRC_DIR</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-15-29" name="__codelineno-15-29"></a>
-<a id="__codelineno-15-30" name="__codelineno-15-30"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] Building CsI-WLS...&quot;</span>
-<a id="__codelineno-15-31" name="__codelineno-15-31"></a>cmake<span class="w"> </span>--build<span class="w"> </span>.<span class="w"> </span>--<span class="w"> </span>-j<span class="s2">&quot;</span><span class="k">$(</span>nproc<span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-15-32" name="__codelineno-15-32"></a>
-<a id="__codelineno-15-33" name="__codelineno-15-33"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-x<span class="w"> </span>CsI-WLS<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-15-34" name="__codelineno-15-34"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] ERROR: CsI-WLS binary not found after build.&quot;</span>
-<a id="__codelineno-15-35" name="__codelineno-15-35"></a><span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
-<a id="__codelineno-15-36" name="__codelineno-15-36"></a><span class="k">fi</span>
-<a id="__codelineno-15-37" name="__codelineno-15-37"></a>
-<a id="__codelineno-15-38" name="__codelineno-15-38"></a><span class="nb">echo</span>
-<a id="__codelineno-15-39" name="__codelineno-15-39"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] Build completed, CsI-WLS is available in </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-15-40" name="__codelineno-15-40"></a>ls<span class="w"> </span>-l<span class="w"> </span>CsI-WLS<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
-<a id="__codelineno-15-41" name="__codelineno-15-41"></a>
-<a id="__codelineno-15-42" name="__codelineno-15-42"></a><span class="nb">echo</span>
-<a id="__codelineno-15-43" name="__codelineno-15-43"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] Done: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
-</code></pre></div></td></tr></table></div>
-<h4 id="job-csi-wls-v11-buildyaml">Job <code>csi-wls-v11-build.yaml</code><a class="headerlink" href="#job-csi-wls-v11-buildyaml" title="Permanent link">&para;</a></h4>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">YAML</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
+<p>Lo script <code>csi-wls-v11-build.sh</code>, che sarà eseguito dentro il container, può essere definito come segue:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-16-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-16-4"> 4</a></span>
@@ -1520,251 +941,165 @@ nel file YAML.</p>
 <span class="normal"><a href="#__codelineno-16-22">22</a></span>
 <span class="normal"><a href="#__codelineno-16-23">23</a></span>
 <span class="normal"><a href="#__codelineno-16-24">24</a></span>
-<span class="normal"><a href="#__codelineno-16-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="nt">metadata</span><span class="p">:</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">csi-wls-v11-build</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="nt">spec</span><span class="p">:</span>
-<a id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="w">  </span><span class="nt">template</span><span class="p">:</span>
-<a id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<a id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="w">      </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
-<a id="__codelineno-16-9" name="__codelineno-16-9"></a><span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
-<a id="__codelineno-16-10" name="__codelineno-16-10"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">csi-wls-v11-build</span>
-<a id="__codelineno-16-11" name="__codelineno-16-11"></a><span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry-clustergpu.recas.ba.infn.it/alice/geant4:11.3.1</span>
-<a id="__codelineno-16-12" name="__codelineno-16-12"></a><span class="w">          </span><span class="nt">workingDir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/lustrehome/bob/k8s_tests/EsK8s3_CsI_WLS_v11</span>
-<a id="__codelineno-16-13" name="__codelineno-16-13"></a><span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;/bin/bash&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;csi-wls-v11-build.sh&quot;</span><span class="p p-Indicator">]</span>
-<a id="__codelineno-16-14" name="__codelineno-16-14"></a><span class="w">          </span><span class="nt">resources</span><span class="p">:</span>
-<a id="__codelineno-16-15" name="__codelineno-16-15"></a><span class="w">            </span><span class="nt">requests</span><span class="p">:</span>
-<a id="__codelineno-16-16" name="__codelineno-16-16"></a><span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4&quot;</span>
-<a id="__codelineno-16-17" name="__codelineno-16-17"></a><span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4Gi&quot;</span>
-<a id="__codelineno-16-18" name="__codelineno-16-18"></a><span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<a id="__codelineno-16-19" name="__codelineno-16-19"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lustre</span>
-<a id="__codelineno-16-20" name="__codelineno-16-20"></a><span class="w">              </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/lustrehome</span>
-<a id="__codelineno-16-21" name="__codelineno-16-21"></a><span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
-<a id="__codelineno-16-22" name="__codelineno-16-22"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lustre</span>
-<a id="__codelineno-16-23" name="__codelineno-16-23"></a><span class="w">          </span><span class="nt">hostPath</span><span class="p">:</span>
-<a id="__codelineno-16-24" name="__codelineno-16-24"></a><span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/lustrehome</span>
-<a id="__codelineno-16-25" name="__codelineno-16-25"></a><span class="w">  </span><span class="nt">backoffLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="normal"><a href="#__codelineno-16-25">25</a></span>
+<span class="normal"><a href="#__codelineno-16-26">26</a></span>
+<span class="normal"><a href="#__codelineno-16-27">27</a></span>
+<span class="normal"><a href="#__codelineno-16-28">28</a></span>
+<span class="normal"><a href="#__codelineno-16-29">29</a></span>
+<span class="normal"><a href="#__codelineno-16-30">30</a></span>
+<span class="normal"><a href="#__codelineno-16-31">31</a></span>
+<span class="normal"><a href="#__codelineno-16-32">32</a></span>
+<span class="normal"><a href="#__codelineno-16-33">33</a></span>
+<span class="normal"><a href="#__codelineno-16-34">34</a></span>
+<span class="normal"><a href="#__codelineno-16-35">35</a></span>
+<span class="normal"><a href="#__codelineno-16-36">36</a></span>
+<span class="normal"><a href="#__codelineno-16-37">37</a></span>
+<span class="normal"><a href="#__codelineno-16-38">38</a></span>
+<span class="normal"><a href="#__codelineno-16-39">39</a></span>
+<span class="normal"><a href="#__codelineno-16-40">40</a></span>
+<span class="normal"><a href="#__codelineno-16-41">41</a></span>
+<span class="normal"><a href="#__codelineno-16-42">42</a></span>
+<span class="normal"><a href="#__codelineno-16-43">43</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] Start: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] Host:  </span><span class="k">$(</span>hostname<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] User:  </span><span class="k">$(</span>whoami<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] Pwd:   </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="nb">echo</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9"></a>
+<a id="__codelineno-16-10" name="__codelineno-16-10"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-f<span class="w"> </span>/opt/geant4/bin/geant4.sh<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] Sourcing Geant4...&quot;</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12"></a><span class="w">  </span><span class="nb">source</span><span class="w"> </span>/opt/geant4/bin/geant4.sh
+<a id="__codelineno-16-13" name="__codelineno-16-13"></a><span class="k">fi</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-f<span class="w"> </span>/opt/root/bin/thisroot.sh<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] Sourcing ROOT...&quot;</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16"></a><span class="w">  </span><span class="nb">source</span><span class="w"> </span>/opt/root/bin/thisroot.sh
+<a id="__codelineno-16-17" name="__codelineno-16-17"></a><span class="k">fi</span>
+<a id="__codelineno-16-18" name="__codelineno-16-18"></a>
+<a id="__codelineno-16-19" name="__codelineno-16-19"></a><span class="nv">BUILD_DIR</span><span class="o">=</span><span class="s2">&quot;build&quot;</span>
+<a id="__codelineno-16-20" name="__codelineno-16-20"></a><span class="nv">SRC_DIR</span><span class="o">=</span><span class="s2">&quot;src&quot;</span>
+<a id="__codelineno-16-21" name="__codelineno-16-21"></a>
+<a id="__codelineno-16-22" name="__codelineno-16-22"></a>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">BUILD_DIR</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-16-23" name="__codelineno-16-23"></a><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">BUILD_DIR</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-16-24" name="__codelineno-16-24"></a>
+<a id="__codelineno-16-25" name="__codelineno-16-25"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] Now in build dir: </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-16-26" name="__codelineno-16-26"></a>
+<a id="__codelineno-16-27" name="__codelineno-16-27"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] Configuring with CMake...&quot;</span>
+<a id="__codelineno-16-28" name="__codelineno-16-28"></a>cmake<span class="w"> </span><span class="s2">&quot;../</span><span class="si">${</span><span class="nv">SRC_DIR</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-16-29" name="__codelineno-16-29"></a>
+<a id="__codelineno-16-30" name="__codelineno-16-30"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] Building CsI-WLS...&quot;</span>
+<a id="__codelineno-16-31" name="__codelineno-16-31"></a>cmake<span class="w"> </span>--build<span class="w"> </span>.<span class="w"> </span>--<span class="w"> </span>-j<span class="s2">&quot;</span><span class="k">$(</span>nproc<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-16-32" name="__codelineno-16-32"></a>
+<a id="__codelineno-16-33" name="__codelineno-16-33"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-x<span class="w"> </span>CsI-WLS<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-16-34" name="__codelineno-16-34"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] ERROR: CsI-WLS binary not found after build.&quot;</span>
+<a id="__codelineno-16-35" name="__codelineno-16-35"></a><span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-16-36" name="__codelineno-16-36"></a><span class="k">fi</span>
+<a id="__codelineno-16-37" name="__codelineno-16-37"></a>
+<a id="__codelineno-16-38" name="__codelineno-16-38"></a><span class="nb">echo</span>
+<a id="__codelineno-16-39" name="__codelineno-16-39"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] Build completed, CsI-WLS is available in </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-16-40" name="__codelineno-16-40"></a>ls<span class="w"> </span>-l<span class="w"> </span>CsI-WLS<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+<a id="__codelineno-16-41" name="__codelineno-16-41"></a>
+<a id="__codelineno-16-42" name="__codelineno-16-42"></a><span class="nb">echo</span>
+<a id="__codelineno-16-43" name="__codelineno-16-43"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-BUILD] Done: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
 </code></pre></div></td></tr></table></div>
-<h4 id="comandi-da-lanciare_2">Comandi da lanciare<a class="headerlink" href="#comandi-da-lanciare_2" title="Permanent link">&para;</a></h4>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
-<span class="normal"><a href="#__codelineno-17-2">2</a></span>
-<span class="normal"><a href="#__codelineno-17-3">3</a></span>
-<span class="normal"><a href="#__codelineno-17-4">4</a></span>
-<span class="normal"><a href="#__codelineno-17-5">5</a></span>
-<span class="normal"><a href="#__codelineno-17-6">6</a></span>
-<span class="normal"><a href="#__codelineno-17-7">7</a></span>
-<span class="normal"><a href="#__codelineno-17-8">8</a></span>
-<span class="normal"><a href="#__codelineno-17-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="nb">cd</span><span class="w"> </span>/lustrehome/bob/k8s_tests/EsK8s3_CsI_WLS_v11
-<a id="__codelineno-17-2" name="__codelineno-17-2"></a>chmod<span class="w"> </span>+x<span class="w"> </span>csi-wls-v11-build.sh
-<a id="__codelineno-17-3" name="__codelineno-17-3"></a>
-<a id="__codelineno-17-4" name="__codelineno-17-4"></a>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>csi-wls-v11-build.yaml
-<a id="__codelineno-17-5" name="__codelineno-17-5"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods
-<a id="__codelineno-17-6" name="__codelineno-17-6"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>&lt;pod-name&gt;
-<a id="__codelineno-17-7" name="__codelineno-17-7"></a>
-<a id="__codelineno-17-8" name="__codelineno-17-8"></a><span class="c1"># Pulizia</span>
-<a id="__codelineno-17-9" name="__codelineno-17-9"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span>csi-wls-v11-build.yaml
+<p>Lo script va reso eseguibile:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>csi-wls-v11-build.sh
 </code></pre></div></td></tr></table></div>
-<p>Al termine, l’eseguibile <code>CsI-WLS</code> sarà disponibile in:</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>/lustrehome/bob/k8s_tests/EsK8s3_CsI_WLS_v11/build/
+<p>Job <code>csi-wls-v11-build.yaml</code></p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">YAML</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-18-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-18-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-18-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-18-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-18-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-18-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-18-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-18-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-18-10">10</a></span>
+<span class="normal"><a href="#__codelineno-18-11">11</a></span>
+<span class="normal"><a href="#__codelineno-18-12">12</a></span>
+<span class="normal"><a href="#__codelineno-18-13">13</a></span>
+<span class="normal"><a href="#__codelineno-18-14">14</a></span>
+<span class="normal"><a href="#__codelineno-18-15">15</a></span>
+<span class="normal"><a href="#__codelineno-18-16">16</a></span>
+<span class="normal"><a href="#__codelineno-18-17">17</a></span>
+<span class="normal"><a href="#__codelineno-18-18">18</a></span>
+<span class="normal"><a href="#__codelineno-18-19">19</a></span>
+<span class="normal"><a href="#__codelineno-18-20">20</a></span>
+<span class="normal"><a href="#__codelineno-18-21">21</a></span>
+<span class="normal"><a href="#__codelineno-18-22">22</a></span>
+<span class="normal"><a href="#__codelineno-18-23">23</a></span>
+<span class="normal"><a href="#__codelineno-18-24">24</a></span>
+<span class="normal"><a href="#__codelineno-18-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">csi-wls-v11-build</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7"></a><span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8"></a><span class="w">      </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9"></a><span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">csi-wls-v11-build</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11"></a><span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry-clustergpu.recas.ba.infn.it/alice/geant4:11.3.1</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12"></a><span class="w">          </span><span class="nt">workingDir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/lustrehome/bob/k8s_tests/EsK8s3_CsI_WLS_v11</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13"></a><span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;/bin/bash&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;csi-wls-v11-build.sh&quot;</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14"></a><span class="w">          </span><span class="nt">resources</span><span class="p">:</span>
+<a id="__codelineno-18-15" name="__codelineno-18-15"></a><span class="w">            </span><span class="nt">requests</span><span class="p">:</span>
+<a id="__codelineno-18-16" name="__codelineno-18-16"></a><span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4&quot;</span>
+<a id="__codelineno-18-17" name="__codelineno-18-17"></a><span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4Gi&quot;</span>
+<a id="__codelineno-18-18" name="__codelineno-18-18"></a><span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<a id="__codelineno-18-19" name="__codelineno-18-19"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lustre</span>
+<a id="__codelineno-18-20" name="__codelineno-18-20"></a><span class="w">              </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/lustrehome</span>
+<a id="__codelineno-18-21" name="__codelineno-18-21"></a><span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-18-22" name="__codelineno-18-22"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lustre</span>
+<a id="__codelineno-18-23" name="__codelineno-18-23"></a><span class="w">          </span><span class="nt">hostPath</span><span class="p">:</span>
+<a id="__codelineno-18-24" name="__codelineno-18-24"></a><span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/lustrehome</span>
+<a id="__codelineno-18-25" name="__codelineno-18-25"></a><span class="w">  </span><span class="nt">backoffLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
 </code></pre></div></td></tr></table></div>
-<hr />
-<h3 id="esempio-k8s4-batch-di-run-csi-wls-pilotati-da-python">Esempio K8s4 – Batch di run CsI-WLS pilotati da Python<a class="headerlink" href="#esempio-k8s4-batch-di-run-csi-wls-pilotati-da-python" title="Permanent link">&para;</a></h3>
-<p>Qui estendiamo l’esempio K8s3: assumiamo che la build sia già stata eseguita (l’eseguibile <code>CsI-WLS</code> esiste in <code>build/</code>) e vogliamo far partire un batch di simulazioni pilotate da uno script Python, in stile HTCondor esempio 5.</p>
-<p>Struttura suggerita:</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span>
+<p>Comandi da lanciare</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span>
 <span class="normal"><a href="#__codelineno-19-2">2</a></span>
 <span class="normal"><a href="#__codelineno-19-3">3</a></span>
 <span class="normal"><a href="#__codelineno-19-4">4</a></span>
 <span class="normal"><a href="#__codelineno-19-5">5</a></span>
 <span class="normal"><a href="#__codelineno-19-6">6</a></span>
 <span class="normal"><a href="#__codelineno-19-7">7</a></span>
-<span class="normal"><a href="#__codelineno-19-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>/lustrehome/bob/k8s_tests/EsK8s3_CsI_WLS_v11/
-<a id="__codelineno-19-2" name="__codelineno-19-2"></a>  src/
-<a id="__codelineno-19-3" name="__codelineno-19-3"></a>    ...                 # sorgenti CsI-WLS
-<a id="__codelineno-19-4" name="__codelineno-19-4"></a>    run_electrons_batch.py
-<a id="__codelineno-19-5" name="__codelineno-19-5"></a>  build/
-<a id="__codelineno-19-6" name="__codelineno-19-6"></a>    CsI-WLS             # ottenuto da K8s3
-<a id="__codelineno-19-7" name="__codelineno-19-7"></a>  csi-wls-v11-run-batch.sh
-<a id="__codelineno-19-8" name="__codelineno-19-8"></a>  csi-wls-v11-run-batch.yaml
+<span class="normal"><a href="#__codelineno-19-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="nb">cd</span><span class="w"> </span>/lustrehome/bob/k8s_tests/EsK8s3_CsI_WLS_v11
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>csi-wls-v11-build.yaml
+<a id="__codelineno-19-4" name="__codelineno-19-4"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods
+<a id="__codelineno-19-5" name="__codelineno-19-5"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>&lt;pod-name&gt;
+<a id="__codelineno-19-6" name="__codelineno-19-6"></a>
+<a id="__codelineno-19-7" name="__codelineno-19-7"></a><span class="c1"># Pulizia</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span>csi-wls-v11-build.yaml
 </code></pre></div></td></tr></table></div>
-<h4 id="script-python-run_electrons_batchpy">Script Python <code>run_electrons_batch.py</code><a class="headerlink" href="#script-python-run_electrons_batchpy" title="Permanent link">&para;</a></h4>
+<p>Al termine, l’eseguibile <code>CsI-WLS</code> sarà disponibile in:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a>/lustrehome/bob/k8s_tests/EsK8s3_CsI_WLS_v11/build/
+</code></pre></div></td></tr></table></div>
+<hr />
+<h3 id="esempio-k8s4-batch-di-run-csi-wls-pilotati-da-python">Esempio K8s4 – Batch di run CsI-WLS pilotati da Python<a class="headerlink" href="#esempio-k8s4-batch-di-run-csi-wls-pilotati-da-python" title="Permanent link">&para;</a></h3>
+<p>Qui estendiamo l’esempio K8s3: assumiamo che la build sia già stata eseguita (l’eseguibile <code>CsI-WLS</code> esiste in <code>build/</code>) e vogliamo far partire un batch di simulazioni pilotate da uno script Python, in stile HTCondor esempio 5.</p>
+<p>Struttura suggerita:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
+<span class="normal"><a href="#__codelineno-21-2">2</a></span>
+<span class="normal"><a href="#__codelineno-21-3">3</a></span>
+<span class="normal"><a href="#__codelineno-21-4">4</a></span>
+<span class="normal"><a href="#__codelineno-21-5">5</a></span>
+<span class="normal"><a href="#__codelineno-21-6">6</a></span>
+<span class="normal"><a href="#__codelineno-21-7">7</a></span>
+<span class="normal"><a href="#__codelineno-21-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a>/lustrehome/bob/k8s_tests/EsK8s3_CsI_WLS_v11/
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a>  src/
+<a id="__codelineno-21-3" name="__codelineno-21-3"></a>    ...                 # sorgenti CsI-WLS
+<a id="__codelineno-21-4" name="__codelineno-21-4"></a>    run_electrons_batch.py
+<a id="__codelineno-21-5" name="__codelineno-21-5"></a>  build/
+<a id="__codelineno-21-6" name="__codelineno-21-6"></a>    CsI-WLS             # ottenuto da K8s3
+<a id="__codelineno-21-7" name="__codelineno-21-7"></a>  csi-wls-v11-run-batch.sh
+<a id="__codelineno-21-8" name="__codelineno-21-8"></a>  csi-wls-v11-run-batch.yaml
+</code></pre></div></td></tr></table></div>
+<p>Script Python <code>run_electrons_batch.py</code></p>
 <p>Esempio minimale che genera N macro, ognuna con un seed diverso, e lancia <code>./CsI-WLS</code> per ciascuna:</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-20-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-20-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-20-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-20-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-20-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-20-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-20-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-20-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-20-10">10</a></span>
-<span class="normal"><a href="#__codelineno-20-11">11</a></span>
-<span class="normal"><a href="#__codelineno-20-12">12</a></span>
-<span class="normal"><a href="#__codelineno-20-13">13</a></span>
-<span class="normal"><a href="#__codelineno-20-14">14</a></span>
-<span class="normal"><a href="#__codelineno-20-15">15</a></span>
-<span class="normal"><a href="#__codelineno-20-16">16</a></span>
-<span class="normal"><a href="#__codelineno-20-17">17</a></span>
-<span class="normal"><a href="#__codelineno-20-18">18</a></span>
-<span class="normal"><a href="#__codelineno-20-19">19</a></span>
-<span class="normal"><a href="#__codelineno-20-20">20</a></span>
-<span class="normal"><a href="#__codelineno-20-21">21</a></span>
-<span class="normal"><a href="#__codelineno-20-22">22</a></span>
-<span class="normal"><a href="#__codelineno-20-23">23</a></span>
-<span class="normal"><a href="#__codelineno-20-24">24</a></span>
-<span class="normal"><a href="#__codelineno-20-25">25</a></span>
-<span class="normal"><a href="#__codelineno-20-26">26</a></span>
-<span class="normal"><a href="#__codelineno-20-27">27</a></span>
-<span class="normal"><a href="#__codelineno-20-28">28</a></span>
-<span class="normal"><a href="#__codelineno-20-29">29</a></span>
-<span class="normal"><a href="#__codelineno-20-30">30</a></span>
-<span class="normal"><a href="#__codelineno-20-31">31</a></span>
-<span class="normal"><a href="#__codelineno-20-32">32</a></span>
-<span class="normal"><a href="#__codelineno-20-33">33</a></span>
-<span class="normal"><a href="#__codelineno-20-34">34</a></span>
-<span class="normal"><a href="#__codelineno-20-35">35</a></span>
-<span class="normal"><a href="#__codelineno-20-36">36</a></span>
-<span class="normal"><a href="#__codelineno-20-37">37</a></span>
-<span class="normal"><a href="#__codelineno-20-38">38</a></span>
-<span class="normal"><a href="#__codelineno-20-39">39</a></span>
-<span class="normal"><a href="#__codelineno-20-40">40</a></span>
-<span class="normal"><a href="#__codelineno-20-41">41</a></span>
-<span class="normal"><a href="#__codelineno-20-42">42</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2"></a><span class="kn">import</span> <span class="nn">os</span>
-<a id="__codelineno-20-3" name="__codelineno-20-3"></a>
-<a id="__codelineno-20-4" name="__codelineno-20-4"></a><span class="n">DIR_MAC</span> <span class="o">=</span> <span class="s2">&quot;./mac_electron&quot;</span>
-<a id="__codelineno-20-5" name="__codelineno-20-5"></a><span class="n">DIR_ROOT</span> <span class="o">=</span> <span class="s2">&quot;rootOutput_electron&quot;</span>
-<a id="__codelineno-20-6" name="__codelineno-20-6"></a>
-<a id="__codelineno-20-7" name="__codelineno-20-7"></a><span class="n">N_EVENTS</span> <span class="o">=</span> <span class="mi">10</span>
-<a id="__codelineno-20-8" name="__codelineno-20-8"></a><span class="n">subdir</span> <span class="o">=</span> <span class="s2">&quot;random_rectangular_source_200keV&quot;</span>
-<a id="__codelineno-20-9" name="__codelineno-20-9"></a><span class="n">nfiles</span> <span class="o">=</span> <span class="mi">50</span>
-<a id="__codelineno-20-10" name="__codelineno-20-10"></a>
-<a id="__codelineno-20-11" name="__codelineno-20-11"></a><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nfiles</span><span class="p">):</span>
-<a id="__codelineno-20-12" name="__codelineno-20-12"></a>    <span class="n">seed1</span><span class="p">,</span> <span class="n">seed2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">32</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<a id="__codelineno-20-13" name="__codelineno-20-13"></a>
-<a id="__codelineno-20-14" name="__codelineno-20-14"></a>    <span class="n">mac</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">DIR_MAC</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">subdir</span><span class="si">}</span><span class="s2">/&quot;</span>
-<a id="__codelineno-20-15" name="__codelineno-20-15"></a>           <span class="sa">f</span><span class="s2">&quot;random_rectangular_source_electron_ene_&quot;</span>
-<a id="__codelineno-20-16" name="__codelineno-20-16"></a>           <span class="sa">f</span><span class="s2">&quot;200keV_ly1_n</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">.mac&quot;</span><span class="p">)</span>
-<a id="__codelineno-20-17" name="__codelineno-20-17"></a>    <span class="n">root</span> <span class="o">=</span> <span class="n">mac</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">DIR_MAC</span><span class="p">,</span> <span class="n">DIR_ROOT</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.mac&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-<a id="__codelineno-20-18" name="__codelineno-20-18"></a>
-<a id="__codelineno-20-19" name="__codelineno-20-19"></a>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">mac</span><span class="p">),</span>  <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-20-20" name="__codelineno-20-20"></a>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">root</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-20-21" name="__codelineno-20-21"></a>
-<a id="__codelineno-20-22" name="__codelineno-20-22"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">mac</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<a id="__codelineno-20-23" name="__codelineno-20-23"></a>        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-<a id="__codelineno-20-24" name="__codelineno-20-24"></a>            <span class="s2">&quot;/run/initialize</span><span class="se">\n</span><span class="s2">&quot;</span>
-<a id="__codelineno-20-25" name="__codelineno-20-25"></a>            <span class="s2">&quot;/tracking/verbose 0</span><span class="se">\n</span><span class="s2">&quot;</span>
-<a id="__codelineno-20-26" name="__codelineno-20-26"></a>            <span class="s2">&quot;/gps/particle e-</span><span class="se">\n</span><span class="s2">&quot;</span>
-<a id="__codelineno-20-27" name="__codelineno-20-27"></a>            <span class="s2">&quot;/gps/position 0 0 0 mm</span><span class="se">\n</span><span class="s2">&quot;</span>
-<a id="__codelineno-20-28" name="__codelineno-20-28"></a>            <span class="s2">&quot;/gps/direction 0 0 -1</span><span class="se">\n</span><span class="s2">&quot;</span>
-<a id="__codelineno-20-29" name="__codelineno-20-29"></a>            <span class="sa">f</span><span class="s2">&quot;/random/setSeeds [</span><span class="si">{</span><span class="n">seed1</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">seed2</span><span class="si">}</span><span class="s2">]</span><span class="se">\n</span><span class="s2">&quot;</span>
-<a id="__codelineno-20-30" name="__codelineno-20-30"></a>            <span class="s2">&quot;/gps/pos/type Plane</span><span class="se">\n</span><span class="s2">&quot;</span>
-<a id="__codelineno-20-31" name="__codelineno-20-31"></a>            <span class="s2">&quot;/gps/pos/shape Rectangle</span><span class="se">\n</span><span class="s2">&quot;</span>
-<a id="__codelineno-20-32" name="__codelineno-20-32"></a>            <span class="s2">&quot;/gps/pos/halfx 220 mm</span><span class="se">\n</span><span class="s2">&quot;</span>
-<a id="__codelineno-20-33" name="__codelineno-20-33"></a>            <span class="s2">&quot;/gps/pos/halfy 220 mm</span><span class="se">\n</span><span class="s2">&quot;</span>
-<a id="__codelineno-20-34" name="__codelineno-20-34"></a>            <span class="s2">&quot;/gps/ene/mono 200 keV</span><span class="se">\n</span><span class="s2">&quot;</span>
-<a id="__codelineno-20-35" name="__codelineno-20-35"></a>            <span class="sa">f</span><span class="s2">&quot;/RunManager/NameOfOutputFile </span><span class="si">{</span><span class="n">root</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-<a id="__codelineno-20-36" name="__codelineno-20-36"></a>            <span class="sa">f</span><span class="s2">&quot;/run/beamOn </span><span class="si">{</span><span class="n">N_EVENTS</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-<a id="__codelineno-20-37" name="__codelineno-20-37"></a>        <span class="p">)</span>
-<a id="__codelineno-20-38" name="__codelineno-20-38"></a>
-<a id="__codelineno-20-39" name="__codelineno-20-39"></a>    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;./CsI-WLS </span><span class="si">{</span><span class="n">mac</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-20-40" name="__codelineno-20-40"></a>
-<a id="__codelineno-20-41" name="__codelineno-20-41"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">N_EVENTS</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">nfiles</span><span class="si">}</span><span class="s2"> eventi simulati. &quot;</span>
-<a id="__codelineno-20-42" name="__codelineno-20-42"></a>      <span class="sa">f</span><span class="s2">&quot;Macro in </span><span class="si">{</span><span class="n">DIR_MAC</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">subdir</span><span class="si">}</span><span class="s2">, output ROOT in </span><span class="si">{</span><span class="n">DIR_ROOT</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">subdir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-<h4 id="script-csi-wls-v11-run-batchsh">Script <code>csi-wls-v11-run-batch.sh</code><a class="headerlink" href="#script-csi-wls-v11-run-batchsh" title="Permanent link">&para;</a></h4>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-21-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-21-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-21-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-21-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-21-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-21-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-21-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-21-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-21-10">10</a></span>
-<span class="normal"><a href="#__codelineno-21-11">11</a></span>
-<span class="normal"><a href="#__codelineno-21-12">12</a></span>
-<span class="normal"><a href="#__codelineno-21-13">13</a></span>
-<span class="normal"><a href="#__codelineno-21-14">14</a></span>
-<span class="normal"><a href="#__codelineno-21-15">15</a></span>
-<span class="normal"><a href="#__codelineno-21-16">16</a></span>
-<span class="normal"><a href="#__codelineno-21-17">17</a></span>
-<span class="normal"><a href="#__codelineno-21-18">18</a></span>
-<span class="normal"><a href="#__codelineno-21-19">19</a></span>
-<span class="normal"><a href="#__codelineno-21-20">20</a></span>
-<span class="normal"><a href="#__codelineno-21-21">21</a></span>
-<span class="normal"><a href="#__codelineno-21-22">22</a></span>
-<span class="normal"><a href="#__codelineno-21-23">23</a></span>
-<span class="normal"><a href="#__codelineno-21-24">24</a></span>
-<span class="normal"><a href="#__codelineno-21-25">25</a></span>
-<span class="normal"><a href="#__codelineno-21-26">26</a></span>
-<span class="normal"><a href="#__codelineno-21-27">27</a></span>
-<span class="normal"><a href="#__codelineno-21-28">28</a></span>
-<span class="normal"><a href="#__codelineno-21-29">29</a></span>
-<span class="normal"><a href="#__codelineno-21-30">30</a></span>
-<span class="normal"><a href="#__codelineno-21-31">31</a></span>
-<span class="normal"><a href="#__codelineno-21-32">32</a></span>
-<span class="normal"><a href="#__codelineno-21-33">33</a></span>
-<span class="normal"><a href="#__codelineno-21-34">34</a></span>
-<span class="normal"><a href="#__codelineno-21-35">35</a></span>
-<span class="normal"><a href="#__codelineno-21-36">36</a></span>
-<span class="normal"><a href="#__codelineno-21-37">37</a></span>
-<span class="normal"><a href="#__codelineno-21-38">38</a></span>
-<span class="normal"><a href="#__codelineno-21-39">39</a></span>
-<span class="normal"><a href="#__codelineno-21-40">40</a></span>
-<span class="normal"><a href="#__codelineno-21-41">41</a></span>
-<span class="normal"><a href="#__codelineno-21-42">42</a></span>
-<span class="normal"><a href="#__codelineno-21-43">43</a></span>
-<span class="normal"><a href="#__codelineno-21-44">44</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="ch">#!/bin/bash</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2"></a><span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
-<a id="__codelineno-21-3" name="__codelineno-21-3"></a>
-<a id="__codelineno-21-4" name="__codelineno-21-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] Start: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-21-5" name="__codelineno-21-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] Host:  </span><span class="k">$(</span>hostname<span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-21-6" name="__codelineno-21-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] User:  </span><span class="k">$(</span>whoami<span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-21-7" name="__codelineno-21-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] Pwd:   </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-21-8" name="__codelineno-21-8"></a><span class="nb">echo</span>
-<a id="__codelineno-21-9" name="__codelineno-21-9"></a>
-<a id="__codelineno-21-10" name="__codelineno-21-10"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-f<span class="w"> </span>/opt/geant4/bin/geant4.sh<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-21-11" name="__codelineno-21-11"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] Sourcing Geant4...&quot;</span>
-<a id="__codelineno-21-12" name="__codelineno-21-12"></a><span class="w">  </span><span class="nb">source</span><span class="w"> </span>/opt/geant4/bin/geant4.sh
-<a id="__codelineno-21-13" name="__codelineno-21-13"></a><span class="k">fi</span>
-<a id="__codelineno-21-14" name="__codelineno-21-14"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-f<span class="w"> </span>/opt/root/bin/thisroot.sh<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-21-15" name="__codelineno-21-15"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] Sourcing ROOT...&quot;</span>
-<a id="__codelineno-21-16" name="__codelineno-21-16"></a><span class="w">  </span><span class="nb">source</span><span class="w"> </span>/opt/root/bin/thisroot.sh
-<a id="__codelineno-21-17" name="__codelineno-21-17"></a><span class="k">fi</span>
-<a id="__codelineno-21-18" name="__codelineno-21-18"></a>
-<a id="__codelineno-21-19" name="__codelineno-21-19"></a><span class="nv">BUILD_DIR</span><span class="o">=</span><span class="s2">&quot;build&quot;</span>
-<a id="__codelineno-21-20" name="__codelineno-21-20"></a>
-<a id="__codelineno-21-21" name="__codelineno-21-21"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">BUILD_DIR</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-21-22" name="__codelineno-21-22"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] ERROR: build directory &#39;</span><span class="si">${</span><span class="nv">BUILD_DIR</span><span class="si">}</span><span class="s2">&#39; not found.&quot;</span>
-<a id="__codelineno-21-23" name="__codelineno-21-23"></a><span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
-<a id="__codelineno-21-24" name="__codelineno-21-24"></a><span class="k">fi</span>
-<a id="__codelineno-21-25" name="__codelineno-21-25"></a>
-<a id="__codelineno-21-26" name="__codelineno-21-26"></a><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">BUILD_DIR</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-21-27" name="__codelineno-21-27"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] Now in build dir: </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-21-28" name="__codelineno-21-28"></a>
-<a id="__codelineno-21-29" name="__codelineno-21-29"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-x<span class="w"> </span>CsI-WLS<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-21-30" name="__codelineno-21-30"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] ERROR: CsI-WLS binary not found in </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">.&quot;</span>
-<a id="__codelineno-21-31" name="__codelineno-21-31"></a><span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
-<a id="__codelineno-21-32" name="__codelineno-21-32"></a><span class="k">fi</span>
-<a id="__codelineno-21-33" name="__codelineno-21-33"></a>
-<a id="__codelineno-21-34" name="__codelineno-21-34"></a><span class="nb">echo</span>
-<a id="__codelineno-21-35" name="__codelineno-21-35"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] Running Python batch script...&quot;</span>
-<a id="__codelineno-21-36" name="__codelineno-21-36"></a>python3<span class="w"> </span>../src/run_electrons_batch.py
-<a id="__codelineno-21-37" name="__codelineno-21-37"></a>
-<a id="__codelineno-21-38" name="__codelineno-21-38"></a><span class="nb">echo</span>
-<a id="__codelineno-21-39" name="__codelineno-21-39"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] ROOT files under rootOutput_electron/:&quot;</span>
-<a id="__codelineno-21-40" name="__codelineno-21-40"></a>find<span class="w"> </span>rootOutput_electron<span class="w"> </span>-maxdepth<span class="w"> </span><span class="m">3</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s1">&#39;*.root&#39;</span><span class="w"> </span>-print<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-21-41" name="__codelineno-21-41"></a><span class="w">  </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] Nessun .root trovato.&quot;</span>
-<a id="__codelineno-21-42" name="__codelineno-21-42"></a>
-<a id="__codelineno-21-43" name="__codelineno-21-43"></a><span class="nb">echo</span>
-<a id="__codelineno-21-44" name="__codelineno-21-44"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] Done: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
-</code></pre></div></td></tr></table></div>
-<h4 id="job-csi-wls-v11-run-batchyaml">Job <code>csi-wls-v11-run-batch.yaml</code><a class="headerlink" href="#job-csi-wls-v11-run-batchyaml" title="Permanent link">&para;</a></h4>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">YAML</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1"> 1</a></span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-22-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-22-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-22-4"> 4</a></span>
@@ -1788,50 +1123,222 @@ nel file YAML.</p>
 <span class="normal"><a href="#__codelineno-22-22">22</a></span>
 <span class="normal"><a href="#__codelineno-22-23">23</a></span>
 <span class="normal"><a href="#__codelineno-22-24">24</a></span>
-<span class="normal"><a href="#__codelineno-22-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
-<a id="__codelineno-22-3" name="__codelineno-22-3"></a><span class="nt">metadata</span><span class="p">:</span>
-<a id="__codelineno-22-4" name="__codelineno-22-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">csi-wls-v11-run-batch</span>
-<a id="__codelineno-22-5" name="__codelineno-22-5"></a><span class="nt">spec</span><span class="p">:</span>
-<a id="__codelineno-22-6" name="__codelineno-22-6"></a><span class="w">  </span><span class="nt">template</span><span class="p">:</span>
-<a id="__codelineno-22-7" name="__codelineno-22-7"></a><span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<a id="__codelineno-22-8" name="__codelineno-22-8"></a><span class="w">      </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
-<a id="__codelineno-22-9" name="__codelineno-22-9"></a><span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
-<a id="__codelineno-22-10" name="__codelineno-22-10"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">csi-wls-v11-run-batch</span>
-<a id="__codelineno-22-11" name="__codelineno-22-11"></a><span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry-clustergpu.recas.ba.infn.it/alice/geant4:11.3.1</span>
-<a id="__codelineno-22-12" name="__codelineno-22-12"></a><span class="w">          </span><span class="nt">workingDir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/lustrehome/bob/k8s_tests/EsK8s3_CsI_WLS_v11</span>
-<a id="__codelineno-22-13" name="__codelineno-22-13"></a><span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;/bin/bash&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;csi-wls-v11-run-batch.sh&quot;</span><span class="p p-Indicator">]</span>
-<a id="__codelineno-22-14" name="__codelineno-22-14"></a><span class="w">          </span><span class="nt">resources</span><span class="p">:</span>
-<a id="__codelineno-22-15" name="__codelineno-22-15"></a><span class="w">            </span><span class="nt">requests</span><span class="p">:</span>
-<a id="__codelineno-22-16" name="__codelineno-22-16"></a><span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
-<a id="__codelineno-22-17" name="__codelineno-22-17"></a><span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4Gi&quot;</span>
-<a id="__codelineno-22-18" name="__codelineno-22-18"></a><span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<a id="__codelineno-22-19" name="__codelineno-22-19"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lustre</span>
-<a id="__codelineno-22-20" name="__codelineno-22-20"></a><span class="w">              </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/lustrehome</span>
-<a id="__codelineno-22-21" name="__codelineno-22-21"></a><span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
-<a id="__codelineno-22-22" name="__codelineno-22-22"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lustre</span>
-<a id="__codelineno-22-23" name="__codelineno-22-23"></a><span class="w">          </span><span class="nt">hostPath</span><span class="p">:</span>
-<a id="__codelineno-22-24" name="__codelineno-22-24"></a><span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/lustrehome</span>
-<a id="__codelineno-22-25" name="__codelineno-22-25"></a><span class="w">  </span><span class="nt">backoffLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="normal"><a href="#__codelineno-22-25">25</a></span>
+<span class="normal"><a href="#__codelineno-22-26">26</a></span>
+<span class="normal"><a href="#__codelineno-22-27">27</a></span>
+<span class="normal"><a href="#__codelineno-22-28">28</a></span>
+<span class="normal"><a href="#__codelineno-22-29">29</a></span>
+<span class="normal"><a href="#__codelineno-22-30">30</a></span>
+<span class="normal"><a href="#__codelineno-22-31">31</a></span>
+<span class="normal"><a href="#__codelineno-22-32">32</a></span>
+<span class="normal"><a href="#__codelineno-22-33">33</a></span>
+<span class="normal"><a href="#__codelineno-22-34">34</a></span>
+<span class="normal"><a href="#__codelineno-22-35">35</a></span>
+<span class="normal"><a href="#__codelineno-22-36">36</a></span>
+<span class="normal"><a href="#__codelineno-22-37">37</a></span>
+<span class="normal"><a href="#__codelineno-22-38">38</a></span>
+<span class="normal"><a href="#__codelineno-22-39">39</a></span>
+<span class="normal"><a href="#__codelineno-22-40">40</a></span>
+<span class="normal"><a href="#__codelineno-22-41">41</a></span>
+<span class="normal"><a href="#__codelineno-22-42">42</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3"></a>
+<a id="__codelineno-22-4" name="__codelineno-22-4"></a><span class="n">DIR_MAC</span> <span class="o">=</span> <span class="s2">&quot;./mac_electron&quot;</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5"></a><span class="n">DIR_ROOT</span> <span class="o">=</span> <span class="s2">&quot;rootOutput_electron&quot;</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6"></a>
+<a id="__codelineno-22-7" name="__codelineno-22-7"></a><span class="n">N_EVENTS</span> <span class="o">=</span> <span class="mi">10</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8"></a><span class="n">subdir</span> <span class="o">=</span> <span class="s2">&quot;random_rectangular_source_200keV&quot;</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9"></a><span class="n">nfiles</span> <span class="o">=</span> <span class="mi">50</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10"></a>
+<a id="__codelineno-22-11" name="__codelineno-22-11"></a><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nfiles</span><span class="p">):</span>
+<a id="__codelineno-22-12" name="__codelineno-22-12"></a>    <span class="n">seed1</span><span class="p">,</span> <span class="n">seed2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">32</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-22-13" name="__codelineno-22-13"></a>
+<a id="__codelineno-22-14" name="__codelineno-22-14"></a>    <span class="n">mac</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">DIR_MAC</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">subdir</span><span class="si">}</span><span class="s2">/&quot;</span>
+<a id="__codelineno-22-15" name="__codelineno-22-15"></a>           <span class="sa">f</span><span class="s2">&quot;random_rectangular_source_electron_ene_&quot;</span>
+<a id="__codelineno-22-16" name="__codelineno-22-16"></a>           <span class="sa">f</span><span class="s2">&quot;200keV_ly1_n</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">.mac&quot;</span><span class="p">)</span>
+<a id="__codelineno-22-17" name="__codelineno-22-17"></a>    <span class="n">root</span> <span class="o">=</span> <span class="n">mac</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">DIR_MAC</span><span class="p">,</span> <span class="n">DIR_ROOT</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.mac&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-22-18" name="__codelineno-22-18"></a>
+<a id="__codelineno-22-19" name="__codelineno-22-19"></a>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">mac</span><span class="p">),</span>  <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-22-20" name="__codelineno-22-20"></a>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">root</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-22-21" name="__codelineno-22-21"></a>
+<a id="__codelineno-22-22" name="__codelineno-22-22"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">mac</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a id="__codelineno-22-23" name="__codelineno-22-23"></a>        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+<a id="__codelineno-22-24" name="__codelineno-22-24"></a>            <span class="s2">&quot;/run/initialize</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-22-25" name="__codelineno-22-25"></a>            <span class="s2">&quot;/tracking/verbose 0</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-22-26" name="__codelineno-22-26"></a>            <span class="s2">&quot;/gps/particle e-</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-22-27" name="__codelineno-22-27"></a>            <span class="s2">&quot;/gps/position 0 0 0 mm</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-22-28" name="__codelineno-22-28"></a>            <span class="s2">&quot;/gps/direction 0 0 -1</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-22-29" name="__codelineno-22-29"></a>            <span class="sa">f</span><span class="s2">&quot;/random/setSeeds [</span><span class="si">{</span><span class="n">seed1</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">seed2</span><span class="si">}</span><span class="s2">]</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-22-30" name="__codelineno-22-30"></a>            <span class="s2">&quot;/gps/pos/type Plane</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-22-31" name="__codelineno-22-31"></a>            <span class="s2">&quot;/gps/pos/shape Rectangle</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-22-32" name="__codelineno-22-32"></a>            <span class="s2">&quot;/gps/pos/halfx 220 mm</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-22-33" name="__codelineno-22-33"></a>            <span class="s2">&quot;/gps/pos/halfy 220 mm</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-22-34" name="__codelineno-22-34"></a>            <span class="s2">&quot;/gps/ene/mono 200 keV</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-22-35" name="__codelineno-22-35"></a>            <span class="sa">f</span><span class="s2">&quot;/RunManager/NameOfOutputFile </span><span class="si">{</span><span class="n">root</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-22-36" name="__codelineno-22-36"></a>            <span class="sa">f</span><span class="s2">&quot;/run/beamOn </span><span class="si">{</span><span class="n">N_EVENTS</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-22-37" name="__codelineno-22-37"></a>        <span class="p">)</span>
+<a id="__codelineno-22-38" name="__codelineno-22-38"></a>
+<a id="__codelineno-22-39" name="__codelineno-22-39"></a>    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;./CsI-WLS </span><span class="si">{</span><span class="n">mac</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-22-40" name="__codelineno-22-40"></a>
+<a id="__codelineno-22-41" name="__codelineno-22-41"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">N_EVENTS</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">nfiles</span><span class="si">}</span><span class="s2"> eventi simulati. &quot;</span>
+<a id="__codelineno-22-42" name="__codelineno-22-42"></a>      <span class="sa">f</span><span class="s2">&quot;Macro in </span><span class="si">{</span><span class="n">DIR_MAC</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">subdir</span><span class="si">}</span><span class="s2">, output ROOT in </span><span class="si">{</span><span class="n">DIR_ROOT</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">subdir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<h4 id="comandi-da-lanciare_3">Comandi da lanciare<a class="headerlink" href="#comandi-da-lanciare_3" title="Permanent link">&para;</a></h4>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span>
-<span class="normal"><a href="#__codelineno-23-2">2</a></span>
-<span class="normal"><a href="#__codelineno-23-3">3</a></span>
-<span class="normal"><a href="#__codelineno-23-4">4</a></span>
-<span class="normal"><a href="#__codelineno-23-5">5</a></span>
-<span class="normal"><a href="#__codelineno-23-6">6</a></span>
-<span class="normal"><a href="#__codelineno-23-7">7</a></span>
-<span class="normal"><a href="#__codelineno-23-8">8</a></span>
-<span class="normal"><a href="#__codelineno-23-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="nb">cd</span><span class="w"> </span>/lustrehome/bob/k8s_tests/EsK8s3_CsI_WLS_v11
-<a id="__codelineno-23-2" name="__codelineno-23-2"></a>chmod<span class="w"> </span>+x<span class="w"> </span>csi-wls-v11-run-batch.sh
+<p>Lo script <code>csi-wls-v11-run-batch.sh</code>, che sarà eseguito dentro il container, può essere definito come segue:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-23-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-23-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-23-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-23-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-23-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-23-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-23-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-23-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-23-10">10</a></span>
+<span class="normal"><a href="#__codelineno-23-11">11</a></span>
+<span class="normal"><a href="#__codelineno-23-12">12</a></span>
+<span class="normal"><a href="#__codelineno-23-13">13</a></span>
+<span class="normal"><a href="#__codelineno-23-14">14</a></span>
+<span class="normal"><a href="#__codelineno-23-15">15</a></span>
+<span class="normal"><a href="#__codelineno-23-16">16</a></span>
+<span class="normal"><a href="#__codelineno-23-17">17</a></span>
+<span class="normal"><a href="#__codelineno-23-18">18</a></span>
+<span class="normal"><a href="#__codelineno-23-19">19</a></span>
+<span class="normal"><a href="#__codelineno-23-20">20</a></span>
+<span class="normal"><a href="#__codelineno-23-21">21</a></span>
+<span class="normal"><a href="#__codelineno-23-22">22</a></span>
+<span class="normal"><a href="#__codelineno-23-23">23</a></span>
+<span class="normal"><a href="#__codelineno-23-24">24</a></span>
+<span class="normal"><a href="#__codelineno-23-25">25</a></span>
+<span class="normal"><a href="#__codelineno-23-26">26</a></span>
+<span class="normal"><a href="#__codelineno-23-27">27</a></span>
+<span class="normal"><a href="#__codelineno-23-28">28</a></span>
+<span class="normal"><a href="#__codelineno-23-29">29</a></span>
+<span class="normal"><a href="#__codelineno-23-30">30</a></span>
+<span class="normal"><a href="#__codelineno-23-31">31</a></span>
+<span class="normal"><a href="#__codelineno-23-32">32</a></span>
+<span class="normal"><a href="#__codelineno-23-33">33</a></span>
+<span class="normal"><a href="#__codelineno-23-34">34</a></span>
+<span class="normal"><a href="#__codelineno-23-35">35</a></span>
+<span class="normal"><a href="#__codelineno-23-36">36</a></span>
+<span class="normal"><a href="#__codelineno-23-37">37</a></span>
+<span class="normal"><a href="#__codelineno-23-38">38</a></span>
+<span class="normal"><a href="#__codelineno-23-39">39</a></span>
+<span class="normal"><a href="#__codelineno-23-40">40</a></span>
+<span class="normal"><a href="#__codelineno-23-41">41</a></span>
+<span class="normal"><a href="#__codelineno-23-42">42</a></span>
+<span class="normal"><a href="#__codelineno-23-43">43</a></span>
+<span class="normal"><a href="#__codelineno-23-44">44</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2"></a><span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
 <a id="__codelineno-23-3" name="__codelineno-23-3"></a>
-<a id="__codelineno-23-4" name="__codelineno-23-4"></a>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>csi-wls-v11-run-batch.yaml
-<a id="__codelineno-23-5" name="__codelineno-23-5"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods
-<a id="__codelineno-23-6" name="__codelineno-23-6"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>&lt;pod-name&gt;
-<a id="__codelineno-23-7" name="__codelineno-23-7"></a>
-<a id="__codelineno-23-8" name="__codelineno-23-8"></a><span class="c1"># Pulizia</span>
-<a id="__codelineno-23-9" name="__codelineno-23-9"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span>csi-wls-v11-run-batch.yaml
+<a id="__codelineno-23-4" name="__codelineno-23-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] Start: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] Host:  </span><span class="k">$(</span>hostname<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] User:  </span><span class="k">$(</span>whoami<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] Pwd:   </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8"></a><span class="nb">echo</span>
+<a id="__codelineno-23-9" name="__codelineno-23-9"></a>
+<a id="__codelineno-23-10" name="__codelineno-23-10"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-f<span class="w"> </span>/opt/geant4/bin/geant4.sh<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-23-11" name="__codelineno-23-11"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] Sourcing Geant4...&quot;</span>
+<a id="__codelineno-23-12" name="__codelineno-23-12"></a><span class="w">  </span><span class="nb">source</span><span class="w"> </span>/opt/geant4/bin/geant4.sh
+<a id="__codelineno-23-13" name="__codelineno-23-13"></a><span class="k">fi</span>
+<a id="__codelineno-23-14" name="__codelineno-23-14"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-f<span class="w"> </span>/opt/root/bin/thisroot.sh<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-23-15" name="__codelineno-23-15"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] Sourcing ROOT...&quot;</span>
+<a id="__codelineno-23-16" name="__codelineno-23-16"></a><span class="w">  </span><span class="nb">source</span><span class="w"> </span>/opt/root/bin/thisroot.sh
+<a id="__codelineno-23-17" name="__codelineno-23-17"></a><span class="k">fi</span>
+<a id="__codelineno-23-18" name="__codelineno-23-18"></a>
+<a id="__codelineno-23-19" name="__codelineno-23-19"></a><span class="nv">BUILD_DIR</span><span class="o">=</span><span class="s2">&quot;build&quot;</span>
+<a id="__codelineno-23-20" name="__codelineno-23-20"></a>
+<a id="__codelineno-23-21" name="__codelineno-23-21"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">BUILD_DIR</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-23-22" name="__codelineno-23-22"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] ERROR: build directory &#39;</span><span class="si">${</span><span class="nv">BUILD_DIR</span><span class="si">}</span><span class="s2">&#39; not found.&quot;</span>
+<a id="__codelineno-23-23" name="__codelineno-23-23"></a><span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-23-24" name="__codelineno-23-24"></a><span class="k">fi</span>
+<a id="__codelineno-23-25" name="__codelineno-23-25"></a>
+<a id="__codelineno-23-26" name="__codelineno-23-26"></a><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">BUILD_DIR</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-23-27" name="__codelineno-23-27"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] Now in build dir: </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-23-28" name="__codelineno-23-28"></a>
+<a id="__codelineno-23-29" name="__codelineno-23-29"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-x<span class="w"> </span>CsI-WLS<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-23-30" name="__codelineno-23-30"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] ERROR: CsI-WLS binary not found in </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">.&quot;</span>
+<a id="__codelineno-23-31" name="__codelineno-23-31"></a><span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-23-32" name="__codelineno-23-32"></a><span class="k">fi</span>
+<a id="__codelineno-23-33" name="__codelineno-23-33"></a>
+<a id="__codelineno-23-34" name="__codelineno-23-34"></a><span class="nb">echo</span>
+<a id="__codelineno-23-35" name="__codelineno-23-35"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] Running Python batch script...&quot;</span>
+<a id="__codelineno-23-36" name="__codelineno-23-36"></a>python3<span class="w"> </span>../src/run_electrons_batch.py
+<a id="__codelineno-23-37" name="__codelineno-23-37"></a>
+<a id="__codelineno-23-38" name="__codelineno-23-38"></a><span class="nb">echo</span>
+<a id="__codelineno-23-39" name="__codelineno-23-39"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] ROOT files under rootOutput_electron/:&quot;</span>
+<a id="__codelineno-23-40" name="__codelineno-23-40"></a>find<span class="w"> </span>rootOutput_electron<span class="w"> </span>-maxdepth<span class="w"> </span><span class="m">3</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s1">&#39;*.root&#39;</span><span class="w"> </span>-print<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-23-41" name="__codelineno-23-41"></a><span class="w">  </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] Nessun .root trovato.&quot;</span>
+<a id="__codelineno-23-42" name="__codelineno-23-42"></a>
+<a id="__codelineno-23-43" name="__codelineno-23-43"></a><span class="nb">echo</span>
+<a id="__codelineno-23-44" name="__codelineno-23-44"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[CsI-K8S-RUN] Done: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>Job <code>csi-wls-v11-run-batch.yaml</code></p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">YAML</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-24-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-24-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-24-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-24-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-24-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-24-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-24-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-24-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-24-10">10</a></span>
+<span class="normal"><a href="#__codelineno-24-11">11</a></span>
+<span class="normal"><a href="#__codelineno-24-12">12</a></span>
+<span class="normal"><a href="#__codelineno-24-13">13</a></span>
+<span class="normal"><a href="#__codelineno-24-14">14</a></span>
+<span class="normal"><a href="#__codelineno-24-15">15</a></span>
+<span class="normal"><a href="#__codelineno-24-16">16</a></span>
+<span class="normal"><a href="#__codelineno-24-17">17</a></span>
+<span class="normal"><a href="#__codelineno-24-18">18</a></span>
+<span class="normal"><a href="#__codelineno-24-19">19</a></span>
+<span class="normal"><a href="#__codelineno-24-20">20</a></span>
+<span class="normal"><a href="#__codelineno-24-21">21</a></span>
+<span class="normal"><a href="#__codelineno-24-22">22</a></span>
+<span class="normal"><a href="#__codelineno-24-23">23</a></span>
+<span class="normal"><a href="#__codelineno-24-24">24</a></span>
+<span class="normal"><a href="#__codelineno-24-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">csi-wls-v11-run-batch</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6"></a><span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7"></a><span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8"></a><span class="w">      </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9"></a><span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">csi-wls-v11-run-batch</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11"></a><span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry-clustergpu.recas.ba.infn.it/alice/geant4:11.3.1</span>
+<a id="__codelineno-24-12" name="__codelineno-24-12"></a><span class="w">          </span><span class="nt">workingDir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/lustrehome/bob/k8s_tests/EsK8s3_CsI_WLS_v11</span>
+<a id="__codelineno-24-13" name="__codelineno-24-13"></a><span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;/bin/bash&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;csi-wls-v11-run-batch.sh&quot;</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-24-14" name="__codelineno-24-14"></a><span class="w">          </span><span class="nt">resources</span><span class="p">:</span>
+<a id="__codelineno-24-15" name="__codelineno-24-15"></a><span class="w">            </span><span class="nt">requests</span><span class="p">:</span>
+<a id="__codelineno-24-16" name="__codelineno-24-16"></a><span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<a id="__codelineno-24-17" name="__codelineno-24-17"></a><span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4Gi&quot;</span>
+<a id="__codelineno-24-18" name="__codelineno-24-18"></a><span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<a id="__codelineno-24-19" name="__codelineno-24-19"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lustre</span>
+<a id="__codelineno-24-20" name="__codelineno-24-20"></a><span class="w">              </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/lustrehome</span>
+<a id="__codelineno-24-21" name="__codelineno-24-21"></a><span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-24-22" name="__codelineno-24-22"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lustre</span>
+<a id="__codelineno-24-23" name="__codelineno-24-23"></a><span class="w">          </span><span class="nt">hostPath</span><span class="p">:</span>
+<a id="__codelineno-24-24" name="__codelineno-24-24"></a><span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/lustrehome</span>
+<a id="__codelineno-24-25" name="__codelineno-24-25"></a><span class="w">  </span><span class="nt">backoffLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+</code></pre></div></td></tr></table></div>
+<p>Comandi da lanciare</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span>
+<span class="normal"><a href="#__codelineno-25-2">2</a></span>
+<span class="normal"><a href="#__codelineno-25-3">3</a></span>
+<span class="normal"><a href="#__codelineno-25-4">4</a></span>
+<span class="normal"><a href="#__codelineno-25-5">5</a></span>
+<span class="normal"><a href="#__codelineno-25-6">6</a></span>
+<span class="normal"><a href="#__codelineno-25-7">7</a></span>
+<span class="normal"><a href="#__codelineno-25-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="nb">cd</span><span class="w"> </span>/lustrehome/bob/k8s_tests/EsK8s3_CsI_WLS_v11
+<a id="__codelineno-25-2" name="__codelineno-25-2"></a>
+<a id="__codelineno-25-3" name="__codelineno-25-3"></a>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>csi-wls-v11-run-batch.yaml
+<a id="__codelineno-25-4" name="__codelineno-25-4"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods
+<a id="__codelineno-25-5" name="__codelineno-25-5"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>&lt;pod-name&gt;
+<a id="__codelineno-25-6" name="__codelineno-25-6"></a>
+<a id="__codelineno-25-7" name="__codelineno-25-7"></a><span class="c1"># Pulizia</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span>csi-wls-v11-run-batch.yaml
 </code></pre></div></td></tr></table></div>
 <div class="admonition warning">
 <p class="admonition-title">Assicurarsi che la build esista prima del batch</p>
@@ -1845,65 +1352,65 @@ rilanciare prima il Job di build (<code>csi-wls-v11-build.yaml</code>).</p>
 <h2 id="sec-k8-commands">Comandi essenziali di Kubernetes<a class="headerlink" href="#sec-k8-commands" title="Permanent link">&para;</a></h2>
 <p>Questa sezione riassume i comandi <code>kubectl</code> più usati nello scenario degli esempi.</p>
 <h3 id="gestione-dei-job-e-dei-pod">Gestione dei Job e dei Pod<a class="headerlink" href="#gestione-dei-job-e-dei-pod" title="Permanent link">&para;</a></h3>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-24-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-24-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-24-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-24-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-24-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-24-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-24-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-24-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-24-10">10</a></span>
-<span class="normal"><a href="#__codelineno-24-11">11</a></span>
-<span class="normal"><a href="#__codelineno-24-12">12</a></span>
-<span class="normal"><a href="#__codelineno-24-13">13</a></span>
-<span class="normal"><a href="#__codelineno-24-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="c1"># Creare un Job da un file YAML</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2"></a>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>job_esempio.yaml
-<a id="__codelineno-24-3" name="__codelineno-24-3"></a>
-<a id="__codelineno-24-4" name="__codelineno-24-4"></a><span class="c1"># Elenco dei Job nel namespace corrente</span>
-<a id="__codelineno-24-5" name="__codelineno-24-5"></a>kubectl<span class="w"> </span>get<span class="w"> </span><span class="nb">jobs</span>
-<a id="__codelineno-24-6" name="__codelineno-24-6"></a>
-<a id="__codelineno-24-7" name="__codelineno-24-7"></a><span class="c1"># Dettagli di un Job specifico</span>
-<a id="__codelineno-24-8" name="__codelineno-24-8"></a>kubectl<span class="w"> </span>describe<span class="w"> </span>job<span class="w"> </span>nome-job
-<a id="__codelineno-24-9" name="__codelineno-24-9"></a>
-<a id="__codelineno-24-10" name="__codelineno-24-10"></a><span class="c1"># Elenco dei Pod (inclusi quelli creati dai Job)</span>
-<a id="__codelineno-24-11" name="__codelineno-24-11"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods
-<a id="__codelineno-24-12" name="__codelineno-24-12"></a>
-<a id="__codelineno-24-13" name="__codelineno-24-13"></a><span class="c1"># Dettagli di un Pod</span>
-<a id="__codelineno-24-14" name="__codelineno-24-14"></a>kubectl<span class="w"> </span>describe<span class="w"> </span>pod<span class="w"> </span>nome-pod
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-26-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-26-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-26-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-26-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-26-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-26-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-26-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-26-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-26-10">10</a></span>
+<span class="normal"><a href="#__codelineno-26-11">11</a></span>
+<span class="normal"><a href="#__codelineno-26-12">12</a></span>
+<span class="normal"><a href="#__codelineno-26-13">13</a></span>
+<span class="normal"><a href="#__codelineno-26-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="c1"># Creare un Job da un file YAML</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2"></a>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>job_esempio.yaml
+<a id="__codelineno-26-3" name="__codelineno-26-3"></a>
+<a id="__codelineno-26-4" name="__codelineno-26-4"></a><span class="c1"># Elenco dei Job nel namespace corrente</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5"></a>kubectl<span class="w"> </span>get<span class="w"> </span><span class="nb">jobs</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6"></a>
+<a id="__codelineno-26-7" name="__codelineno-26-7"></a><span class="c1"># Dettagli di un Job specifico</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8"></a>kubectl<span class="w"> </span>describe<span class="w"> </span>job<span class="w"> </span>nome-job
+<a id="__codelineno-26-9" name="__codelineno-26-9"></a>
+<a id="__codelineno-26-10" name="__codelineno-26-10"></a><span class="c1"># Elenco dei Pod (inclusi quelli creati dai Job)</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods
+<a id="__codelineno-26-12" name="__codelineno-26-12"></a>
+<a id="__codelineno-26-13" name="__codelineno-26-13"></a><span class="c1"># Dettagli di un Pod</span>
+<a id="__codelineno-26-14" name="__codelineno-26-14"></a>kubectl<span class="w"> </span>describe<span class="w"> </span>pod<span class="w"> </span>nome-pod
 </code></pre></div></td></tr></table></div>
 <h3 id="log-e-debug">Log e debug<a class="headerlink" href="#log-e-debug" title="Permanent link">&para;</a></h3>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span>
-<span class="normal"><a href="#__codelineno-25-2">2</a></span>
-<span class="normal"><a href="#__codelineno-25-3">3</a></span>
-<span class="normal"><a href="#__codelineno-25-4">4</a></span>
-<span class="normal"><a href="#__codelineno-25-5">5</a></span>
-<span class="normal"><a href="#__codelineno-25-6">6</a></span>
-<span class="normal"><a href="#__codelineno-25-7">7</a></span>
-<span class="normal"><a href="#__codelineno-25-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="c1"># Log standard di un Pod</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>nome-pod
-<a id="__codelineno-25-3" name="__codelineno-25-3"></a>
-<a id="__codelineno-25-4" name="__codelineno-25-4"></a><span class="c1"># Log in streaming (finché il Pod è in esecuzione)</span>
-<a id="__codelineno-25-5" name="__codelineno-25-5"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>nome-pod
-<a id="__codelineno-25-6" name="__codelineno-25-6"></a>
-<a id="__codelineno-25-7" name="__codelineno-25-7"></a><span class="c1"># Shell interattiva dentro il container del Pod</span>
-<a id="__codelineno-25-8" name="__codelineno-25-8"></a>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>nome-pod<span class="w"> </span>--<span class="w"> </span>/bin/bash
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span>
+<span class="normal"><a href="#__codelineno-27-2">2</a></span>
+<span class="normal"><a href="#__codelineno-27-3">3</a></span>
+<span class="normal"><a href="#__codelineno-27-4">4</a></span>
+<span class="normal"><a href="#__codelineno-27-5">5</a></span>
+<span class="normal"><a href="#__codelineno-27-6">6</a></span>
+<span class="normal"><a href="#__codelineno-27-7">7</a></span>
+<span class="normal"><a href="#__codelineno-27-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="c1"># Log standard di un Pod</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>nome-pod
+<a id="__codelineno-27-3" name="__codelineno-27-3"></a>
+<a id="__codelineno-27-4" name="__codelineno-27-4"></a><span class="c1"># Log in streaming (finché il Pod è in esecuzione)</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>nome-pod
+<a id="__codelineno-27-6" name="__codelineno-27-6"></a>
+<a id="__codelineno-27-7" name="__codelineno-27-7"></a><span class="c1"># Shell interattiva dentro il container del Pod</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8"></a>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>nome-pod<span class="w"> </span>--<span class="w"> </span>/bin/bash
 </code></pre></div></td></tr></table></div>
 <h3 id="pulizia">Pulizia<a class="headerlink" href="#pulizia" title="Permanent link">&para;</a></h3>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span>
-<span class="normal"><a href="#__codelineno-26-2">2</a></span>
-<span class="normal"><a href="#__codelineno-26-3">3</a></span>
-<span class="normal"><a href="#__codelineno-26-4">4</a></span>
-<span class="normal"><a href="#__codelineno-26-5">5</a></span>
-<span class="normal"><a href="#__codelineno-26-6">6</a></span>
-<span class="normal"><a href="#__codelineno-26-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="c1"># Eliminare un Job (e i Pod associati)</span>
-<a id="__codelineno-26-2" name="__codelineno-26-2"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span>job_esempio.yaml
-<a id="__codelineno-26-3" name="__codelineno-26-3"></a><span class="c1"># oppure</span>
-<a id="__codelineno-26-4" name="__codelineno-26-4"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>job<span class="w"> </span>nome-job
-<a id="__codelineno-26-5" name="__codelineno-26-5"></a>
-<a id="__codelineno-26-6" name="__codelineno-26-6"></a><span class="c1"># Eliminare un Pod singolo (se necessario)</span>
-<a id="__codelineno-26-7" name="__codelineno-26-7"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>nome-pod
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span>
+<span class="normal"><a href="#__codelineno-28-2">2</a></span>
+<span class="normal"><a href="#__codelineno-28-3">3</a></span>
+<span class="normal"><a href="#__codelineno-28-4">4</a></span>
+<span class="normal"><a href="#__codelineno-28-5">5</a></span>
+<span class="normal"><a href="#__codelineno-28-6">6</a></span>
+<span class="normal"><a href="#__codelineno-28-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="c1"># Eliminare un Job (e i Pod associati)</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span>job_esempio.yaml
+<a id="__codelineno-28-3" name="__codelineno-28-3"></a><span class="c1"># oppure</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>job<span class="w"> </span>nome-job
+<a id="__codelineno-28-5" name="__codelineno-28-5"></a>
+<a id="__codelineno-28-6" name="__codelineno-28-6"></a><span class="c1"># Eliminare un Pod singolo (se necessario)</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>nome-pod
 </code></pre></div></td></tr></table></div>
 <div class="admonition tip">
 <p class="admonition-title">Allineare naming e directory</p>
