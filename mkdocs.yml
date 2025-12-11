@@ -43,7 +43,7 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Uso di immagini Apptainer/Singularity con HTCondor su ReCaS: apptainer_condor.md
-  #- Uso di Kubernetes con container su ReCaS: #kubernetes.md
+  - Uso di Kubernetes con container su ReCaS: kubernetes.md
 
 extra_css:
   - css/overrides.css

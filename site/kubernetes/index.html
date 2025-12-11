@@ -11,6 +11,8 @@
         <link rel="canonical" href="https://marcocecca00.github.io/recas-containers-docs/kubernetes/">
       
       
+        <link rel="prev" href="../apptainer_condor/">
+      
       
       
         
@@ -301,6 +303,269 @@
   
 
       </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Uso di Kubernetes con container su ReCaS
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Uso di Kubernetes con container su ReCaS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Indice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Indice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduzione-e-abilitazione-dellaccount" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduzione e abilitazione dell’account
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduzione e abilitazione dell’account">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#abilitazione-a-kubernetes-in-pratica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abilitazione a Kubernetes in pratica
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sec-k8-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concetti di base di Kubernetes su ReCaS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concetti di base di Kubernetes su ReCaS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oggetti-principali" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Oggetti principali
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#struttura-tipica-di-un-job-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Struttura tipica di un Job YAML
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sec-k8-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Esempi pratici Kubernetes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Esempi pratici Kubernetes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#esempio-k8s1-geant4-1131-sanity-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Esempio K8s1 – Geant4 11.3.1 “sanity check”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#esempio-k8s2-buildrun-dellesempio-geant4-b5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Esempio K8s2 – Build+run dell’esempio Geant4 B5
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#esempio-k8s3-build-del-progetto-csi-wls-con-geant4-v11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Esempio K8s3 – Build del progetto CsI-WLS con Geant4 v11
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#esempio-k8s4-batch-di-run-csi-wls-pilotati-da-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Esempio K8s4 – Batch di run CsI-WLS pilotati da Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sec-k8-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comandi essenziali di Kubernetes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comandi essenziali di Kubernetes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gestione-dei-job-e-dei-pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestione dei Job e dei Pod
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-e-debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log e debug
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pulizia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pulizia
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sec-k8-refs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendice – Riferimenti ufficiali e documentazione Kubernetes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
